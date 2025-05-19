@@ -1,0 +1,38 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #f0f0f0;
+  text-align: center;
+}
+header {
+  padding: 2rem 1rem;
+  background: #000;
+}
+.logo {
+  max-width: 120px;
+}
+.motto {
+  font-style: italic;
+  color: #aaa;
+}
+main {
+  padding: 2rem;
+}
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+.services li {
+  background: #222;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 5px;
+}
+footer {
+  padding: 1rem;
+  background: #000;
+  font-size: 0.9rem;
+  color: #777;
+}
