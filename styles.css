@@ -1,1 +1,88 @@
-body { background: #111; color: #fff; font-family: sans-serif; }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #f0f0f0;
+  text-align: center;
+}
+header {
+  padding: 2rem 1rem;
+  background: #000;
+}
+.logo {
+  max-width: 180px;
+  margin-bottom: 1rem;
+}
+nav {
+  background: #111;
+  padding: 1rem;
+}
+nav a {
+  margin: 0 15px;
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+nav a:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+.motto {
+  font-style: italic;
+  color: #aaa;
+  margin-top: 0.5rem;
+}
+main {
+  padding: 2rem;
+}
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+.services li {
+  background: #222;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 5px;
+}
+footer {
+  padding: 1rem;
+  background: #000;
+  font-size: 0.9rem;
+  color: #777;
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease 1.2s forwards;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+form {
+  margin: 1rem auto;
+  max-width: 400px;
+}
+input, textarea {
+  width: 90%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+}
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background: #e6c200;
+}
