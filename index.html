@@ -7,40 +7,56 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="projects.html">Projects</a>
   <a href="#contact">Contact</a>
 </nav>
-
-  <header>
-    <img src="logo.png" alt="GoldenDane Logo" class="logo" />
-    <h1>GOLDENDANE TECH ENTERPRISE</h1>
-    <p class="motto">ENGINEERING TOMORROW. DELIVERING TODAY.</p>
-  </header>
-  <main>
-    <section class="intro">
-      <h2>Welcome to GoldenDane</h2>
-      <p>We specialize in advanced technology solutions with a vision for meaningful impact.</p>
-    </section>
-    <section class="services">
-      <h2>What We Do</h2>
-      <ul>
-        <li>Innovative AI Solutions</li>
-        <li>Data-driven Insights</li>
-        <li>Enterprise Tech Consulting</li>
-      </ul>
-    </section>
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: info@goldendanetech.com</p>
-      <p>Location: Global / Remote-first</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 GoldenDane Tech Enterprise. All rights reserved.</p>
-  </footer>
+<header>
+  <img src="logo.png" alt="GoldenDane Logo" class="logo fade-in" />
+  <h1 class="fade-in">GOLDENDANE TECH ENTERPRISE</h1>
+  <p id="motto" class="motto fade-in"></p>
+</header>
+<main>
+  <section class="intro fade-in">
+    <h2>Welcome to GoldenDane</h2>
+    <p>We specialize in advanced technology solutions with a vision for meaningful impact.</p>
+  </section>
+  <section class="services fade-in">
+    <h2>What We Do</h2>
+    <ul>
+      <li>Innovative AI Solutions</li>
+      <li>Data-driven Insights</li>
+      <li>Enterprise Tech Consulting</li>
+    </ul>
+  </section>
+  <section id="contact" class="contact fade-in">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/mnqebkdd" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <textarea name="message" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+    <p>Email: info@goldendanetech.com</p>
+    <p>Location: Global / Remote-first</p>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 GoldenDane Tech Enterprise. All rights reserved.</p>
+</footer>
+<script>
+const text = "ENGINEERING TOMORROW. DELIVERING TODAY.";
+let i = 0;
+function type() {
+  if (i < text.length) {
+    document.getElementById("motto").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 60);
+  }
+}
+document.addEventListener("DOMContentLoaded", type);
+</script>
 </body>
 </html>
