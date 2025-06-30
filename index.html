@@ -3,25 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GoldenDane Tech</title>
+  <title>GoldenDane Tech Enterprise</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="GoldenDane Logo" style="width:140px;">
-    <h1>Welcome to GoldenDane Tech Enterprise</h1>
-  </header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <main>
-    <p>Innovating tomorrow’s solutions — today.</p>
-  </main>
-  <footer>
-    <p>&copy; 2025 GoldenDane Tech Enterprise</p>
-  </footer>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+<header>
+  <img src="logo.png" alt="GoldenDane Logo" class="logo fade-in" />
+  <h1 class="fade-in">GOLDENDANE TECH ENTERPRISE</h1>
+  <p id="motto" class="motto fade-in"></p>
+</header>
+<main>
+  <section class="intro fade-in">
+    <h2>Welcome to GoldenDane</h2>
+    <p>We specialize in advanced technology solutions with a vision for meaningful impact.</p>
+  </section>
+  <section class="services fade-in">
+    <h2>What We Do</h2>
+    <ul>
+      <li>Innovative AI Solutions</li>
+      <li>Data-driven Insights</li>
+      <li>Enterprise Tech Consulting</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 GoldenDane Tech Enterprise. All rights reserved.</p>
+</footer>
+<script>
+const text = "ENGINEERING TOMORROW. DELIVERING TODAY.";
+let i = 0;
+function type() {
+  if (i < text.length) {
+    document.getElementById("motto").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 60);
+  }
+}
+document.addEventListener("DOMContentLoaded", type);
+</script>
 </body>
 </html>

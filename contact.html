@@ -1,1 +1,41 @@
-<html><body><h1>Contact Page</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - GoldenDane Tech</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+<header>
+  <h1>Contact Us</h1>
+</header>
+<main>
+  <section class="contact fade-in">
+    <h2>Send Us a Message</h2>
+    <form action="https://formspree.io/f/meogdrpa" method="POST">
+        <!-- Honeypot field -->
+        <input type="text" name="_gotcha" style="display:none">
+        <!-- Auto-reply and metadata -->
+        <input type="hidden" name="_subject" value="New Contact Form Submission from GoldenDane">
+        <input type="hidden" name="_autoresponse" value="Thank you for contacting GoldenDane Tech. We’ll get back to you soon.">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
+      <textarea name="message" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+    <p>Email: info@goldendanetech.com</p>
+    <p>Location: Global / Remote-first</p>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 GoldenDane Tech Enterprise. All rights reserved.</p>
+</footer>
+</body>
+</html>
