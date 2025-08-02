@@ -86,3 +86,23 @@ button {
 button:hover {
   background: #e6c200;
 }
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.nav-home-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo-img {
+  height: 24px;
+  width: auto;
+}

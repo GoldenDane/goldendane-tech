@@ -4,15 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GoldenDane Tech Enterprise</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<nav>
-  <a href="index.html">Home</a>
+<nav class="navbar">
+  <a href="index.html" class="nav-home-link">
+    <img src="logo.png" alt="GoldenDane Logo" class="nav-logo-img">
+    Home
+  </a>
   <a href="about.html">About</a>
   <a href="projects.html">Projects</a>
   <a href="contact.html">Contact</a>
 </nav>
+
 <header>
   <img src="logo.png" alt="GoldenDane Logo" class="logo fade-in" />
   <h1 class="fade-in">GOLDENDANE TECH ENTERPRISE</h1>
@@ -36,7 +41,7 @@
   <p>&copy; 2025 GoldenDane Tech Enterprise. All rights reserved.</p>
 </footer>
 <script>
-const text = "ENGINEERING TOMORROW. DELIVERING TODAY.";
+const text = "WHERE VISION BECOMES PRODUCT";
 let i = 0;
 function type() {
   if (i < text.length) {
