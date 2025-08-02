@@ -106,3 +106,47 @@ nav.navbar {
   height: 24px;
   width: auto;
 }
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-member {
+  background: #1a1a1a;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 200px;
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+  max-width: 150px;
+  margin-bottom: 1rem;
+  border: 2px solid #444;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #ffd700;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.contact-button:hover {
+  background: #e6c200;
+}
+.profile-photo {
+  width: 180px;
+  border-radius: 50%;
+  margin: 1rem 0;
+  border: 2px solid #444;
+}
