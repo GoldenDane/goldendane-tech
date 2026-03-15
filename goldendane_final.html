@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldenDane — Strategic Consulting & High-Performance Computing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-l:#E8C97A;--gold-dim:rgba(201,168,76,0.13);
+  --bg:#09080A;--bg2:#0E0D0F;--bg3:#141316;--bg4:#1A1820;
+  --text:#EDE7D5;--text-m:#887F6E;--text-d:#3E3A34;
+  --b:rgba(201,168,76,0.11);--bh:rgba(201,168,76,0.32);
+  --r:rgba(201,168,76,0.55);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;cursor:none}
+
+/* ── Cursor ── */
+#cur,#curR{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%}
+#cur{width:7px;height:7px;background:var(--gold);transition:width .15s,height .15s,background .15s}
+#curR{width:30px;height:30px;border:1px solid rgba(201,168,76,.38);z-index:9998;transition:width .25s,height .25s}
+body.cursor-lg #cur{width:13px;height:13px;background:var(--gold-l)}
+body.cursor-lg #curR{width:46px;height:46px}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 3.5rem;transition:all .5s}
+nav.s{background:rgba(9,8,10,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--text);text-decoration:none;letter-spacing:.3px}
+.logo b{color:var(--gold);font-weight:400}
+.nav-l{display:flex;gap:2.8rem;list-style:none}
+.nav-l a{font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--text-m);text-decoration:none;transition:color .2s;position:relative}
+.nav-l a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-l a:hover{color:var(--gold)}
+.nav-l a:hover::after{width:100%}
+.nav-btn{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--bh);padding:9px 22px;text-decoration:none;transition:all .25s;font-family:'Syne',sans-serif}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3.5rem 5.5rem;overflow:hidden}
+#hc{position:absolute;inset:0;z-index:0}
+.hero-vignette{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(9,8,10,.7) 100%)}
+.hglow{position:absolute;top:12%;left:50%;transform:translateX(-50%);width:720px;height:720px;background:radial-gradient(ellipse,rgba(201,168,76,.055) 0%,transparent 68%);z-index:1;animation:glow 8s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.5;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
+.hc{position:relative;z-index:2}
+.eyebrow{font-size:10.5px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;opacity:0;animation:fu .8s ease .2s forwards;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:.6}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,8.5vw,112px);font-weight:300;line-height:.93;letter-spacing:-1.5px;color:var(--text);opacity:0;animation:fu .9s ease .38s forwards}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{max-width:480px;margin-top:2.2rem;font-size:15px;color:var(--text-m);line-height:1.95;opacity:0;animation:fu .8s ease .58s forwards;font-weight:300}
+.hero-acts{display:flex;gap:1.6rem;margin-top:2.8rem;align-items:center;opacity:0;animation:fu .8s ease .78s forwards}
+.btn-p{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--bg);border:none;padding:15px 34px;cursor:pointer;text-decoration:none;transition:all .22s;display:inline-block;font-weight:500}
+.btn-p:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn-g{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-m);text-decoration:none;padding-bottom:3px;border-bottom:1px solid var(--bh);transition:color .2s}
+.btn-g:hover{color:var(--gold)}
+.hero-sc{position:absolute;bottom:2.8rem;right:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.sc-line{width:1px;height:44px;background:var(--bh);animation:scAnim 2.2s ease infinite}
+@keyframes scAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Shared ── */
+section{padding:7.5rem 3.5rem;position:relative}
+.inner{max-width:1240px;margin:0 auto}
+.s-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold);opacity:.7}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,64px);font-weight:300;line-height:1.08;color:var(--text)}
+.s-title em{font-style:italic;color:var(--gold)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── Stats bar ── */
+.stats-bar{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
+.stats-bar .inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{padding:2rem 2.5rem;border-right:1px solid var(--b);text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--gold);line-height:1}
+.stat-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-m);margin-top:4px}
+
+/* ── Pillars ── */
+.pillars{background:var(--bg2)}
+.pillars-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-bottom:4.5rem;align-items:end}
+.pillars-intro{font-size:15.5px;color:var(--text-m);line-height:1.95;font-weight:300}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b)}
+.pillar{background:var(--bg2);padding:2.8rem;position:relative;overflow:hidden;transition:background .35s;cursor:default}
+.pillar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.pillar:hover{background:var(--bg3)}
+.pillar:hover::after{transform:scaleX(1)}
+.p-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--text-d);line-height:1;margin-bottom:1.6rem}
+.pillar h3{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:.9rem;font-weight:500}
+.pillar p{font-size:14px;color:var(--text-m);line-height:1.85}
+
+/* ── Services ── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);margin-top:4rem}
+.svc{background:var(--bg);padding:2.8rem;border-bottom:3px solid transparent;transition:all .3s;cursor:default;position:relative}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.svc:hover{background:var(--bg3);border-bottom-color:var(--gold)}
+.svc:hover::before{opacity:.5}
+.svc-tag{font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;opacity:.75}
+.svc h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:.9rem;line-height:1.2}
+.svc p{font-size:13.5px;color:var(--text-m);line-height:1.85;margin-bottom:1.4rem}
+.svc-list{list-style:none}
+.svc-list li{font-size:12px;color:var(--text-d);padding:5px 0;border-bottom:1px solid var(--b);display:flex;align-items:center;gap:10px;letter-spacing:.3px;transition:color .2s}
+.svc:hover .svc-list li{color:var(--text-m)}
+.svc-list li::before{content:'—';color:var(--gold);font-size:10px;flex-shrink:0}
+
+/* ── HPC ── */
+.hpc{background:var(--bg2)}
+.hpc-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.hpc-text p{font-size:15px;color:var(--text-m);line-height:1.95;margin-top:1.6rem;font-weight:300}
+.hpc-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b);margin-top:2.8rem}
+.hs{background:var(--bg2);padding:1.4rem 1.8rem;transition:background .3s}
+.hs:hover{background:var(--bg3)}
+.hs-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--gold);line-height:1}
+.hs-lbl{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--text-m);margin-top:4px}
+/* Orbital visual */
+.hpc-visual{position:relative;height:440px;display:flex;align-items:center;justify-content:center}
+.orb-ring{position:absolute;border-radius:50%;border:1px solid var(--b);animation:spin linear infinite}
+.orb-ring:nth-child(1){width:360px;height:360px;animation-duration:24s;border-color:rgba(201,168,76,.1)}
+.orb-ring:nth-child(2){width:270px;height:270px;animation-duration:16s;animation-direction:reverse;border-color:rgba(201,168,76,.18)}
+.orb-ring:nth-child(3){width:180px;height:180px;animation-duration:10s;border-color:rgba(201,168,76,.12)}
+.orb-ring:nth-child(4){width:90px;height:90px;animation-duration:6s;animation-direction:reverse;border-color:rgba(201,168,76,.22)}
+.orb-ring::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;background:var(--gold);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 12px var(--gold)}
+.orb-ring:nth-child(2)::before{top:auto;bottom:-4px;width:5px;height:5px;background:var(--gold-l)}
+.orb-ring:nth-child(3)::before{top:-3px;width:6px;height:6px}
+.orb-ring:nth-child(4)::before{width:4px;height:4px;top:-2px}
+.orb-core{width:56px;height:56px;background:var(--gold-dim);border:1px solid var(--bh);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);position:relative;z-index:2}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.orb-label{position:absolute;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d)}
+.orb-label:nth-of-type(1){top:18px}
+.orb-label:nth-of-type(2){bottom:18px}
+.orb-label:nth-of-type(3){left:8px}
+.orb-label:nth-of-type(4){right:8px}
+
+/* ── Chess ── */
+.chess{background:var(--bg)}
+.chess-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:7rem;align-items:center}
+.chess-img-wrap{position:relative}
+.chess-img{width:100%;height:560px;object-fit:cover;object-position:center top;display:block;filter:saturate(.85)}
+.chess-img-frame{position:relative;overflow:hidden}
+.chess-img-frame::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid var(--b);z-index:1;pointer-events:none}
+.chess-gold-line{position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2}
+.chess-badge{position:absolute;top:2rem;right:2rem;z-index:3;background:var(--bg);border:1px solid var(--bh);font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);padding:8px 16px;font-family:'Syne',sans-serif}
+.chess-text .s-title{margin-bottom:1.4rem}
+.chess-text > p{font-size:15px;color:var(--text-m);line-height:1.95;font-weight:300;margin-bottom:2.2rem}
+.chess-pts{display:flex;flex-direction:column;gap:.8rem}
+.cpt{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem 1.4rem;border:1px solid var(--b);transition:border-color .3s,background .3s}
+.cpt:hover{border-color:var(--bh);background:var(--bg2)}
+.cpt-icon{width:34px;height:34px;border:1px solid var(--bh);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:15px;margin-top:1px}
+.cpt-body h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);font-weight:500;margin-bottom:4px}
+.cpt-body p{font-size:13px;color:var(--text-m);line-height:1.75}
+
+/* ── Team ── */
+.team{background:var(--bg2)}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b);margin-top:4rem}
+.tc{background:var(--bg);padding:3.8rem;transition:background .35s;position:relative;overflow:hidden}
+.tc::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .5s ease}
+.tc:hover{background:var(--bg3)}
+.tc:hover::before{height:100%}
+.tc-init{width:68px;height:68px;border:1px solid var(--bh);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold);margin-bottom:2rem}
+.tc-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:var(--text);margin-bottom:4px}
+.tc-role{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+.tc-div{width:28px;height:1px;background:var(--bh);margin:1.4rem 0}
+.tc-bio{font-size:14px;color:var(--text-m);line-height:1.95;font-weight:300}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.6rem}
+.tag{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-d);border:1px solid var(--b);padding:4px 10px;transition:all .2s}
+.tc:hover .tag{border-color:rgba(201,168,76,.22);color:var(--text-m)}
+
+/* ── Contact ── */
+.contact{text-align:center;background:var(--bg2)}
+.contact-inner{max-width:660px;margin:0 auto}
+.contact .s-label{justify-content:center}
+.contact .s-label::before{display:none}
+.contact-sub{font-size:15.5px;color:var(--text-m);margin:1.4rem 0 2.8rem;line-height:1.9;font-weight:300}
+.contact-email{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--bh);padding-bottom:4px;transition:color .2s;display:inline-block}
+.contact-email:hover{color:var(--gold-l)}
+.contact-locs{display:flex;justify-content:center;gap:4rem;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--b)}
+.loc-city{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-m)}
+.loc-country{font-size:11px;color:var(--text-d);margin-top:3px}
+
+/* ── Footer ── */
+footer{background:var(--bg);border-top:1px solid var(--b);padding:2rem 3.5rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text-m)}
+.f-logo b{color:var(--gold);font-weight:400}
+.f-copy{font-size:11.5px;color:var(--text-d)}
+.f-links{display:flex;gap:2.2rem}
+.f-links a{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--gold)}
+
+/* ── Responsive ── */
+@media(max-width:1000px){
+  nav{padding:1.2rem 2rem}.nav-l{display:none}
+  .hero{padding:0 2rem 4.5rem}
+  section{padding:5.5rem 2rem}
+  .stats-bar .inner,.pillars-top,.pillars-grid,.services-grid,.hpc-inner,.chess-inner,.team-grid{grid-template-columns:1fr}
+  .chess-img{height:320px}
+  .hpc-visual{height:300px}
+  .orb-ring:nth-child(1){width:260px;height:260px}
+  .orb-ring:nth-child(2){width:195px;height:195px}
+  .orb-ring:nth-child(3){width:130px;height:130px}
+  .orb-ring:nth-child(4){width:65px;height:65px}
+  footer{flex-direction:column;gap:1.2rem;text-align:center}
+  .f-links{justify-content:center}
+  .contact-locs{gap:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Golden<b>Dane</b></a>
+  <ul class="nav-l">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#hpc">Computing</a></li>
+    <li><a href="#chess">Integrity</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="hc"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hglow"></div>
+  <div class="hc">
+    <span class="eyebrow">Copenhagen · Est. 2025</span>
+    <h1>Where <em>strategy</em><br>meets raw<br>computing power.</h1>
+    <p class="hero-sub">GoldenDane is a consulting and high-performance computing firm. We enter complex problems and leave with solutions — with the rigour to back every decision we make.</p>
+    <div class="hero-acts">
+      <a href="#services" class="btn-p">Explore Our Work</a>
+      <a href="#contact" class="btn-g">Start a Conversation</a>
+    </div>
+  </div>
+  <div class="hero-sc"><div class="sc-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="inner">
+    <div class="stat-item reveal"><div class="stat-num">6+</div><div class="stat-label">Industries served</div></div>
+    <div class="stat-item reveal d1"><div class="stat-num">GPU</div><div class="stat-label">Accelerated clusters</div></div>
+    <div class="stat-item reveal d2"><div class="stat-num">24/7</div><div class="stat-label">Infrastructure uptime</div></div>
+    <div class="stat-item reveal d3"><div class="stat-num">DK · US</div><div class="stat-label">Global reach</div></div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars" id="about">
+  <div class="inner">
+    <div class="pillars-top">
+      <div class="reveal">
+        <span class="s-label">Our Foundation</span>
+        <h2 class="s-title">Three <em>uncompromising</em><br>principles.</h2>
+      </div>
+      <p class="pillars-intro reveal d1">GoldenDane was founded on the conviction that the most valuable outcomes lie at the intersection of rigorous analysis, technological capability, and the courage to act where others hesitate. We do not advise from a distance. We enter the problem.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal"><div class="p-num">01</div><h3>Neutrality is power</h3><p>The most effective interventions come from those with no stake in the outcome — only a commitment to the right result. We enter every engagement without bias.</p></div>
+      <div class="pillar reveal d1"><div class="p-num">02</div><h3>Compute as leverage</h3><p>Serious computing infrastructure is a competitive weapon. We deploy high-performance clusters where others deploy spreadsheets — and the difference shows.</p></div>
+      <div class="pillar reveal d2"><div class="p-num">03</div><h3>Prove before you pitch</h3><p>We demonstrate value before asking for trust. Show what we can do, then talk terms. It is how we would want to be treated, so it is how we operate.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <div class="reveal">
+      <span class="s-label">What We Do</span>
+      <h2 class="s-title">Capabilities built<br>for <em>hard problems.</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <div class="svc-tag">Advisory</div>
+        <h3>Strategic Consulting & Mediation</h3>
+        <p>Complex disputes, institutional trust challenges, and high-stakes decisions that require both analytical depth and human judgment.</p>
+        <ul class="svc-list">
+          <li>Stakeholder alignment & conflict mediation</li>
+          <li>Trust & transparency frameworks</li>
+          <li>Institutional reputation strategy</li>
+          <li>Governance & decision architecture</li>
+        </ul>
+      </div>
+      <div class="svc reveal d1">
+        <div class="svc-tag">Technology</div>
+        <h3>High-Performance Computing</h3>
+        <p>Our cluster infrastructure enables simulation, modelling, and computation at a scale unavailable to most organisations.</p>
+        <ul class="svc-list">
+          <li>Parallel simulation & scientific modelling</li>
+          <li>Large-scale data processing & ML training</li>
+          <li>Algorithmic development & optimisation</li>
+          <li>Dedicated compute for research workloads</li>
+        </ul>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-tag">Healthcare</div>
+        <h3>Health Systems & Life Sciences</h3>
+        <p>Strategy grounded in real analytical capability — for providers, payers, and life sciences organisations with complex data needs.</p>
+        <ul class="svc-list">
+          <li>Clinical trial data modelling & analysis</li>
+          <li>Health system transformation strategy</li>
+          <li>Regulatory navigation & compliance design</li>
+          <li>Genomic & biomedical compute workflows</li>
+        </ul>
+      </div>
+      <div class="svc reveal d1">
+        <div class="svc-tag">Engineering</div>
+        <h3>Engineering & Industrial Consulting</h3>
+        <p>Computational methods applied to engineering challenges that demand precision and speed simultaneously.</p>
+        <ul class="svc-list">
+          <li>Computational fluid dynamics (CFD)</li>
+          <li>Finite element analysis (FEA) at scale</li>
+          <li>Process & logistics optimisation</li>
+          <li>Materials science simulation</li>
+        </ul>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-tag">Finance & Quant</div>
+        <h3>Quantitative Finance & Risk</h3>
+        <p>Algorithmic strategy, risk models, and scenario analyses backed by infrastructure that gives our clients a genuine edge.</p>
+        <ul class="svc-list">
+          <li>Algorithmic strategy & back-testing</li>
+          <li>Monte Carlo simulation at scale</li>
+          <li>Portfolio risk modelling</li>
+          <li>High-frequency data analysis</li>
+        </ul>
+      </div>
+      <div class="svc reveal d1">
+        <div class="svc-tag">AI & Research</div>
+        <h3>AI Development & Research Compute</h3>
+        <p>Burst compute capacity, MLOps support, and applied AI development for research teams and organisations building serious systems.</p>
+        <ul class="svc-list">
+          <li>LLM fine-tuning & large-scale training runs</li>
+          <li>Distributed model inference infrastructure</li>
+          <li>Applied AI prototyping & deployment</li>
+          <li>Academic & institutional partnerships</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HPC -->
+<section class="hpc" id="hpc">
+  <div class="inner hpc-inner">
+    <div class="hpc-text reveal">
+      <span class="s-label">Infrastructure</span>
+      <h2 class="s-title">The machine<br>behind the <em>method.</em></h2>
+      <p>Our high-performance computing cluster is the backbone of GoldenDane. Purpose-built for demanding workloads — from genomic analysis to financial simulation — it gives clients access to computational resources once exclusive to major research institutions and technology giants.</p>
+      <div class="hpc-stats">
+        <div class="hs"><div class="hs-num">PB+</div><div class="hs-lbl">Storage capacity</div></div>
+        <div class="hs"><div class="hs-num">GPU</div><div class="hs-lbl">Accelerated nodes</div></div>
+        <div class="hs"><div class="hs-num">24/7</div><div class="hs-lbl">Uptime guarantee</div></div>
+        <div class="hs"><div class="hs-num">6+</div><div class="hs-lbl">Sectors served</div></div>
+      </div>
+    </div>
+    <div class="hpc-visual reveal d2">
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-core">GD·HPC</div>
+      <span class="orb-label">Compute</span>
+      <span class="orb-label">Storage</span>
+      <span class="orb-label">GPU</span>
+      <span class="orb-label">Network</span>
+    </div>
+  </div>
+</section>
+
+<!-- CHESS INTEGRITY -->
+<section class="chess" id="chess">
+  <div class="inner chess-inner">
+    <div class="chess-img-wrap reveal">
+      <div class="chess-img-frame">
+        <img class="chess-img" src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&q=85" alt="Competitive chess" loading="lazy">
+        <div class="chess-gold-line"></div>
+      </div>
+      <div class="chess-badge">Fair Play Initiative</div>
+    </div>
+    <div class="chess-text reveal d1">
+      <span class="s-label">Chess Integrity</span>
+      <h2 class="s-title">Making the game<br><em>trustworthy</em> again.</h2>
+      <p>GoldenDane is actively engaged with the competitive chess community on one of the most consequential challenges facing the game: ensuring that online play at the highest level is genuinely fair — and seen to be. We bring the analytical capability and the institutional neutrality to approach this seriously.</p>
+      <div class="chess-pts">
+        <div class="cpt">
+          <div class="cpt-icon">◈</div>
+          <div class="cpt-body">
+            <h4>Custom engine development</h4>
+            <p>We have developed custom modifications to state-of-the-art chess engines — enhancing evaluation frameworks to analyse positions with greater contextual precision than standard implementations allow.</p>
+          </div>
+        </div>
+        <div class="cpt">
+          <div class="cpt-icon">⚖</div>
+          <div class="cpt-body">
+            <h4>Independent mediation</h4>
+            <p>We work as a fully neutral third party — not representing platforms, not representing players. We are in dialogue with figures at the top of competitive chess who share our commitment to getting this right.</p>
+          </div>
+        </div>
+        <div class="cpt">
+          <div class="cpt-icon">◇</div>
+          <div class="cpt-body">
+            <h4>Transparency frameworks</h4>
+            <p>We design accountability standards that platforms can stand behind publicly — giving the elite player community something credible to point to, without compromising the integrity of existing systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="inner">
+    <div class="reveal">
+      <span class="s-label">Leadership</span>
+      <h2 class="s-title">The people who<br><em>make it happen.</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="tc reveal">
+        <div class="tc-init">SG</div>
+        <div class="tc-name">Soheil Ghoreishi</div>
+        <div class="tc-role">Founder & Chief Executive Officer</div>
+        <div class="tc-div"></div>
+        <p class="tc-bio">Soheil is the strategic architect of GoldenDane. With a rare combination of analytical rigour and negotiation instinct, he identifies complex situations where conventional approaches fall short — and builds the frameworks to resolve them. He leads client relationships, drives expansion across sectors, and brings the conviction that no problem is too difficult when approached with the right method.</p>
+        <div class="tags">
+          <span class="tag">Strategy</span><span class="tag">Mediation</span><span class="tag">Business Development</span><span class="tag">Healthcare</span>
+        </div>
+      </div>
+      <div class="tc reveal d1">
+        <div class="tc-init">VI</div>
+        <div class="tc-name">Vadim Ionas</div>
+        <div class="tc-role">Founder & Technical Director</div>
+        <div class="tc-div"></div>
+        <p class="tc-bio">Vadim is the computational engine of GoldenDane. He oversees the design, operation, and continuous development of the firm's high-performance infrastructure — ensuring every data-intensive engagement runs with maximum precision and speed. His expertise spans distributed systems, algorithm design, and applied mathematics, giving GoldenDane a technical depth that is exceedingly rare in a consulting context.</p>
+        <div class="tags">
+          <span class="tag">HPC Architecture</span><span class="tag">Algorithm Design</span><span class="tag">Distributed Systems</span><span class="tag">Applied ML</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner reveal">
+    <span class="s-label">Get In Touch</span>
+    <h2 class="s-title">Let's work on<br>something <em>worth doing.</em></h2>
+    <p class="contact-sub">Whether you have a complex dispute to resolve, a computation-heavy problem to crack, or simply want to explore what GoldenDane could do for your organisation — we are open to the conversation.</p>
+    <a href="mailto:hello@goldendane.com" class="contact-email">hello@goldendane.com</a>
+    <div class="contact-locs">
+      <div><div class="loc-city">Copenhagen</div><div class="loc-country">Denmark · Headquarters</div></div>
+      <div><div class="loc-city">United States</div><div class="loc-country">North America · Partner Network</div></div>
+      <div><div class="loc-city">Remote-first</div><div class="loc-country">Operating globally</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Golden<b>Dane</b></div>
+  <div class="f-copy">© 2025 GoldenDane. All rights reserved.</div>
+  <div class="f-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#chess">Integrity</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ── Cursor ───────────────────────────────────────────────
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+(function aR(){
+  rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+  curR.style.left=rx+'px'; curR.style.top=ry+'px';
+  requestAnimationFrame(aR);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-lg'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-lg'));
+});
+
+// ── Scrolled nav ─────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s', scrollY>60);
+});
+
+// ── Reveal ───────────────────────────────────────────────
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('v'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Three.js Hero ────────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('hc');
+  const renderer = new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(58, innerWidth/innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  function onResize(){
+    renderer.setSize(innerWidth,innerHeight);
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  onResize();
+  window.addEventListener('resize', onResize);
+
+  // Particles
+  const N = 2000;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(N*3);
+  for(let i=0;i<N;i++){
+    pos[i*3]   = (Math.random()-.5)*20;
+    pos[i*3+1] = (Math.random()-.5)*14;
+    pos[i*3+2] = (Math.random()-.5)*12;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const pts = new THREE.Points(geo, new THREE.PointsMaterial({
+    color:0xC9A84C, size:0.022, transparent:true, opacity:.45, sizeAttenuation:true
+  }));
+  scene.add(pts);
+
+  // Wireframe geometries
+  const addWire = (geom, x, y, z, opacity) => {
+    const m = new THREE.Mesh(geom, new THREE.MeshBasicMaterial({color:0xC9A84C,wireframe:true,transparent:true,opacity}));
+    m.position.set(x,y,z); scene.add(m); return m;
+  };
+  const ico1 = addWire(new THREE.IcosahedronGeometry(1.5,1), 3.2, 0.4, -1, .055);
+  const ico2 = addWire(new THREE.IcosahedronGeometry(0.75,1), -4, -1.2, -2, .08);
+  const oct  = addWire(new THREE.OctahedronGeometry(1,0), -2.5, 1.8, -1.5, .06);
+
+  // Grid
+  const gLines = [];
+  for(let i=-10;i<=10;i+=2.5){ gLines.push(-10,i,-4, 10,i,-4); gLines.push(i,-8,-4, i,8,-4); }
+  const gGeo = new THREE.BufferGeometry();
+  gGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(gLines),3));
+  scene.add(new THREE.LineSegments(gGeo, new THREE.LineBasicMaterial({color:0xC9A84C,transparent:true,opacity:.03})));
+
+  let pmx=0,pmy=0;
+  document.addEventListener('mousemove',e=>{ pmx=(e.clientX/innerWidth-.5)*2; pmy=(e.clientY/innerHeight-.5)*2; });
+
+  let t=0;
+  (function animate(){
+    requestAnimationFrame(animate);
+    t+=.004;
+    pts.rotation.y = t*.05 + pmx*.07;
+    pts.rotation.x = t*.025 + pmy*.04;
+    ico1.rotation.x+=.003; ico1.rotation.y+=.005;
+    ico2.rotation.x-=.004; ico2.rotation.z+=.003;
+    oct.rotation.y+=.004; oct.rotation.x+=.002;
+    renderer.render(scene,camera);
+  })();
+})();
+</script>
+</body>
+</html>
