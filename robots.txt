@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goldenda.com/sitemap.xml

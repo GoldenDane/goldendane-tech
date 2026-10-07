@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process X-ray demo · GoldenDane</title>
+<meta name="description" content="What GoldenDane's Process X-ray found in 4,580 real help-desk tickets: process map, bottlenecks, handover network and five fixes.">
+<meta property="og:title" content="Process X-ray demo · GoldenDane">
+<meta property="og:description" content="Tickets took 40 days to close. The fix took 6. See where the time went.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://goldenda.com/process-xray.html">
+<meta property="og:site_name" content="GoldenDane">
+<meta property="og:image" content="https://goldenda.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://goldenda.com/process-xray.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310181A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='14' fill='%23D4AE52'%3EGD%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0}
+/* Layout: a consultant's report on paper. Headline finding → evidence exhibits → what to fix → how we work. Deliberately light-only, like a printed report. */
+:root{
+  --paper:#F7F8F6; --sheet:#FFFFFF; --ink:#10181A; --ink-2:#3B4749; --muted:#66716F; --line:#DCE1DE;
+  --gold:#B07A10; --gold-wash:#F5ECD9; --blue:#0A7FA8; --night:#10181A;
+  --display:"Fraunces", Georgia, serif; --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(32px,5vw,52px)}
+h2{font-size:clamp(24px,3vw,32px)}
+h3{font-size:19px}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lede{font-size:18px;color:var(--ink-2);max-width:68ch}
+.muted{color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line);margin-bottom:44px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:19px}
+.brand .mk{width:28px;height:28px;border-radius:7px;background:var(--ink);color:#D4AE52;display:grid;place-items:center;font-size:12px}
+.brand b{color:var(--gold);font-weight:500}
+.tag{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--sheet)}
+.hero{display:grid;gap:18px;margin-bottom:34px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:56px}
+@media (max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--sheet);padding:16px 18px;display:grid;gap:4px}
+.kpi .v{font-family:var(--mono);font-size:28px;font-weight:500}
+.kpi .v small{font-size:15px;color:var(--muted)}
+.kpi .l{font-size:13.5px;color:var(--muted);line-height:1.4}
+.kpi.hot .v{color:var(--gold)}
+section{display:grid;gap:18px;margin-bottom:64px}
+.sec-head{display:grid;gap:10px;max-width:760px}
+.exhibit{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:12px;min-width:0}
+.exhibit-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.exhibit-cap b{color:var(--ink);font-weight:600}
+.scroll{overflow-x:auto}
+.graph-svg{display:block;width:100%;height:auto;max-width:1000px;margin:0 auto;min-width:600px}
+.graph-svg.net{min-width:0;max-width:700px;margin:0 auto}
+.chart{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.ln{width:22px;height:4px;border-radius:2px;display:inline-block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:820px){.three{grid-template-columns:1fr}}
+.mini-card{display:grid;gap:6px;min-width:0}
+.mini-card h3{font-family:var(--sans);font-size:15px;font-weight:600}
+.mini-card p{font-size:14px;color:var(--ink-2)}
+.finding{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.finding .n{font-family:var(--mono);font-size:14px;color:var(--gold);border:1px solid var(--gold);border-radius:999px;width:34px;height:34px;display:grid;place-items:center}
+.finding p{color:var(--ink-2)}
+.callout{background:var(--gold-wash);border-radius:10px;padding:12px 14px;font-size:15px}
+.recs{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--sheet)}
+.rec{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.rec:last-child{border-bottom:0}
+@media (max-width:700px){.rec{grid-template-columns:1fr}}
+.rec h3{font-family:var(--sans);font-size:16.5px;font-weight:600;margin-bottom:4px}
+.rec p{font-size:15px;color:var(--ink-2)}
+.impact{font-size:14.5px;background:var(--paper);border-radius:8px;padding:10px 12px;align-self:start}
+.impact b{font-family:var(--mono);font-weight:500}
+.caveats{font-size:14.5px;color:var(--ink-2);display:grid;gap:6px;padding-left:20px;margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:6px;align-content:start}
+.step .k{font-family:var(--mono);font-size:12.5px;color:var(--gold)}
+.step p{font-size:14.5px;color:var(--ink-2)}
+.cta{background:var(--night);color:#E8ECEA;border-radius:16px;padding:32px;display:grid;gap:14px}
+.cta h2{color:#fff}
+.cta p{color:#B4C0BE;max-width:62ch}
+.cta .mail{font-family:var(--mono);font-size:17px;color:#fff;border-bottom:1px solid #D4AE52;width:max-content;max-width:100%;overflow-wrap:anywhere}
+.source{font-size:13px;color:var(--muted)}
+.whatis{border-left:3px solid var(--gold);background:var(--sheet);border-radius:0 10px 10px 0;padding:14px 18px;display:grid;gap:4px;max-width:78ch}
+.whatis b{font-size:15.5px}
+.whatis p{font-size:15px;color:var(--ink-2);margin:0}
+.source a{color:var(--muted)}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="./" style="text-decoration:none;color:inherit" aria-label="GoldenDane home"><span class="mk">GD</span><span>Golden<b>Dane</b></span></a>
+    <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="tag">Process X-ray · demo on public data</span><a class="tag" href="./" style="text-decoration:none;color:var(--ink)">← Back to goldenda.com</a></span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">Process X-ray · IT help desk</div>
+    <h1>Tickets take 40 days to close. The fix takes 6.</h1>
+    <p class="lede">We ran our Process X-ray on 4,580 real support tickets (21,348 logged steps, 2010–2014) from the IT help desk of an Italian software company. We turned the log into a process graph and a handover network between 22 staff accounts. Here's where the time goes, and what we'd fix first.</p>
+    <aside class="whatis" aria-label="What is a Process X-ray?">
+      <b>What is a Process X-ray?</b>
+      <p>A two-week analysis of the activity log your business systems already keep (ERP, ticketing, order or claims). Like an X-ray, it shows what happens inside a process without opening anything up: no new software, no access to your systems, just one data export. This page is an example on public data, so you can see exactly what you'd get.</p>
+    </aside>
+  </header>
+
+  <div class="kpis" aria-label="Key numbers">
+    <div class="kpi"><div class="v">39.9<small> days</small></div><div class="l">Median time from ticket opened to closed</div></div>
+    <div class="kpi"><div class="v">6.0<small> days</small></div><div class="l">Median time until the issue is actually fixed</div></div>
+    <div class="kpi hot"><div class="v">29.9<small> days</small></div><div class="l">Fix time for the slowest 10% of tickets</div></div>
+    <div class="kpi"><div class="v">226</div><div class="l">Different paths through what is meant to be a 4-step process</div></div>
+  </div>
+
+  <section aria-labelledby="map-h">
+    <div class="sec-head">
+      <div class="eyebrow">Exhibit 1 · The process as it really runs</div>
+      <h2 id="map-h">The process map, rebuilt from the log</h2>
+      <p class="lede">Each box is a step; each arrow is a hand-off from one step to the next. Only 52% of tickets follow the textbook path (assign → take in charge → resolve → close). Hover any arrow for its numbers.</p>
+    </div>
+    <div class="exhibit">
+      <div class="legend"><span><i class="ln" style="background:var(--blue)"></i>Normal transition</span><span><i class="ln" style="background:var(--gold)"></i>Slow transition: median wait 5 days or more</span><span class="muted">Line width = number of tickets · label = tickets · median wait</span></div>
+      <div class="scroll"><svg class="graph-svg" role="img"
+ viewBox="0.00 0.00 1464.80 660.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 646.4)">
+<title>G</title>
+
+<g id="node1" class="node">
+<title>start</title>
+<path fill="#10181a" stroke="#10181a" stroke-width="1.2" d="M232.5,-632C232.5,-632 76.5,-632 76.5,-632 70.5,-632 64.5,-626 64.5,-620 64.5,-620 64.5,-607 64.5,-607 64.5,-601 70.5,-595 76.5,-595 76.5,-595 232.5,-595 232.5,-595 238.5,-595 244.5,-601 244.5,-607 244.5,-607 244.5,-620 244.5,-620 244.5,-626 238.5,-632 232.5,-632"/>
+<text text-anchor="middle" x="154.5" y="-608.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#ffffff">Ticket opened</text>
+</g>
+
+<g id="node3" class="node">
+<title>n0</title>
+<g id="a_node3"><a xlink:title="Assign seriousness: 4,938 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M305.5,-417C305.5,-417 95.5,-417 95.5,-417 89.5,-417 83.5,-411 83.5,-405 83.5,-405 83.5,-369 83.5,-369 83.5,-363 89.5,-357 95.5,-357 95.5,-357 305.5,-357 305.5,-357 311.5,-357 317.5,-363 317.5,-369 317.5,-369 317.5,-405 317.5,-405 317.5,-411 311.5,-417 305.5,-417"/>
+<text text-anchor="middle" x="200.5" y="-393.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Assign seriousness</text>
+<text text-anchor="middle" x="200.5" y="-370.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">4,938 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#c9d1ce" stroke-width="5.81" d="M182.72,-594.82C219.74,-569.52 282.05,-519 299.5,-456 301.75,-447.86 303.95,-444.17 299.5,-437 296.38,-431.97 292.57,-427.45 288.29,-423.38"/>
+<polygon fill="#c9d1ce" stroke="#c9d1ce" stroke-width="5.81" points="291.03,-419.69 281.21,-417.34 285.09,-426.66 291.03,-419.69"/>
+<text text-anchor="middle" x="318" y="-501.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 4,384</text>
+</g>
+
+<g id="node6" class="node">
+<title>n3</title>
+<g id="a_node6"><a xlink:title="Insert ticket: 118 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M221.5,-536C221.5,-536 87.5,-536 87.5,-536 81.5,-536 75.5,-530 75.5,-524 75.5,-524 75.5,-488 75.5,-488 75.5,-482 81.5,-476 87.5,-476 87.5,-476 221.5,-476 221.5,-476 227.5,-476 233.5,-482 233.5,-488 233.5,-488 233.5,-524 233.5,-524 233.5,-530 227.5,-536 221.5,-536"/>
+<text text-anchor="middle" x="154.5" y="-512.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Insert ticket</text>
+<text text-anchor="middle" x="154.5" y="-489.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">118 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge2" class="edge">
+<title>start&#45;&gt;n3</title>
+<path fill="none" stroke="#c9d1ce" stroke-width="1.13" d="M154.5,-594.6C154.5,-581.11 154.5,-562.11 154.5,-545.26"/>
+<polygon fill="#c9d1ce" stroke="#c9d1ce" stroke-width="1.13" points="157.65,-545.16 154.5,-536.16 151.35,-545.16 157.65,-545.16"/>
+<text text-anchor="middle" x="173" y="-561.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 118</text>
+</g>
+
+<g id="node9" class="node">
+<title>n6</title>
+<g id="a_node9"><a xlink:title="Take in charge ticket: 5,060 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M514.5,-179C514.5,-179 290.5,-179 290.5,-179 284.5,-179 278.5,-173 278.5,-167 278.5,-167 278.5,-131 278.5,-131 278.5,-125 284.5,-119 290.5,-119 290.5,-119 514.5,-119 514.5,-119 520.5,-119 526.5,-125 526.5,-131 526.5,-131 526.5,-167 526.5,-167 526.5,-173 520.5,-179 514.5,-179"/>
+<text text-anchor="middle" x="402.5" y="-155.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Take in charge ticket</text>
+<text text-anchor="middle" x="402.5" y="-132.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">5,060 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge3" class="edge">
+<title>start&#45;&gt;n6</title>
+<path fill="none" stroke="#c9d1ce" stroke-width="1.08" d="M101.92,-594.91C64.38,-578.66 20.5,-550.38 20.5,-507 20.5,-507 20.5,-507 20.5,-326.5 20.5,-268.25 168.73,-214.08 280.52,-181.51"/>
+<polygon fill="#c9d1ce" stroke="#c9d1ce" stroke-width="1.08" points="281.41,-184.54 289.18,-179.01 279.66,-178.48 281.41,-184.54"/>
+<text text-anchor="middle" x="34" y="-382.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 74</text>
+</g>
+
+<g id="node2" class="node">
+<title>end</title>
+<path fill="#10181a" stroke="#10181a" stroke-width="1.2" d="M1375,-48.5C1375,-48.5 1326,-48.5 1326,-48.5 1320,-48.5 1314,-42.5 1314,-36.5 1314,-36.5 1314,-23.5 1314,-23.5 1314,-17.5 1320,-11.5 1326,-11.5 1326,-11.5 1375,-11.5 1375,-11.5 1381,-11.5 1387,-17.5 1387,-23.5 1387,-23.5 1387,-36.5 1387,-36.5 1387,-42.5 1381,-48.5 1375,-48.5"/>
+<text text-anchor="middle" x="1350.5" y="-24.7" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#ffffff">End</text>
+</g>
+
+<g id="edge10" class="edge">
+<title>n0&#45;&gt;n0</title>
+<g id="a_edge10"><a xlink:title="Assign seriousness → Assign seriousness: 439 times, median wait 1 h, 1% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.37" d="M317.57,-397.26C338.7,-395.94 353.5,-392.52 353.5,-387 353.5,-382.34 342.97,-379.18 326.98,-377.51"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="2.37" points="326.79,-374.34 317.57,-376.74 326.28,-380.62 326.79,-374.34"/>
+</a>
+</g>
+<text text-anchor="middle" x="427.5" y="-382.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 439 · median 1 h</text>
+</g>
+
+<g id="node8" class="node">
+<title>n5</title>
+<g id="a_node8"><a xlink:title="Resolve ticket: 4,983 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M684,-298C684,-298 529,-298 529,-298 523,-298 517,-292 517,-286 517,-286 517,-250 517,-250 517,-244 523,-238 529,-238 529,-238 684,-238 684,-238 690,-238 696,-244 696,-250 696,-250 696,-286 696,-286 696,-292 690,-298 684,-298"/>
+<text text-anchor="middle" x="606.5" y="-274.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Resolve ticket</text>
+<text text-anchor="middle" x="606.5" y="-251.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">4,983 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge12" class="edge">
+<title>n0&#45;&gt;n5</title>
+<g id="a_edge12"><a xlink:title="Assign seriousness → Resolve ticket: 258 times, median wait 2 h, 1% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.01" d="M301.38,-356.93C364.52,-338.73 445.48,-315.4 508.14,-297.35"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="2.01" points="509.08,-300.35 516.86,-294.83 507.34,-294.3 509.08,-300.35"/>
+</a>
+</g>
+<text text-anchor="middle" x="501.5" y="-323.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 258 · median 2 h</text>
+</g>
+
+<g id="edge5" class="edge">
+<title>n0&#45;&gt;n6</title>
+<g id="a_edge5"><a xlink:title="Assign seriousness → Take in charge ticket: 4,160 times, median wait 6 h, 8% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="9.71" d="M225.68,-356.59C262.69,-313.34 331.74,-232.67 371.72,-185.96"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="9.71" points="377.6,-190.85 377.64,-179.04 365.98,-180.91 377.6,-190.85"/>
+</a>
+</g>
+<text text-anchor="middle" x="406" y="-263.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 4,160 · median 6 h</text>
+</g>
+
+<g id="node10" class="node">
+<title>n7</title>
+<g id="a_node10"><a xlink:title="Wait: 1,463 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M159,-60C159,-60 12,-60 12,-60 6,-60 0,-54 0,-48 0,-48 0,-12 0,-12 0,-6 6,0 12,0 12,0 159,0 159,0 165,0 171,-6 171,-12 171,-12 171,-48 171,-48 171,-54 165,-60 159,-60"/>
+<text text-anchor="middle" x="85.5" y="-36.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Wait</text>
+<text text-anchor="middle" x="85.5" y="-13.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">1,463 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge18" class="edge">
+<title>n0&#45;&gt;n7</title>
+<g id="a_edge18"><a xlink:title="Assign seriousness → Wait: 69 times, median wait 4 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.64" d="M173.51,-356.94C140.55,-319.27 86.59,-249.94 65.5,-179 52.96,-136.82 57.03,-123.18 65.5,-80 66.23,-76.3 67.23,-72.52 68.41,-68.79"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.64" points="71.41,-69.76 71.43,-60.23 65.47,-67.67 71.41,-69.76"/>
+</a>
+</g>
+<text text-anchor="middle" x="149" y="-204.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 69 · median 4 h</text>
+</g>
+
+<g id="node4" class="node">
+<title>n1</title>
+<g id="a_node4"><a xlink:title="Closed: 4,574 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M1424,-179C1424,-179 1277,-179 1277,-179 1271,-179 1265,-173 1265,-167 1265,-167 1265,-131 1265,-131 1265,-125 1271,-119 1277,-119 1277,-119 1424,-119 1424,-119 1430,-119 1436,-125 1436,-131 1436,-131 1436,-167 1436,-167 1436,-173 1430,-179 1424,-179"/>
+<text text-anchor="middle" x="1350.5" y="-155.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Closed</text>
+<text text-anchor="middle" x="1350.5" y="-132.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">4,574 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge22" class="edge">
+<title>n1&#45;&gt;end</title>
+<path fill="none" stroke="#c9d1ce" stroke-width="6" d="M1350.5,-118.78C1350.5,-100.07 1350.5,-75.99 1350.5,-57.78"/>
+<polygon fill="#c9d1ce" stroke="#c9d1ce" stroke-width="6" points="1355.23,-57.6 1350.5,-48.6 1345.78,-57.6 1355.23,-57.6"/>
+</g>
+
+<g id="node5" class="node">
+<title>n2</title>
+<g id="a_node5"><a xlink:title="Create SW anomaly: 67 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M714,-60C714,-60 497,-60 497,-60 491,-60 485,-54 485,-48 485,-48 485,-12 485,-12 485,-6 491,0 497,0 497,0 714,0 714,0 720,0 726,-6 726,-12 726,-12 726,-48 726,-48 726,-54 720,-60 714,-60"/>
+<text text-anchor="middle" x="605.5" y="-36.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Create SW anomaly</text>
+<text text-anchor="middle" x="605.5" y="-13.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">67 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge13" class="edge">
+<title>n2&#45;&gt;n5</title>
+<g id="a_edge13"><a xlink:title="Create SW anomaly → Resolve ticket: 42 times, median wait 16 d, 0% of all waiting time">
+<path fill="none" stroke="#b07a10" stroke-width="1.58" d="M726.24,-48.98C797.64,-60.2 875.2,-73.67 880.5,-80 907.07,-111.72 791,-196.75 755.5,-218 739.94,-227.31 722.39,-235.1 704.94,-241.52"/>
+<polygon fill="#b07a10" stroke="#b07a10" stroke-width="1.58" points="703.81,-238.57 696.39,-244.56 705.92,-244.51 703.81,-238.57"/>
+</a>
+</g>
+<text text-anchor="middle" x="945.5" y="-144.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#b07a10"> 42 · median 16 d</text>
+</g>
+
+<g id="edge21" class="edge">
+<title>n3&#45;&gt;n0</title>
+<g id="a_edge21"><a xlink:title="Insert ticket → Assign seriousness: 111 times, median wait &lt;1 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.72" d="M135.13,-475.73C129.47,-463.41 126.28,-449.15 132.5,-437 134.96,-432.19 138.15,-427.74 141.78,-423.65"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.72" points="144.18,-425.71 148.29,-417.11 139.71,-421.27 144.18,-425.71"/>
+</a>
+</g>
+<text text-anchor="middle" x="213.5" y="-442.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 111 · median &lt;1 h</text>
+</g>
+
+<g id="node7" class="node">
+<title>n4</title>
+<g id="a_node7"><a xlink:title="Require upgrade: 119 events">
+<path fill="#ffffff" stroke="#c9d1ce" stroke-width="1.2" d="M1030.5,-60C1030.5,-60 846.5,-60 846.5,-60 840.5,-60 834.5,-54 834.5,-48 834.5,-48 834.5,-12 834.5,-12 834.5,-6 840.5,0 846.5,0 846.5,0 1030.5,0 1030.5,0 1036.5,0 1042.5,-6 1042.5,-12 1042.5,-12 1042.5,-48 1042.5,-48 1042.5,-54 1036.5,-60 1030.5,-60"/>
+<text text-anchor="middle" x="938.5" y="-36.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">Require upgrade</text>
+<text text-anchor="middle" x="938.5" y="-13.2" font-family="Helvetica,sans-Serif" font-size="21.00" fill="#10181a">119 events</text>
+</a>
+</g>
+</g>
+
+<g id="edge11" class="edge">
+<title>n4&#45;&gt;n5</title>
+<g id="a_edge11"><a xlink:title="Require upgrade → Resolve ticket: 82 times, median wait 15 d, 1% of all waiting time">
+<path fill="none" stroke="#b07a10" stroke-width="1.66" d="M977.41,-60.06C1014.2,-91.06 1059.52,-140.85 1028.5,-179 988.55,-228.14 816.98,-250.77 705.29,-260.46"/>
+<polygon fill="#b07a10" stroke="#b07a10" stroke-width="1.66" points="704.71,-257.35 696.01,-261.25 705.25,-263.63 704.71,-257.35"/>
+</a>
+</g>
+<text text-anchor="middle" x="1112.5" y="-144.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#b07a10"> 82 · median 15 d</text>
+</g>
+
+<g id="edge4" class="edge">
+<title>n5&#45;&gt;n1</title>
+<g id="a_edge4"><a xlink:title="Resolve ticket → Closed: 4,558 times, median wait 30 d, 72% of all waiting time">
+<path fill="none" stroke="#b07a10" stroke-width="10.5" d="M696.04,-263.04C796.97,-257.47 965.64,-244.83 1108.5,-218 1157.86,-208.73 1211.74,-194.06 1256.11,-180.71"/>
+<polygon fill="#b07a10" stroke="#b07a10" stroke-width="10.5" points="1258.64,-188.58 1264.85,-178.06 1253.84,-172.75 1258.64,-188.58"/>
+</a>
+</g>
+<text text-anchor="middle" x="1275.5" y="-204.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#b07a10"> 4,558 · median 30 d</text>
+</g>
+
+<g id="edge20" class="edge">
+<title>n5&#45;&gt;n5</title>
+<g id="a_edge20"><a xlink:title="Resolve ticket → Resolve ticket: 254 times, median wait &lt;1 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="2" d="M696.18,-278.64C716.83,-277.72 732,-274.17 732,-268 732,-262.79 721.2,-259.45 705.42,-257.99"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="2" points="705.37,-254.83 696.18,-257.36 704.95,-261.11 705.37,-254.83"/>
+</a>
+</g>
+<text text-anchor="middle" x="813" y="-263.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 254 · median &lt;1 h</text>
+</g>
+
+<g id="edge14" class="edge">
+<title>n5&#45;&gt;n6</title>
+<g id="a_edge14"><a xlink:title="Resolve ticket → Take in charge ticket: 154 times, median wait 1.3 d, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.8" d="M595.25,-237.71C588.71,-224.2 579.22,-208.97 566.5,-199 556.9,-191.48 546.17,-185.11 534.9,-179.71"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.8" points="536.12,-176.81 526.62,-175.96 533.51,-182.54 536.12,-176.81"/>
+</a>
+</g>
+<text text-anchor="middle" x="665" y="-204.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 154 · median 1.3 d</text>
+</g>
+
+<g id="edge19" class="edge">
+<title>n6&#45;&gt;n2</title>
+<g id="a_edge19"><a xlink:title="Take in charge ticket → Create SW anomaly: 53 times, median wait &lt;1 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.6" d="M458.26,-119C470.28,-112.55 482.88,-105.65 494.5,-99 513.21,-88.3 533.39,-76.13 551.35,-65.07"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.6" points="553.43,-67.49 559.43,-60.08 550.11,-62.13 553.43,-67.49"/>
+</a>
+</g>
+<text text-anchor="middle" x="600" y="-85.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 53 · median &lt;1 h</text>
+</g>
+
+<g id="edge17" class="edge">
+<title>n6&#45;&gt;n4</title>
+<g id="a_edge17"><a xlink:title="Take in charge ticket → Require upgrade: 72 times, median wait 3.1 d, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.64" d="M526.51,-128.92C575.87,-120.68 633.06,-110.33 684.5,-99 732.36,-88.46 784.74,-74.8 829.43,-62.5"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.64" points="830.43,-65.49 838.27,-60.05 828.75,-59.42 830.43,-65.49"/>
+</a>
+</g>
+<text text-anchor="middle" x="838" y="-85.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 72 · median 3.1 d</text>
+</g>
+
+<g id="edge6" class="edge">
+<title>n6&#45;&gt;n5</title>
+<g id="a_edge6"><a xlink:title="Take in charge ticket → Resolve ticket: 3,563 times, median wait 3 h, 7% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="8.54" d="M392.58,-179.12C390.01,-192.27 389.98,-207.25 398.5,-218 412.67,-235.9 461.29,-247.91 507.96,-255.56"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="8.54" points="507,-262.22 516.95,-256.99 509.11,-248.94 507,-262.22"/>
+</a>
+</g>
+<text text-anchor="middle" x="480" y="-204.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 3,563 · median 3 h</text>
+</g>
+
+<g id="edge16" class="edge">
+<title>n6&#45;&gt;n6</title>
+<g id="a_edge16"><a xlink:title="Take in charge ticket → Take in charge ticket: 99 times, median wait 18 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.7" d="M526.61,-159.15C547.81,-157.76 562.5,-154.38 562.5,-149 562.5,-144.42 551.85,-141.28 535.59,-139.6"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.7" points="535.84,-136.46 526.61,-138.85 535.32,-142.74 535.84,-136.46"/>
+</a>
+</g>
+<text text-anchor="middle" x="636.5" y="-144.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 99 · median 18 h</text>
+</g>
+
+<g id="edge9" class="edge">
+<title>n6&#45;&gt;n7</title>
+<g id="a_edge9"><a xlink:title="Take in charge ticket → Wait: 1,265 times, median wait 21 h, 2% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="4" d="M347.44,-118.83C335.54,-112.39 323.06,-105.54 311.5,-99 297.1,-90.86 294.79,-86.31 279.5,-80 248.1,-67.03 212.37,-56.82 180.21,-49.15"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="4" points="180.72,-46.04 171.24,-47.06 179.29,-52.17 180.72,-46.04"/>
+</a>
+</g>
+<text text-anchor="middle" x="398.5" y="-85.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 1,265 · median 21 h</text>
+</g>
+
+<g id="edge7" class="edge">
+<title>n7&#45;&gt;n5</title>
+<g id="a_edge7"><a xlink:title="Wait → Resolve ticket: 773 times, median wait 9.0 d, 5% of all waiting time">
+<path fill="none" stroke="#b07a10" stroke-width="3.03" d="M78.17,-60.1C71.67,-93.52 67.32,-147.76 97.5,-179 128.63,-211.24 452.6,-229 496.5,-238 500.25,-238.77 504.07,-239.59 507.92,-240.45"/>
+<polygon fill="#b07a10" stroke="#b07a10" stroke-width="3.03" points="507.47,-243.58 516.95,-242.51 508.87,-237.43 507.47,-243.58"/>
+</a>
+</g>
+<text text-anchor="middle" x="179" y="-144.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#b07a10"> 773 · median 9.0 d</text>
+</g>
+
+<g id="edge8" class="edge">
+<title>n7&#45;&gt;n6</title>
+<g id="a_edge8"><a xlink:title="Wait → Take in charge ticket: 558 times, median wait 5.0 d, 2% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.6" d="M89.68,-60.17C93.19,-74 99.65,-89.54 111.5,-99 136.06,-118.61 220.5,-113.81 251.5,-119 257.2,-119.95 263.02,-120.95 268.89,-121.99"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="2.6" points="268.75,-125.16 278.16,-123.63 269.85,-118.96 268.75,-125.16"/>
+</a>
+</g>
+<text text-anchor="middle" x="193" y="-85.4" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 558 · median 5.0 d</text>
+</g>
+
+<g id="edge15" class="edge">
+<title>n7&#45;&gt;n7</title>
+<g id="a_edge15"><a xlink:title="Wait → Wait: 113 times, median wait 24 h, 0% of all waiting time">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.72" d="M171.22,-40.68C191.77,-39.85 207,-36.29 207,-30 207,-24.7 196.16,-21.33 180.43,-19.91"/>
+<polygon fill="#0a7fa8" stroke="#0a7fa8" stroke-width="1.72" points="180.4,-16.75 171.22,-19.32 180,-23.04 180.4,-16.75"/>
+</a>
+</g>
+<text text-anchor="middle" x="286" y="-25.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#66716f"> 113 · median 24 h</text>
+</g>
+</g>
+</svg>
+</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="time-h">
+    <div class="sec-head">
+      <div class="eyebrow">Exhibit 2 · Where the time goes</div>
+      <h2 id="time-h">72% of all ticket time is a waiting window after the fix</h2>
+      <p class="lede">After a ticket is resolved, it stays open for a fixed confirmation window before it closes. That window was about 30 days until 2012; the data shows it dropped to 15 days in 2013. It isn't work, but it makes "time to close" look more than six times longer than "time to fix" in every report.</p>
+    </div>
+    <div class="exhibit">
+      <div class="exhibit-cap"><b>Share of all elapsed ticket time, by what the ticket was waiting for</b><span>4,580 tickets</span></div>
+      <svg viewBox="0 0 1000 210" class="chart" role="img" aria-label="Share of total elapsed ticket time by reason" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif"><g><title>Closing window after the fix: 72% of all elapsed ticket time</title><text x="0" y="25" font-size="13.5" fill="#10181A">Closing window after the fix</text><rect x="280" y="12" width="650.0" height="20" rx="4" fill="#B07A10"/><text x="938.0" y="27" font-size="13" fill="#10181A" font-weight="600">72%</text></g><g><title>Hands-on handling: 11% of all elapsed ticket time</title><text x="0" y="65" font-size="13.5" fill="#10181A">Hands-on handling</text><rect x="280" y="52" width="95.5" height="20" rx="4" fill="#0A7FA8"/><text x="383.5" y="67" font-size="13" fill="#10181A" font-weight="600">11%</text></g><g><title>Queue before someone picks it up: 9% of all elapsed ticket time</title><text x="0" y="105" font-size="13.5" fill="#10181A">Queue before someone picks it up</text><rect x="280" y="92" width="82.8" height="20" rx="4" fill="#0A7FA8"/><text x="370.8" y="107" font-size="13" fill="#10181A" font-weight="600">9%</text></g><g><title>Parked in 'Wait' status: 8% of all elapsed ticket time</title><text x="0" y="145" font-size="13.5" fill="#10181A">Parked in 'Wait' status</text><rect x="280" y="132" width="68.1" height="20" rx="4" fill="#0A7FA8"/><text x="356.1" y="147" font-size="13" fill="#10181A" font-weight="600">8%</text></g><g><title>Escalated to development: 1% of all elapsed ticket time</title><text x="0" y="185" font-size="13.5" fill="#10181A">Escalated to development</text><rect x="280" y="172" width="12.0" height="20" rx="4" fill="#0A7FA8"/><text x="300.0" y="187" font-size="13" fill="#10181A" font-weight="600">1%</text></g></svg>
+    </div>
+  </section>
+
+  <section aria-labelledby="tail-h">
+    <div class="sec-head">
+      <div class="eyebrow">Exhibit 3 · The real problem is the long tail</div>
+      <h2 id="tail-h">36% of tickets take more than two weeks to fix, and they hold 82% of all fix-days</h2>
+      <p class="lede">Most tickets are fast: 29% are fixed within a day. The average fix time (11.1 days) is dragged up by a minority that gets stuck. Those are the ones customers remember.</p>
+    </div>
+    <div class="exhibit">
+      <div class="exhibit-cap"><b>Days from ticket opened to first fix</b><span class="legend"><span><i class="sw" style="background:var(--blue)"></i>Under 14 days</span><span><i class="sw" style="background:var(--gold)"></i>14 days or more</span></span></div>
+      <svg viewBox="0 0 1000 300" class="chart" role="img" aria-label="Distribution of days to fix" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif"><line x1="50" x2="960" y1="266.0" y2="266.0" stroke="#E1E6E4"/><text x="42" y="270.0" font-size="11" fill="#66716F" text-anchor="end">0</text><line x1="50" x2="960" y1="238.0" y2="238.0" stroke="#E1E6E4"/><text x="42" y="242.0" font-size="11" fill="#66716F" text-anchor="end">200</text><line x1="50" x2="960" y1="210.0" y2="210.0" stroke="#E1E6E4"/><text x="42" y="214.0" font-size="11" fill="#66716F" text-anchor="end">400</text><line x1="50" x2="960" y1="182.0" y2="182.0" stroke="#E1E6E4"/><text x="42" y="186.0" font-size="11" fill="#66716F" text-anchor="end">600</text><line x1="50" x2="960" y1="154.0" y2="154.0" stroke="#E1E6E4"/><text x="42" y="158.0" font-size="11" fill="#66716F" text-anchor="end">800</text><line x1="50" x2="960" y1="126.0" y2="126.0" stroke="#E1E6E4"/><text x="42" y="130.0" font-size="11" fill="#66716F" text-anchor="end">1,000</text><line x1="50" x2="960" y1="98.0" y2="98.0" stroke="#E1E6E4"/><text x="42" y="102.0" font-size="11" fill="#66716F" text-anchor="end">1,200</text><line x1="50" x2="960" y1="70.0" y2="70.0" stroke="#E1E6E4"/><text x="42" y="74.0" font-size="11" fill="#66716F" text-anchor="end">1,400</text><line x1="50" x2="960" y1="42.0" y2="42.0" stroke="#E1E6E4"/><text x="42" y="46.0" font-size="11" fill="#66716F" text-anchor="end">1,600</text><line x1="50" x2="960" y1="14.0" y2="14.0" stroke="#E1E6E4"/><text x="42" y="18.0" font-size="11" fill="#66716F" text-anchor="end">1,800</text><g><title>0–2 days: 1,651 tickets</title><rect x="51.0" y="34.9" width="28.3" height="231.1" rx="2" fill="#0A7FA8"/></g><g><title>2–4 days: 347 tickets</title><rect x="81.3" y="217.4" width="28.3" height="48.6" rx="2" fill="#0A7FA8"/></g><g><title>4–6 days: 292 tickets</title><rect x="111.7" y="225.1" width="28.3" height="40.9" rx="2" fill="#0A7FA8"/></g><g><title>6–8 days: 253 tickets</title><rect x="142.0" y="230.6" width="28.3" height="35.4" rx="2" fill="#0A7FA8"/></g><g><title>8–10 days: 121 tickets</title><rect x="172.3" y="249.1" width="28.3" height="16.9" rx="2" fill="#0A7FA8"/></g><g><title>10–12 days: 100 tickets</title><rect x="202.7" y="252.0" width="28.3" height="14.0" rx="2" fill="#0A7FA8"/></g><g><title>12–14 days: 139 tickets</title><rect x="233.0" y="246.5" width="28.3" height="19.5" rx="2" fill="#0A7FA8"/></g><g><title>14–16 days: 190 tickets</title><rect x="263.3" y="239.4" width="28.3" height="26.6" rx="2" fill="#B07A10"/></g><g><title>16–18 days: 257 tickets</title><rect x="293.7" y="230.0" width="28.3" height="36.0" rx="2" fill="#B07A10"/></g><g><title>18–20 days: 172 tickets</title><rect x="324.0" y="241.9" width="28.3" height="24.1" rx="2" fill="#B07A10"/></g><g><title>20–22 days: 172 tickets</title><rect x="354.3" y="241.9" width="28.3" height="24.1" rx="2" fill="#B07A10"/></g><g><title>22–24 days: 113 tickets</title><rect x="384.7" y="250.2" width="28.3" height="15.8" rx="2" fill="#B07A10"/></g><g><title>24–26 days: 111 tickets</title><rect x="415.0" y="250.5" width="28.3" height="15.5" rx="2" fill="#B07A10"/></g><g><title>26–28 days: 106 tickets</title><rect x="445.3" y="251.2" width="28.3" height="14.8" rx="2" fill="#B07A10"/></g><g><title>28–30 days: 101 tickets</title><rect x="475.7" y="251.9" width="28.3" height="14.1" rx="2" fill="#B07A10"/></g><g><title>30–32 days: 60 tickets</title><rect x="506.0" y="257.6" width="28.3" height="8.4" rx="2" fill="#B07A10"/></g><g><title>32–34 days: 74 tickets</title><rect x="536.3" y="255.6" width="28.3" height="10.4" rx="2" fill="#B07A10"/></g><g><title>34–36 days: 75 tickets</title><rect x="566.7" y="255.5" width="28.3" height="10.5" rx="2" fill="#B07A10"/></g><g><title>36–38 days: 53 tickets</title><rect x="597.0" y="258.6" width="28.3" height="7.4" rx="2" fill="#B07A10"/></g><g><title>38–40 days: 49 tickets</title><rect x="627.3" y="259.1" width="28.3" height="6.9" rx="2" fill="#B07A10"/></g><g><title>40–42 days: 61 tickets</title><rect x="657.7" y="257.5" width="28.3" height="8.5" rx="2" fill="#B07A10"/></g><g><title>42–44 days: 43 tickets</title><rect x="688.0" y="260.0" width="28.3" height="6.0" rx="2" fill="#B07A10"/></g><g><title>44–46 days: 23 tickets</title><rect x="718.3" y="262.8" width="28.3" height="3.2" rx="2" fill="#B07A10"/></g><g><title>46–48 days: 1 tickets</title><rect x="748.7" y="265.9" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>48–50 days: 0 tickets</title><rect x="779.0" y="266.0" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>50–52 days: 0 tickets</title><rect x="809.3" y="266.0" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>52–54 days: 1 tickets</title><rect x="839.7" y="265.9" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>54–56 days: 1 tickets</title><rect x="870.0" y="265.9" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>56–58 days: 0 tickets</title><rect x="900.3" y="266.0" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><g><title>58–60 days: 3 tickets</title><rect x="930.7" y="265.6" width="28.3" height="0.5" rx="2" fill="#B07A10"/></g><text x="50.0" y="288" font-size="11" fill="#66716F" text-anchor="middle">0</text><text x="201.7" y="288" font-size="11" fill="#66716F" text-anchor="middle">10</text><text x="353.3" y="288" font-size="11" fill="#66716F" text-anchor="middle">20</text><text x="505.0" y="288" font-size="11" fill="#66716F" text-anchor="middle">30</text><text x="656.7" y="288" font-size="11" fill="#66716F" text-anchor="middle">40</text><text x="808.3" y="288" font-size="11" fill="#66716F" text-anchor="middle">50</text><text x="960.0" y="288" font-size="11" fill="#66716F" text-anchor="middle">60 days</text><line x1="140.7" x2="140.7" y1="14" y2="266" stroke="#10181A" stroke-dasharray="4 3"/><text x="146.7" y="26" font-size="12" fill="#10181A">median 6 days</text></svg>
+    </div>
+  </section>
+
+  <section aria-labelledby="why-h">
+    <div class="sec-head">
+      <div class="eyebrow">Exhibit 4 · What makes a ticket slow</div>
+      <h2 id="why-h">Three patterns separate fast tickets from stuck ones</h2>
+      <p class="lede">Median days to fix, comparing tickets with and without each pattern. These are associations in the data, not proof of cause, but they show where to look first.</p>
+    </div>
+    <div class="exhibit">
+      <div class="three">
+        <div class="mini-card"><h3>Waiting to be picked up</h3><svg viewBox="0 0 240 220" class="chart mini" role="img" aria-label="Pickup delay" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif"><line x1="30" x2="234" y1="176.0" y2="176.0" stroke="#E1E6E4"/><text x="24" y="180.0" font-size="10.5" fill="#66716F" text-anchor="end">0</text><line x1="30" x2="234" y1="143.2" y2="143.2" stroke="#E1E6E4"/><text x="24" y="147.2" font-size="10.5" fill="#66716F" text-anchor="end">5</text><line x1="30" x2="234" y1="110.4" y2="110.4" stroke="#E1E6E4"/><text x="24" y="114.4" font-size="10.5" fill="#66716F" text-anchor="end">10</text><line x1="30" x2="234" y1="77.6" y2="77.6" stroke="#E1E6E4"/><text x="24" y="81.6" font-size="10.5" fill="#66716F" text-anchor="end">15</text><line x1="30" x2="234" y1="44.8" y2="44.8" stroke="#E1E6E4"/><text x="24" y="48.8" font-size="10.5" fill="#66716F" text-anchor="end">20</text><line x1="30" x2="234" y1="12.0" y2="12.0" stroke="#E1E6E4"/><text x="24" y="16.0" font-size="10.5" fill="#66716F" text-anchor="end">25</text><g><title>≤ 1 day (2,478 tickets): median 1.2 days to fix</title><rect x="58.0" y="168.4" width="46.0" height="7.6" rx="4" fill="#0A7FA8"/><text x="81.0" y="162.4" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">1.2</text><text x="81.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">≤ 1 day</text><text x="81.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">2,478 tickets</text></g><g><title>> 3 days (1,221 tickets): median 18.0 days to fix</title><rect x="160.0" y="58.1" width="46.0" height="117.9" rx="4" fill="#B07A10"/><text x="183.0" y="52.1" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">18.0</text><text x="183.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">> 3 days</text><text x="183.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">1,221 tickets</text></g></svg><p>Median pickup is 6 hours, but 29% of tickets wait over 3 days, and those hold 92% of all queue time.</p></div>
+        <div class="mini-card"><h3>Parked in "Wait" status</h3><svg viewBox="0 0 240 220" class="chart mini" role="img" aria-label="Wait status" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif"><line x1="30" x2="234" y1="176.0" y2="176.0" stroke="#E1E6E4"/><text x="24" y="180.0" font-size="10.5" fill="#66716F" text-anchor="end">0</text><line x1="30" x2="234" y1="143.2" y2="143.2" stroke="#E1E6E4"/><text x="24" y="147.2" font-size="10.5" fill="#66716F" text-anchor="end">5</text><line x1="30" x2="234" y1="110.4" y2="110.4" stroke="#E1E6E4"/><text x="24" y="114.4" font-size="10.5" fill="#66716F" text-anchor="end">10</text><line x1="30" x2="234" y1="77.6" y2="77.6" stroke="#E1E6E4"/><text x="24" y="81.6" font-size="10.5" fill="#66716F" text-anchor="end">15</text><line x1="30" x2="234" y1="44.8" y2="44.8" stroke="#E1E6E4"/><text x="24" y="48.8" font-size="10.5" fill="#66716F" text-anchor="end">20</text><line x1="30" x2="234" y1="12.0" y2="12.0" stroke="#E1E6E4"/><text x="24" y="16.0" font-size="10.5" fill="#66716F" text-anchor="end">25</text><g><title>Never parked (3,342 tickets): median 2.8 days to fix</title><rect x="58.0" y="157.8" width="46.0" height="18.2" rx="4" fill="#0A7FA8"/><text x="81.0" y="151.8" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">2.8</text><text x="81.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">Never parked</text><text x="81.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">3,342 tickets</text></g><g><title>Parked (1,227 tickets): median 18.9 days to fix</title><rect x="160.0" y="52.2" width="46.0" height="123.8" rx="4" fill="#B07A10"/><text x="183.0" y="46.2" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">18.9</text><text x="183.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">Parked</text><text x="183.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">1,227 tickets</text></g></svg><p>27% of tickets get parked. They take 18.9 days to fix against 2.8 for the rest.</p></div>
+        <div class="mini-card"><h3>Passed between people</h3><svg viewBox="0 0 240 220" class="chart mini" role="img" aria-label="Handovers" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif"><line x1="30" x2="234" y1="176.0" y2="176.0" stroke="#E1E6E4"/><text x="24" y="180.0" font-size="10.5" fill="#66716F" text-anchor="end">0</text><line x1="30" x2="234" y1="143.2" y2="143.2" stroke="#E1E6E4"/><text x="24" y="147.2" font-size="10.5" fill="#66716F" text-anchor="end">5</text><line x1="30" x2="234" y1="110.4" y2="110.4" stroke="#E1E6E4"/><text x="24" y="114.4" font-size="10.5" fill="#66716F" text-anchor="end">10</text><line x1="30" x2="234" y1="77.6" y2="77.6" stroke="#E1E6E4"/><text x="24" y="81.6" font-size="10.5" fill="#66716F" text-anchor="end">15</text><line x1="30" x2="234" y1="44.8" y2="44.8" stroke="#E1E6E4"/><text x="24" y="48.8" font-size="10.5" fill="#66716F" text-anchor="end">20</text><line x1="30" x2="234" y1="12.0" y2="12.0" stroke="#E1E6E4"/><text x="24" y="16.0" font-size="10.5" fill="#66716F" text-anchor="end">25</text><g><title>0 handovers (1,570 tickets): median 1.0 days to fix</title><rect x="45.3" y="169.4" width="37.4" height="6.6" rx="4" fill="#0A7FA8"/><text x="64.0" y="163.4" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">1.0</text><text x="64.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">0 handovers</text><text x="64.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">1,570 tickets</text></g><g><title>1 handover (2,219 tickets): median 6.3 days to fix</title><rect x="113.3" y="134.7" width="37.4" height="41.3" rx="4" fill="#B07A10"/><text x="132.0" y="128.7" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">6.3</text><text x="132.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">1 handover</text><text x="132.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">2,219 tickets</text></g><g><title>2+ handovers (780 tickets): median 18.4 days to fix</title><rect x="181.3" y="55.3" width="37.4" height="120.7" rx="4" fill="#B07A10"/><text x="200.0" y="49.3" font-size="12.5" font-weight="600" fill="#10181A" text-anchor="middle">18.4</text><text x="200.0" y="194" font-size="11.5" fill="#10181A" text-anchor="middle">2+ handovers</text><text x="200.0" y="209" font-size="10.5" fill="#66716F" text-anchor="middle">780 tickets</text></g></svg><p>Every handover before the fix multiplies the time. Tickets solved by the first person take 1 day.</p></div>
+      </div>
+      <p class="source">Also: the 3% of tickets escalated to development (upgrade or software bug) take 26.2 days, against 5.7 for the rest.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="net-h">
+    <div class="sec-head">
+      <div class="eyebrow">Exhibit 5 · The handover network</div>
+      <h2 id="net-h">One person sits in the middle of everything</h2>
+      <p class="lede">This is the social graph of the help desk: who passes tickets to whom. Agent 2 handles 20% of all steps, is involved in 49% of the handovers between agents, and sits on 2.3× more of the shortest paths in the network than anyone else (betweenness centrality). That is a bottleneck in busy weeks and a risk when Agent 2 is away.</p>
+    </div>
+    <div class="exhibit">
+      <div class="legend"><span><i class="sw" style="background:var(--gold);border-radius:50%"></i>Most central person</span><span><i class="sw" style="background:var(--blue);border-radius:50%"></i>Agent (size = steps handled)</span><span><i class="sw" style="background:var(--ink);border-radius:50%"></i>Closing desk (automatic closing accounts)</span><span class="muted">Arrow width = number of handovers</span></div>
+      <svg class="graph-svg net" role="img"
+ viewBox="0.00 0.00 1221.67 1226.07" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 1211.67)">
+<title>H</title>
+
+<g id="node1" class="node">
+<title>Closing desk</title>
+<g id="a_node1"><a xlink:title="Closing desk: 4,609 steps handled, betweenness 0.10">
+<ellipse fill="#10181a" stroke="#ffffff" stroke-width="2" cx="630.52" cy="-647.02" rx="66.5" ry="66.5"/>
+<text text-anchor="middle" x="630.52" y="-642.92" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Closing desk</text>
+</a>
+</g>
+</g>
+
+<g id="node2" class="node">
+<title>Value 2</title>
+<g id="a_node2"><a xlink:title="Agent 2: 4,235 steps handled, betweenness 0.14">
+<ellipse fill="#b07a10" stroke="#ffffff" stroke-width="2" cx="351.21" cy="-677.71" rx="65" ry="65"/>
+<text text-anchor="middle" x="351.21" y="-673.61" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 2</text>
+</a>
+</g>
+</g>
+
+<g id="edge13" class="edge">
+<title>Value 2&#45;&gt;Closing desk</title>
+<g id="a_edge13"><a xlink:title="Agent 2 → Closing desk: 1,232 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="8" stroke-opacity="0.400000" d="M415.99,-670.59C458.82,-665.89 514.98,-659.72 559.1,-654.87"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="8" stroke-opacity="0.400000" points="559.56,-658.34 564.15,-654.31 558.8,-651.38 559.56,-658.34"/>
+</a>
+</g>
+</g>
+
+<g id="node3" class="node">
+<title>Value 1</title>
+<g id="a_node3"><a xlink:title="Agent 1: 3,028 steps handled, betweenness 0.04">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="529.69" cy="-484" rx="60.5" ry="60.5"/>
+<text text-anchor="middle" x="529.69" y="-479.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 1</text>
+</a>
+</g>
+</g>
+
+<g id="edge14" class="edge">
+<title>Value 2&#45;&gt;Value 1</title>
+<g id="a_edge14"><a xlink:title="Agent 2 → Agent 1: 86 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.49" stroke-opacity="0.400000" d="M399.68,-633.84C427.86,-604.89 462.91,-566.85 489.54,-536.33"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.49" stroke-opacity="0.400000" points="491.11,-537.19 493.07,-532.27 488.47,-534.89 491.11,-537.19"/>
+</a>
+</g>
+</g>
+
+<g id="node4" class="node">
+<title>Value 9</title>
+<g id="a_node4"><a xlink:title="Agent 9: 2,073 steps handled, betweenness 0.06">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="292.6" cy="-965.72" rx="56" ry="56"/>
+<text text-anchor="middle" x="292.6" y="-961.62" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 9</text>
+</a>
+</g>
+</g>
+
+<g id="edge19" class="edge">
+<title>Value 2&#45;&gt;Value 9</title>
+<g id="a_edge19"><a xlink:title="Agent 2 → Agent 9: 127 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.72" stroke-opacity="0.400000" d="M332.68,-740.14C321.3,-788.92 307.61,-856.34 299.29,-904.75"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.72" stroke-opacity="0.400000" points="297.52,-904.74 298.4,-909.97 300.97,-905.33 297.52,-904.74"/>
+</a>
+</g>
+</g>
+
+<g id="node7" class="node">
+<title>Value 4</title>
+<g id="a_node7"><a xlink:title="Agent 4: 1,101 steps handled, betweenness 0.01">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="122.42" cy="-432.34" rx="50" ry="50"/>
+<text text-anchor="middle" x="122.42" y="-428.24" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 4</text>
+</a>
+</g>
+</g>
+
+<g id="edge17" class="edge">
+<title>Value 2&#45;&gt;Value 4</title>
+<g id="a_edge17"><a xlink:title="Agent 2 → Agent 4: 80 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.45" stroke-opacity="0.400000" d="M310.82,-626.38C269.51,-579.43 205.72,-511.16 163.98,-469.34"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.45" stroke-opacity="0.400000" points="165.03,-467.92 160.26,-465.62 162.56,-470.39 165.03,-467.92"/>
+</a>
+</g>
+</g>
+
+<g id="node9" class="node">
+<title>Value 14</title>
+<g id="a_node9"><a xlink:title="Agent 14: 664 steps handled, betweenness 0.03">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="274.43" cy="-222.78" rx="46.5" ry="46.5"/>
+<text text-anchor="middle" x="274.43" y="-218.68" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 14</text>
+</a>
+</g>
+</g>
+
+<g id="edge16" class="edge">
+<title>Value 2&#45;&gt;Value 14</title>
+<g id="a_edge16"><a xlink:title="Agent 2 → Agent 14: 62 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.35" stroke-opacity="0.400000" d="M345.18,-612.69C332.4,-521.18 304.44,-356.33 287.5,-273.38"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.35" stroke-opacity="0.400000" points="289.12,-272.58 286.4,-268.03 285.69,-273.28 289.12,-272.58"/>
+</a>
+</g>
+</g>
+
+<g id="node10" class="node">
+<title>Value 12</title>
+<g id="a_node10"><a xlink:title="Agent 12: 447 steps handled, betweenness 0.05">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="760.91" cy="-276.64" rx="44.5" ry="44.5"/>
+<text text-anchor="middle" x="760.91" y="-272.54" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 12</text>
+</a>
+</g>
+</g>
+
+<g id="edge15" class="edge">
+<title>Value 2&#45;&gt;Value 12</title>
+<g id="a_edge15"><a xlink:title="Agent 2 → Agent 12: 50 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.28" stroke-opacity="0.400000" d="M408.42,-646.51C455.7,-619.08 522.99,-576.15 573.29,-528.22 641.01,-463.69 702.28,-372.57 735.3,-319.54"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.28" stroke-opacity="0.400000" points="736.86,-320.33 738.01,-315.16 733.89,-318.49 736.86,-320.33"/>
+</a>
+</g>
+</g>
+
+<g id="node12" class="node">
+<title>Value 7</title>
+<g id="a_node12"><a xlink:title="Agent 7: 278 steps handled, betweenness 0.02">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="42" cy="-807.35" rx="42" ry="42"/>
+<text text-anchor="middle" x="42" y="-803.25" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 7</text>
+</a>
+</g>
+</g>
+
+<g id="edge18" class="edge">
+<title>Value 2&#45;&gt;Value 7</title>
+<g id="a_edge18"><a xlink:title="Agent 2 → Agent 7: 51 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.29" stroke-opacity="0.400000" d="M291.22,-702.86C230.87,-728.16 139.27,-766.57 85.55,-789.09"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.29" stroke-opacity="0.400000" points="84.73,-787.54 80.79,-791.09 86.08,-790.77 84.73,-787.54"/>
+</a>
+</g>
+</g>
+
+<g id="edge1" class="edge">
+<title>Value 1&#45;&gt;Closing desk</title>
+<g id="a_edge1"><a xlink:title="Agent 1 → Closing desk: 592 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="4.36" stroke-opacity="0.400000" d="M561.59,-535.58C571.45,-551.53 582.41,-569.24 592.64,-585.78"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="4.36" stroke-opacity="0.400000" points="591.25,-587.16 595.5,-590.4 594.49,-585.15 591.25,-587.16"/>
+</a>
+</g>
+</g>
+
+<g id="edge3" class="edge">
+<title>Value 1&#45;&gt;Value 2</title>
+<g id="a_edge3"><a xlink:title="Agent 1 → Agent 2: 377 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="3.14" stroke-opacity="0.400000" d="M484.49,-524.53C456.71,-552.91 421.37,-591.14 394.03,-622.32"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="3.14" stroke-opacity="0.400000" points="392.71,-621.18 390.74,-626.09 395.35,-623.48 392.71,-621.18"/>
+</a>
+</g>
+</g>
+
+<g id="edge6" class="edge">
+<title>Value 1&#45;&gt;Value 9</title>
+<g id="a_edge6"><a xlink:title="Agent 1 → Agent 9: 208 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.18" stroke-opacity="0.400000" d="M502.95,-538.33C457.46,-630.76 365.48,-817.63 319.72,-910.6"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="2.18" stroke-opacity="0.400000" points="318.08,-909.97 317.45,-915.23 321.22,-911.52 318.08,-909.97"/>
+</a>
+</g>
+</g>
+
+<g id="node5" class="node">
+<title>Value 13</title>
+<g id="a_node5"><a xlink:title="Agent 13: 1,420 steps handled, betweenness 0.01">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="709.34" cy="-945.74" rx="52" ry="52"/>
+<text text-anchor="middle" x="709.34" y="-941.64" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 13</text>
+</a>
+</g>
+</g>
+
+<g id="edge2" class="edge">
+<title>Value 1&#45;&gt;Value 13</title>
+<g id="a_edge2"><a xlink:title="Agent 1 → Agent 13: 205 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.16" stroke-opacity="0.400000" d="M538.91,-543.81C544.4,-574.87 552.29,-613.23 562.42,-646.75 590.56,-739.83 645.1,-839.6 679.23,-897.14"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="2.16" stroke-opacity="0.400000" points="677.8,-898.15 681.86,-901.55 680.81,-896.36 677.8,-898.15"/>
+</a>
+</g>
+</g>
+
+<g id="edge4" class="edge">
+<title>Value 1&#45;&gt;Value 4</title>
+<g id="a_edge4"><a xlink:title="Agent 1 → Agent 4: 136 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.77" stroke-opacity="0.400000" d="M469.59,-476.38C390.83,-466.39 253.78,-449 177.56,-439.34"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.77" stroke-opacity="0.400000" points="177.36,-437.55 172.18,-438.65 176.92,-441.02 177.36,-437.55"/>
+</a>
+</g>
+</g>
+
+<g id="node8" class="node">
+<title>Value 6</title>
+<g id="a_node8"><a xlink:title="Agent 6: 682 steps handled, betweenness 0.03">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="1016.8" cy="-387.35" rx="47" ry="47"/>
+<text text-anchor="middle" x="1016.8" y="-383.25" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 6</text>
+</a>
+</g>
+</g>
+
+<g id="edge5" class="edge">
+<title>Value 1&#45;&gt;Value 6</title>
+<g id="a_edge5"><a xlink:title="Agent 1 → Agent 6: 116 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.66" stroke-opacity="0.400000" d="M589.42,-472.15C685.91,-453 874.43,-415.6 965.34,-397.56"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.66" stroke-opacity="0.400000" points="965.83,-399.25 970.39,-396.56 965.15,-395.81 965.83,-399.25"/>
+</a>
+</g>
+</g>
+
+<g id="edge24" class="edge">
+<title>Value 9&#45;&gt;Closing desk</title>
+<g id="a_edge24"><a xlink:title="Agent 9 → Closing desk: 656 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="4.73" stroke-opacity="0.400000" d="M333.36,-927.28C394.63,-869.49 510.47,-760.24 578,-696.55"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="4.73" stroke-opacity="0.400000" points="579.76,-697.74 581.97,-692.8 576.92,-694.73 579.76,-697.74"/>
+</a>
+</g>
+</g>
+
+<g id="edge25" class="edge">
+<title>Value 9&#45;&gt;Value 2</title>
+<g id="a_edge25"><a xlink:title="Agent 9 → Agent 2: 127 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.72" stroke-opacity="0.400000" d="M309.08,-911.96C320.16,-865.57 334,-798.26 342.94,-747.69"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.72" stroke-opacity="0.400000" points="344.71,-747.76 343.85,-742.54 341.26,-747.16 344.71,-747.76"/>
+</a>
+</g>
+</g>
+
+<g id="edge8" class="edge">
+<title>Value 13&#45;&gt;Closing desk</title>
+<g id="a_edge8"><a xlink:title="Agent 13 → Closing desk: 485 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="3.76" stroke-opacity="0.400000" d="M696.06,-895.41C683.09,-846.26 663.25,-771.08 648.8,-716.3"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="3.76" stroke-opacity="0.400000" points="650.47,-715.78 647.51,-711.39 647.09,-716.67 650.47,-715.78"/>
+</a>
+</g>
+</g>
+
+<g id="edge9" class="edge">
+<title>Value 13&#45;&gt;Value 2</title>
+<g id="a_edge9"><a xlink:title="Agent 13 → Agent 2: 113 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.64" stroke-opacity="0.400000" d="M667.56,-914.47C603.24,-866.34 479.88,-774.02 407.68,-719.98"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.64" stroke-opacity="0.400000" points="408.47,-718.39 403.42,-716.79 406.38,-721.19 408.47,-718.39"/>
+</a>
+</g>
+</g>
+
+<g id="node6" class="node">
+<title>Value 8</title>
+<g id="a_node6"><a xlink:title="Agent 8: 1,251 steps handled, betweenness 0.00">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="502.72" cy="-1146.27" rx="51" ry="51"/>
+<text text-anchor="middle" x="502.72" y="-1142.17" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 8</text>
+</a>
+</g>
+</g>
+
+<g id="edge28" class="edge">
+<title>Value 8&#45;&gt;Closing desk</title>
+<g id="a_edge28"><a xlink:title="Agent 8 → Closing desk: 108 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.61" stroke-opacity="0.400000" d="M515.44,-1096.58C538.32,-1007.2 586.46,-819.13 612.64,-716.85"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.61" stroke-opacity="0.400000" points="614.41,-717.03 613.95,-711.75 611.01,-716.16 614.41,-717.03"/>
+</a>
+</g>
+</g>
+
+<g id="edge30" class="edge">
+<title>Value 8&#45;&gt;Value 2</title>
+<g id="a_edge30"><a xlink:title="Agent 8 → Agent 2: 215 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.22" stroke-opacity="0.400000" d="M486.93,-1097.46C459.65,-1013.09 403.65,-839.91 372.8,-744.48"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="2.22" stroke-opacity="0.400000" points="374.46,-743.93 371.26,-739.71 371.13,-745.01 374.46,-743.93"/>
+</a>
+</g>
+</g>
+
+<g id="edge31" class="edge">
+<title>Value 8&#45;&gt;Value 9</title>
+<g id="a_edge31"><a xlink:title="Agent 8 → Agent 9: 105 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.6" stroke-opacity="0.400000" d="M463.69,-1112.74C428.53,-1082.53 376.79,-1038.07 339.42,-1005.96"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.6" stroke-opacity="0.400000" points="340.33,-1004.43 335.39,-1002.5 338.04,-1007.08 340.33,-1004.43"/>
+</a>
+</g>
+</g>
+
+<g id="edge29" class="edge">
+<title>Value 8&#45;&gt;Value 13</title>
+<g id="a_edge29"><a xlink:title="Agent 8 → Agent 13: 84 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.48" stroke-opacity="0.400000" d="M539.66,-1110.42C575.72,-1075.42 630.49,-1022.26 667.99,-985.87"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.48" stroke-opacity="0.400000" points="669.65,-986.7 672.02,-981.96 667.21,-984.19 669.65,-986.7"/>
+</a>
+</g>
+</g>
+
+<g id="edge20" class="edge">
+<title>Value 4&#45;&gt;Closing desk</title>
+<g id="a_edge20"><a xlink:title="Agent 4 → Closing desk: 355 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="3.02" stroke-opacity="0.400000" d="M168.86,-451.96C259.41,-490.22 459.83,-574.9 564.29,-619.04"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="3.02" stroke-opacity="0.400000" points="563.9,-620.77 569.19,-621.11 565.27,-617.55 563.9,-620.77"/>
+</a>
+</g>
+</g>
+
+<g id="edge21" class="edge">
+<title>Value 4&#45;&gt;Value 2</title>
+<g id="a_edge21"><a xlink:title="Agent 4 → Agent 2: 98 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.56" stroke-opacity="0.400000" d="M152.79,-472.2C190.09,-515.34 253.83,-584.01 299.03,-629.99"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.56" stroke-opacity="0.400000" points="298.04,-631.48 302.79,-633.81 300.53,-629.02 298.04,-631.48"/>
+</a>
+</g>
+</g>
+
+<g id="edge22" class="edge">
+<title>Value 6&#45;&gt;Closing desk</title>
+<g id="a_edge22"><a xlink:title="Agent 6 → Closing desk: 232 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="2.32" stroke-opacity="0.400000" d="M977.63,-413.68C909.8,-459.28 770.05,-553.22 690.11,-606.96"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="2.32" stroke-opacity="0.400000" points="689.05,-605.56 685.88,-609.81 691,-608.47 689.05,-605.56"/>
+</a>
+</g>
+</g>
+
+<g id="edge10" class="edge">
+<title>Value 14&#45;&gt;Closing desk</title>
+<g id="a_edge10"><a xlink:title="Agent 14 → Closing desk: 151 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.86" stroke-opacity="0.400000" d="M297.55,-263.36C333.35,-324.35 406.37,-441.64 485.47,-527.61 511.57,-555.98 544.49,-583.6 572.37,-605.13"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.86" stroke-opacity="0.400000" points="571.41,-606.6 576.44,-608.26 573.54,-603.82 571.41,-606.6"/>
+</a>
+</g>
+</g>
+
+<g id="edge11" class="edge">
+<title>Value 14&#45;&gt;Value 2</title>
+<g id="a_edge11"><a xlink:title="Agent 14 → Agent 2: 115 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.65" stroke-opacity="0.400000" d="M277.94,-269.19C288.44,-349.72 316.2,-515.67 334.59,-609.39"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.65" stroke-opacity="0.400000" points="332.89,-609.78 335.57,-614.35 336.32,-609.1 332.89,-609.78"/>
+</a>
+</g>
+</g>
+
+<g id="edge7" class="edge">
+<title>Value 12&#45;&gt;Closing desk</title>
+<g id="a_edge7"><a xlink:title="Agent 12 → Closing desk: 160 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.91" stroke-opacity="0.400000" d="M746.08,-318.76C723.71,-382.31 681.11,-503.31 654.35,-579.32"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.91" stroke-opacity="0.400000" points="652.62,-578.97 652.61,-584.26 655.92,-580.13 652.62,-578.97"/>
+</a>
+</g>
+</g>
+
+<g id="node11" class="node">
+<title>Value 16</title>
+<g id="a_node11"><a xlink:title="Agent 16: 408 steps handled, betweenness 0.01">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="663.89" cy="-44" rx="44" ry="44"/>
+<text text-anchor="middle" x="663.89" y="-39.9" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 16</text>
+</a>
+</g>
+</g>
+
+<g id="edge12" class="edge">
+<title>Value 16&#45;&gt;Closing desk</title>
+<g id="a_edge12"><a xlink:title="Agent 16 → Closing desk: 148 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.84" stroke-opacity="0.400000" d="M661.43,-88.34C655.72,-191.63 641.48,-449.02 634.5,-575.11"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.84" stroke-opacity="0.400000" points="632.74,-575.19 634.21,-580.28 636.24,-575.38 632.74,-575.19"/>
+</a>
+</g>
+</g>
+
+<g id="edge23" class="edge">
+<title>Value 7&#45;&gt;Closing desk</title>
+<g id="a_edge23"><a xlink:title="Agent 7 → Closing desk: 79 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.45" stroke-opacity="0.400000" d="M83.6,-800.66C143.26,-790.67 256.35,-770.2 350.61,-744.31 424.68,-723.97 507.56,-694.26 563.78,-673.03"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.45" stroke-opacity="0.400000" points="564.4,-674.67 568.46,-671.26 563.16,-671.4 564.4,-674.67"/>
+</a>
+</g>
+</g>
+
+<g id="node13" class="node">
+<title>Value 15</title>
+<g id="a_node13"><a xlink:title="Agent 15: 276 steps handled, betweenness 0.01">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="1150.87" cy="-697.1" rx="42" ry="42"/>
+<text text-anchor="middle" x="1150.87" y="-693" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 15</text>
+</a>
+</g>
+</g>
+
+<g id="edge27" class="edge">
+<title>Value 15&#45;&gt;Closing desk</title>
+<g id="a_edge27"><a xlink:title="Agent 15 → Closing desk: 85 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.48" stroke-opacity="0.400000" d="M1108.72,-693.05C1019.77,-684.49 811.98,-664.49 701.9,-653.89"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.48" stroke-opacity="0.400000" points="701.87,-652.13 696.73,-653.39 701.54,-655.61 701.87,-652.13"/>
+</a>
+</g>
+</g>
+
+<g id="node14" class="node">
+<title>Value 11</title>
+<g id="a_node14"><a xlink:title="Agent 11: 267 steps handled, betweenness 0.00">
+<ellipse fill="#0a7fa8" stroke="#ffffff" stroke-width="2" cx="1000.6" cy="-1038.02" rx="42" ry="42"/>
+<text text-anchor="middle" x="1000.6" y="-1033.92" font-family="Helvetica,sans-Serif" font-size="17.00" fill="#ffffff">Agent 11</text>
+</a>
+</g>
+</g>
+
+<g id="edge26" class="edge">
+<title>Value 11&#45;&gt;Closing desk</title>
+<g id="a_edge26"><a xlink:title="Agent 11 → Closing desk: 95 handovers">
+<path fill="none" stroke="#0a7fa8" stroke-width="1.54" stroke-opacity="0.400000" d="M971.56,-1007.34C908.49,-940.71 758.39,-782.11 680.04,-699.34"/>
+<polygon fill="#0a7fa8" fill-opacity="0.400000" stroke="#0a7fa8" stroke-width="1.54" stroke-opacity="0.400000" points="681.07,-697.88 676.36,-695.45 678.53,-700.29 681.07,-697.88"/>
+</a>
+</g>
+</g>
+</g>
+</svg>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="rec-h">
+    <div class="sec-head">
+      <div class="eyebrow">What we'd do</div>
+      <h2 id="rec-h">Five changes, in order of effort</h2>
+      <p class="lede">Estimates come straight from the log and assume the team has the capacity to make the change; a pilot would test them.</p>
+    </div>
+    <div class="recs">
+      <div class="rec"><div><h3>1. Measure time-to-fix, not time-to-close</h3><p>Report the fix date as the headline KPI and shorten the confirmation window to 7 days, with one-click reopening for customers.</p></div><div class="impact">Median time-to-close on paper: <b>39.9 → 13.7 days</b>, with no change in the work.</div></div>
+      <div class="rec"><div><h3>2. A one-working-day pickup rule</h3><p>Flag every ticket not taken in charge within one working day, and give someone ownership of the queue each day.</p></div><div class="impact">Average fix time: <b>11.1 → ~8.2 days</b> if no ticket waited more than a day for pickup.</div></div>
+      <div class="rec"><div><h3>3. Give "Wait" a reason and a deadline</h3><p>Require a reason code when parking a ticket, and sweep every parked ticket weekly. 27% of tickets pass through this status today.</p></div><div class="impact">Targets the group that takes <b>18.9</b> days to fix instead of <b>2.8</b>.</div></div>
+      <div class="rec"><div><h3>4. Route tickets right the first time</h3><p>Use the ticket's product, customer and description to suggest the right agent at intake. This is where an AI classifier pays off.</p></div><div class="impact">Fewer handovers: tickets solved by the first agent take <b>1 day</b>, not 6–18.</div></div>
+      <div class="rec"><div><h3>5. Reduce the dependency on one person</h3><p>Cross-train two agents on the ticket types that only Agent 2 handles today, and route those types to them first.</p></div><div class="impact">Less queueing in peak weeks, and no single point of failure.</div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cav-h">
+    <div class="sec-head">
+      <div class="eyebrow">Read this with care</div>
+      <h3 id="cav-h">Limits of this demo</h3>
+    </div>
+    <ul class="caveats">
+      <li>The data is public and anonymised, so people, products and customers appear as codes, and it covers 2010–2014.</li>
+      <li>The comparisons in Exhibit 4 show association, not cause. Hard tickets may be parked or handed over because they're hard.</li>
+      <li>We only see the logged steps, not the ticket text. With a real client we'd add their categories, SLAs and costs per hour.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <div class="sec-head">
+      <div class="eyebrow">How a Process X-ray works</div>
+      <h2 id="how-h">Two weeks, one export, a clear answer</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="k">Step 1 · Day 1</span><h3>You export a log</h3><p>Four columns from your ERP, ticketing or order system: case ID, step, timestamp, person or team. No system access needed.</p></div>
+      <div class="step"><span class="k">Step 2 · Days 2–8</span><h3>We rebuild the process</h3><p>Process map, waiting times, rework loops, handover network and the paths that cost the most.</p></div>
+      <div class="step"><span class="k">Step 3 · Days 9–10</span><h3>You get the X-ray</h3><p>A report like this one on your own data, the top fixes with estimated impact, and a walkthrough with your team.</p></div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="eyebrow" style="color:#D4AE52">GoldenDane · Applied AI for technical operations</div>
+    <h2>Want to see this on your own process?</h2>
+    <p>Orders, invoices, service tickets, quality deviations: if a system logs it, we can X-ray it. Send us a note and we'll tell you within a day what an export would need to contain.</p>
+    <a class="mail" href="mailto:hello@goldenda.com?subject=Process%20X-ray" style="text-decoration:none">hello@goldenda.com</a>
+  </div>
+
+  <p class="source" style="margin-top:22px">Data: the public research dataset "Dataset belonging to the help desk log of an Italian Company" by Mirko Polato (2017), published on <a href="https://data.4tu.nl/articles/dataset/Dataset_belonging_to_the_help_desk_log_of_an_Italian_Company/12675977" target="_blank" rel="noopener">4TU.ResearchData</a> under the 4TU General Terms of Use. Analysis and graphs by GoldenDane ApS with Python, pandas, NetworkX and Graphviz. Staff accounts are anonymised in the source data; "Agent" numbers follow the dataset's own codes.</p>
+<p class="source" style="margin-top:8px">© 2026 GoldenDane ApS · CVR 46351789 · Copenhagen · <a href="./">goldenda.com</a> · <a href="privacy.html">Privacy</a></p>
+</div>
+
+</body>
+</html>

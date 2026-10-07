@@ -4,11 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GoldenDane · Applied AI for technical operations</title>
-<meta name="description" content="GoldenDane is a Copenhagen company founded by two DTU engineers. We build AI systems that take repetitive document work and process tuning off technical teams, and we prove they work before you rely on them.">
+<meta name="description" content="GoldenDane ApS is a Copenhagen applied-AI company. A Process X-ray shows where work waits in your existing systems; then we build AI that takes repetitive document work and process tuning off your team, tested on your own data first.">
+<link rel="canonical" href="https://goldenda.com/">
 <meta property="og:title" content="GoldenDane · Applied AI for technical operations">
-<meta property="og:description" content="AI systems for document-heavy workflows and industrial process optimisation. Built and tested by two DTU engineers in Copenhagen.">
+<meta property="og:description" content="Process X-rays that show where work waits, and AI systems for document-heavy workflows and process optimisation. Copenhagen, Denmark.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldenda.com/">
+<meta property="og:site_name" content="GoldenDane">
+<meta property="og:image" content="https://goldenda.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"GoldenDane","legalName":"GoldenDane ApS","url":"https://goldenda.com/","email":"hello@goldenda.com","vatID":"DK46351789","taxID":"46351789","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"founder":[{"@type":"Person","name":"Soheil Ghoreishi"},{"@type":"Person","name":"Vadim Ionas"}],"description":"Applied AI for technical operations: Process X-rays and AI systems for document workflows and process optimisation."}
+</script>
 <meta name="theme-color" content="#10181A">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310181A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='14' fill='%23D4AE52'%3EGD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +36,7 @@
   --max:1160px; --r:12px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
 img,svg{max-width:100%}
@@ -68,10 +77,14 @@ nav ul a:hover{color:var(--ink)}
 @media (max-width:600px){.nav-cta .long{display:none}.nav-cta .short{display:inline}}
 
 /* hero */
+.announce{display:inline-flex;align-items:center;gap:10px;justify-self:start;max-width:100%;line-height:1.35;text-decoration:none;font-size:14.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 5px;transition:border-color .2s}
+.announce:hover{border-color:var(--gold)}
+.announce .pill{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-wash);color:#7A5A12;border-radius:999px;padding:3px 9px}
+.announce .arr{color:var(--gold)}
 .hero{padding-block:clamp(56px,8vw,96px) clamp(64px,8vw,100px)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 @media (max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-.hero-copy{display:grid;gap:24px}
+.hero-copy{display:grid;gap:24px;min-width:0}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .hero-note{font-size:14.5px;color:var(--muted)}
@@ -201,6 +214,36 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 .foot a{color:var(--night-muted)}
 .foot a:hover{color:#fff}
 
+
+/* process x-ray */
+.xray-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start}
+@media (max-width:900px){.xray-grid{grid-template-columns:1fr}}
+.xcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;display:grid;gap:18px;min-width:0}
+.xcap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.xcap b{color:var(--ink);font-weight:600}
+.bars{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.bar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 44px;gap:12px;align-items:center;font-size:15px}
+.bar .track{height:14px;border-radius:7px;background:var(--paper);overflow:hidden}
+.bar .track i{display:block;height:100%;border-radius:7px;background:#0A7FA8}
+.bar.hot .track i{background:var(--gold)}
+.bar .pct{font-family:var(--mono);font-size:14px;text-align:right}
+.bar.hot{font-weight:600}
+@media (max-width:520px){.bar{grid-template-columns:1fr 44px}.bar .track{grid-column:1/-1;grid-row:2}}
+.xnote{font-size:13.5px;color:var(--muted)}
+.findings{display:grid;gap:14px}
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.finding .big{font-family:var(--mono);font-size:26px;color:var(--gold);grid-row:span 2;min-width:74px}
+.finding h3{font-family:var(--sans);font-size:16px;font-weight:600}
+.finding p{font-size:14.5px;color:var(--ink-2)}
+.xray-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+.xfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 0 40px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+@media (max-width:860px){.xfacts{grid-template-columns:1fr}}
+.xfacts>div{background:var(--surface);padding:20px 22px;display:grid;gap:6px;align-content:start}
+.xfacts dt{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.xfacts dd{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.xlead{font-size:15px;color:var(--muted);margin-bottom:16px}
+.xfacts code{white-space:nowrap;font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--ink)}
+
 /* reveal */
 .reveal{transition:opacity .6s ease,transform .6s ease}
 .js .reveal.pending{opacity:0;transform:translateY(14px)}
@@ -214,6 +257,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     <nav aria-label="Main">
       <ul>
         <li><a href="#story">The problem</a></li>
+        <li><a href="#xray">Process X-ray</a></li>
         <li><a href="#what">What we build</a></li>
         <li><a href="#how">How we work</a></li>
         <li><a href="#team">Team</a></li>
@@ -229,6 +273,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
+      <a class="announce" href="#xray"><span class="pill">New</span><span>Process X-ray: see where your process loses time</span><span class="arr" aria-hidden="true">→</span></a>
       <div class="eyebrow">Applied AI · Copenhagen</div>
       <h1>Give your engineers their <em>Mondays</em> back.</h1>
       <p class="lede">GoldenDane builds AI systems that take repetitive document work and process tuning off technical teams. We test them on your own data before anyone relies on them.</p>
@@ -237,7 +282,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <a class="btn btn-ghost" href="#story">See an example</a>
       </div>
       <div class="proof-strip" aria-label="Key facts">
-        <span><i aria-hidden="true"></i>Founded by two DTU engineers</span>
+        <span><i aria-hidden="true"></i>Danish ApS · CVR 46351789</span>
         <span><i aria-hidden="true"></i>Fixed-price pilots</span>
         <span><i aria-hidden="true"></i>Every answer linked to its source</span>
       </div>
@@ -305,13 +350,53 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
   </div>
 </section>
 
-<!-- 3. What we build -->
+
+<!-- 3. Process X-ray: diagnose before you fix -->
+<section id="xray" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Process X-ray · tested on real data</div>
+      <h2>Your systems already know where the time goes. We show you.</h2>
+      <p class="lede"><b>A Process X-ray is a two-week analysis of the activity log your business systems already keep.</b> Like an X-ray, it lets you see inside without opening anything up: no new software and no access to your systems, just one data export. You get a map of how work really flows, and exactly where cases wait, loop or bounce between people.</p>
+    </div>
+    <dl class="xfacts">
+      <div><dt>You send</dt><dd>One export from your ERP, ticketing, order or claims system, with four columns: <code>case ID</code> <code>step</code> <code>timestamp</code> <code>person or team</code></dd></div>
+      <div><dt>We take</dt><dd>Two weeks, at a fixed price agreed up front. We sign a data processing agreement before you send anything.</dd></div>
+      <div><dt>You get</dt><dd>A report with your process map, where the time goes, the bottlenecks, and the top fixes with estimated impact, plus a walkthrough with your team.</dd></div>
+    </dl>
+    <p class="xlead">Here's what an X-ray found in 4,580 real support tickets from a public dataset:</p>
+    <div class="xray-grid">
+      <div class="xcard reveal">
+        <div class="xcap"><b>Where 40 days of ticket time actually went</b><span>4,580 tickets · 2010–2014</span></div>
+        <ul class="bars" aria-label="Share of all elapsed ticket time">
+          <li class="bar hot"><span>Waiting window after the fix</span><span class="track"><i style="width:100%"></i></span><span class="pct">72%</span></li>
+          <li class="bar"><span>Hands-on handling</span><span class="track"><i style="width:14.7%"></i></span><span class="pct">11%</span></li>
+          <li class="bar"><span>Queue before pickup</span><span class="track"><i style="width:12.7%"></i></span><span class="pct">9%</span></li>
+          <li class="bar"><span>Parked in "Wait" status</span><span class="track"><i style="width:10.5%"></i></span><span class="pct">8%</span></li>
+          <li class="bar"><span>Escalated to development</span><span class="track"><i style="width:1.8%"></i></span><span class="pct">1%</span></li>
+        </ul>
+        <p class="xnote">Tickets took 40 days to close but only 6 to fix. Most of the difference was a fixed confirmation window, not work. Public data from an Italian software company's IT help desk; findings are associations, not proof of cause.</p>
+      </div>
+      <div class="findings">
+        <article class="finding reveal"><span class="big">18.0</span><h3>days to fix if nobody picks it up within 3 days</h3><p>Tickets picked up within a day were fixed in 1.2 days. The queue, not the work, made the difference.</p></article>
+        <article class="finding reveal"><span class="big">18.4</span><h3>days to fix after two or more handovers</h3><p>Tickets solved by the first person took 1 day. Every hand-off between people multiplied the time.</p></article>
+        <article class="finding reveal"><span class="big">49%</span><h3>of all handovers went through one person</h3><p>The handover network showed a single agent at the centre: a bottleneck in busy weeks and a risk when they're away.</p></article>
+      </div>
+    </div>
+    <div class="xray-cta">
+      <a class="btn btn-primary" href="process-xray.html">See the full X-ray report <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="mailto:hello@goldenda.com?subject=Process%20X-ray">Ask about an X-ray of your process</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. What we build -->
 <section id="what">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">What we build</div>
-      <h2>Two kinds of problems. One way of solving them.</h2>
-      <p class="lede">We focus on work that is repetitive, expensive and measurable, where a well-tested AI system can take the first pass and your people keep the final say.</p>
+      <h2>Then we build the fix.</h2>
+      <p class="lede">Whether the problem comes from an X-ray or you already know it, we build two kinds of fixes, one way: we focus on work that is repetitive, expensive and measurable, where a well-tested AI system takes the first pass and your people keep the final say.</p>
     </div>
     <div class="cap-grid">
       <article class="cap reveal">
@@ -355,7 +440,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
   </div>
 </section>
 
-<!-- 4. How we work -->
+<!-- 5. How we work -->
 <section id="how" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
@@ -369,7 +454,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <h3>Discover</h3>
         <div class="when">30 minutes · free</div>
         <p>You show us the workflow that eats your team's week. We ask how often it happens, who does it and which systems hold the data.</p>
-        <div class="out">You get: an honest view of whether AI can help, and roughly how much.</div>
+        <div class="out">You get: an honest view of whether AI can help, and roughly how much. Not sure where to start? Begin with a two-week Process X-ray.</div>
       </div>
       <div class="stage reveal">
         <div class="stage-n">Step 2</div>
@@ -410,7 +495,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Who we are</div>
-      <h2>Two engineers who like hard problems.</h2>
+      <h2>Two founders who like hard problems.</h2>
       <p class="lede">GoldenDane is a small, focused team. You talk directly to the people who build your system.</p>
     </div>
     <div class="founders">
@@ -419,7 +504,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <div>
           <h3>Soheil Ghoreishi</h3>
           <div class="role">Co-founder · CEO</div>
-          <p>Studying for an MSc in Artificial Intelligence at DTU. Soheil leads client work: he maps your workflow, scopes the pilot and makes sure the result is measured in hours and kroner, not buzzwords.</p>
+          <p>Studying for an MSc in Human-Centered Artificial Intelligence at DTU. Soheil leads client work: he maps your workflow, scopes the pilot and makes sure the result is measured in hours and kroner, not buzzwords.</p>
         </div>
       </article>
       <article class="person reveal">
@@ -447,6 +532,8 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     </div>
     <div class="faq">
       <details><summary>We're not an AI company. Is this for us?</summary><p>Yes, that's who it's for. You don't need data scientists or new software. If your team repeats the same document or process work every week, we can usually tell in one 30-minute call whether it's worth automating.</p></details>
+      <details><summary>What exactly is a Process X-ray?</summary><p>A two-week, fixed-price analysis of the activity log one of your business systems already keeps. It has nothing to do with medical imaging: we call it an X-ray because it shows what happens inside a process without changing anything. You get a map of how cases really flow, where time is lost, who is overloaded, and the fixes worth making first. <a href="process-xray.html">See an example report</a>.</p></details>
+      <details><summary>What do you need from us for a Process X-ray?</summary><p>One export from the system where the work happens (ERP, ticketing, order or claims system) with four columns: case ID, step, timestamp and person or team. Usually a few months of history. We never need access to your systems, and we sign a data processing agreement before you send anything.</p></details>
       <details><summary>What does a pilot cost?</summary><p>A Prove pilot is a fixed price agreed up front, scoped to one workflow and two to three weeks of work. We'll give you the number after the free discovery call, once we know the size of the problem.</p></details>
       <details><summary>What happens to our data?</summary><p>We agree a data processing agreement before we touch anything, keep processing inside the EU where possible, delete working copies when the project ends, and never use your data to train models for other clients.</p></details>
       <details><summary>Will it replace our control system?</summary><p>No. For process work, the AI sits on top of your existing PID and SCADA control and suggests or sets better setpoints within limits you define. It's tested in simulation on your historical data first, and your operators can always override it.</p></details>
@@ -466,13 +553,13 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <a class="email" href="mailto:hello@goldenda.com?subject=Workflow%20review">hello@goldenda.com</a>
         <button class="copy" type="button" id="copyEmail">Copy address</button>
       </div>
-      <p class="small">GoldenDane ApS · Copenhagen, Denmark</p>
+      <p class="small">GoldenDane ApS · CVR 46351789 · Copenhagen, Denmark</p>
     </div>
     <aside class="offer">
       <div class="eyebrow">Founding clients</div>
-      <h3>We're taking on three founding clients this year.</h3>
+      <h3>We're taking on three founding clients.</h3>
       <ul>
-        <li>A reduced pilot price in exchange for honest feedback</li>
+        <li>A reduced price on a Process X-ray or pilot, in exchange for honest feedback</li>
         <li>Direct access to both founders throughout</li>
         <li>You decide what happens after the pilot, with no lock-in</li>
       </ul>
@@ -484,8 +571,8 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="yr">2026</span> GoldenDane ApS · Copenhagen</span>
-    <span><a href="privacy.html">Privacy</a> · <a href="mailto:hello@goldenda.com">hello@goldenda.com</a></span>
+    <span>© <span id="yr">2026</span> GoldenDane ApS · CVR 46351789 · Copenhagen</span>
+    <span><a href="process-xray.html">Process X-ray demo</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:hello@goldenda.com">hello@goldenda.com</a></span>
   </div>
 </footer>
 
