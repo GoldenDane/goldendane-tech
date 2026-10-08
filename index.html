@@ -3,358 +3,623 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GoldenDane · Applied AI for operations teams</title>
-<meta name="description" content="GoldenDane ApS is a Copenhagen applied-AI company founded by two DTU engineers. A Process X-ray shows where work waits in your existing systems; then we build AI that takes repetitive admin and document work off your team: orders, customer emails, contracts and reports, tested on your own data first.">
+<title>GoldenDane · AI that takes repetitive admin off your team</title>
+<meta name="description" content="GoldenDane ApS is a Copenhagen applied-AI company. We automate order entry, customer emails and document review inside the systems you already use, and prove the accuracy on your own data before your team relies on it. Fixed-price pilots, DPA before any data.">
 <link rel="canonical" href="https://goldenda.com/">
-<meta property="og:title" content="GoldenDane · Applied AI for operations teams">
-<meta property="og:description" content="AI that takes repetitive admin off your team: orders, customer emails, contracts and reports. Plus Process X-rays that show where work waits. Built by two DTU engineers in Copenhagen.">
+<meta property="og:title" content="GoldenDane · AI that takes repetitive admin off your team">
+<meta property="og:description" content="Orders, customer emails and documents, handled by AI that works inside your systems and is tested on your data first. Fixed-price pilots from a registered Danish company.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldenda.com/">
 <meta property="og:site_name" content="GoldenDane">
+<meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://goldenda.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"GoldenDane","legalName":"GoldenDane ApS","url":"https://goldenda.com/","email":"hello@goldenda.com","vatID":"DK46351789","taxID":"46351789","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"founder":[{"@type":"Person","name":"Soheil Ghoreishi"},{"@type":"Person","name":"Vadim Ionas"}],"description":"Applied AI for operations teams: automation of orders, customer emails and document work, Process X-rays, and process optimisation."}
-</script>
 <meta name="theme-color" content="#10181A">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310181A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='14' fill='%23D4AE52'%3EGD%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"GoldenDane","legalName":"GoldenDane ApS","url":"https://goldenda.com/","logo":"https://goldenda.com/assets/apple-touch-icon.png","image":"https://goldenda.com/og-image.png","email":"hello@goldenda.com","vatID":"DK46351789","taxID":"46351789","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"areaServed":"DK","founder":[{"@type":"Person","name":"Soheil Ghoreishi","jobTitle":"Co-founder & CEO"},{"@type":"Person","name":"Vadim Ionas","jobTitle":"Co-founder & CTO"}],"description":"Applied AI for operations teams: automation of order entry, customer emails and document review, Process X-rays, and process optimisation.","knowsAbout":["Document automation","Order entry automation","Process mining","Large language models","Process optimisation"]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "We're not an AI company. Is this for us?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that's exactly who it's for. You don't need data scientists or new software. If your team repeats the same orders, emails, documents or process work every week, we can usually tell in one 30-minute call whether it's worth automating."}}, {"@type": "Question", "name": "What happens on the free 30-minute call?", "acceptedAnswer": {"@type": "Answer", "text": "You walk us through one workflow that takes up your team's time. We ask a few questions about volume, systems and data, and tell you honestly whether AI can help, what a pilot would look like and what it would involve. No slides and no obligation."}}, {"@type": "Question", "name": "What does a pilot cost?", "acceptedAnswer": {"@type": "Answer", "text": "A pilot is a fixed price agreed up front, scoped to one workflow and two to three weeks of work. We give you the number after the free call, once we know the size of the problem, and you decide whether to go ahead."}}, {"@type": "Question", "name": "What happens to our data?", "acceptedAnswer": {"@type": "Answer", "text": "We sign a data processing agreement before we touch anything, keep processing inside the EU where possible, delete working copies when the project ends, and never use your data to train models for other clients."}}, {"@type": "Question", "name": "Can't we just use ChatGPT or Copilot?", "acceptedAnswer": {"@type": "Answer", "text": "For one person's one-off tasks, often yes. But a chat window doesn't read your inbox, enter orders in your ERP or run on its own, and nobody measures whether its answers are right. We build the system around the model: connected to your tools, tested on your data, covered by a data processing agreement, and maintained by us. If a chat assistant is all you need, we'll tell you on the first call."}}, {"@type": "Question", "name": "What exactly is a Process X-ray?", "acceptedAnswer": {"@type": "Answer", "text": "A two-week, fixed-price analysis of the activity log one of your business systems already keeps. We call it an X-ray because it shows what happens inside a process without changing anything. You get a map of how cases really flow, where time is lost, who is overloaded, and the fixes worth making first. All we need is one export with four columns: case ID, step, timestamp and person or team. We never need access to your systems."}}, {"@type": "Question", "name": "Will it replace our control system?", "acceptedAnswer": {"@type": "Answer", "text": "No. For industrial processes, the AI sits on top of your existing PID and SCADA control and suggests or sets better setpoints within limits you define. It's tested in simulation on your historical data first, and your operators can always override it."}}, {"@type": "Question", "name": "You're a young company. Why should we trust you?", "acceptedAnswer": {"@type": "Answer", "text": "Fair question. That's why we start with a small, fixed-price pilot and show measured results before you commit to more. You work directly with the two engineers who build your system, everything is covered by a written agreement, and you can verify our company registration on virk.dk."}}]}
+</script>
 <style>
-/* Layout: a story told in six beats. Promise → a Monday that goes wrong → what we automate → how we work → who we are → talk to us. */
+/* Structure follows a cold-called visitor's questions, in order:
+   What is this? → Can I trust them? → What exactly do they do, for whom? → Show me → How does it work, what does it cost? → Who are they? → How do I talk to them? */
 :root{
-  --paper:#F6F7F5; --surface:#FFFFFF; --ink:#10181A; --ink-2:#3B4749; --muted:#66716F; --line:#DCE1DE;
-  --gold:#B48A2C; --gold-bright:#D4AE52; --gold-wash:#F3EBD6;
+  --paper:#F6F7F5; --surface:#FFFFFF; --ink:#10181A; --ink-2:#3B4749; --muted:#66716F; --line:#DCE1DE; --line-2:#C9D0CC;
+  --gold:#B48A2C; --gold-ink:#86651A; --gold-bright:#D4AE52; --gold-wash:#F3EBD6;
   --night:#10181A; --night-2:#18242A; --night-line:#2B3A3F; --night-text:#E8ECEA; --night-muted:#9AA8A6;
-  --ok:#2F7A52; --warn:#A8650C;
+  --ok:#2F7A52; --ok-wash:#E2F1E8; --warn:#8F5508; --warn-wash:#FBEEDC; --blue:#0A7FA8;
   --display:"Fraunces", Georgia, "Times New Roman", serif;
   --sans:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-  --max:1160px; --r:12px;
+  --max:1160px; --r:14px; --ease:cubic-bezier(.2,.7,.2,1);
+  --shadow:0 30px 60px -30px rgba(16,24,26,.28),0 2px 6px rgba(16,24,26,.05);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img,svg{max-width:100%}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:24px}
-@media (max-width:600px){.wrap{padding-inline:18px}}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(40px,6vw,68px)}
-h2{font-size:clamp(30px,4vw,44px)}
+@media (max-width:600px){.wrap{padding-inline:16px}}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.015em;font-optical-sizing:auto}
+h1{font-size:clamp(38px,5.4vw,64px);letter-spacing:-.02em}
+h2{font-size:clamp(30px,4vw,46px)}
 h3{font-size:22px}
 p{margin:0}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.lede{font-size:clamp(18px,2vw,20px);color:var(--ink-2);max-width:60ch}
-.btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:16px;text-decoration:none;border-radius:999px;padding:13px 22px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s;cursor:pointer}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:var(--gold);color:var(--ink)}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.lede{font-size:clamp(18px,1.9vw,20px);color:var(--ink-2);max-width:62ch;text-wrap:pretty}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:16px;line-height:1.3;text-decoration:none;border-radius:999px;padding:14px 24px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease),box-shadow .2s;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 20px -10px rgba(16,24,26,.5)}
+.btn-primary:hover{background:#000;transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink);background:var(--surface)}
 .btn-ghost:hover{border-color:var(--ink)}
-.btn .arr{transition:transform .2s}
+.btn .arr{transition:transform .2s var(--ease)}
 .btn:hover .arr{transform:translateX(3px)}
-section{padding-block:clamp(72px,10vw,120px)}
-.section-head{display:grid;gap:14px;max-width:760px;margin-bottom:48px}
+section{padding-block:clamp(72px,10vw,124px)}
+.section-head{display:grid;gap:16px;max-width:780px;margin-bottom:52px}
+.link{color:var(--ink);font-weight:500;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:1.5px}
+.link:hover{text-decoration-color:var(--ink)}
 
 /* nav */
 header.nav{position:sticky;top:0;z-index:50;background:rgba(246,247,245,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
 header.nav.scrolled{border-bottom-color:var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:21px;font-weight:500}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:21px;font-weight:500;letter-spacing:-.01em}
 .logo-mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--gold-bright);display:grid;place-items:center;font-size:13px;font-family:var(--display)}
-.logo b{color:var(--gold);font-weight:500}
-nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
-nav ul a{text-decoration:none;color:var(--ink-2);font-size:15px}
-nav ul a:hover{color:var(--ink)}
-.nav-cta{padding:9px 18px;font-size:15px}
-@media (max-width:860px){nav ul{display:none}}
-.nav-cta .short{display:none}
-@media (max-width:600px){.nav-cta .long{display:none}.nav-cta .short{display:inline}}
+.logo b{color:var(--gold-ink);font-weight:500}
+.nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;color:var(--ink-2);font-size:15px;position:relative;padding-block:6px}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cta{padding:10px 18px;font-size:15px}
+.menu-btn{display:none;width:42px;height:42px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;place-items:center;padding:0}
+.menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink);position:relative;transition:background .2s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--ink);transition:transform .25s var(--ease)}
+.menu-btn span::before{top:-5px}.menu-btn span::after{top:5px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:900px){
+  .menu-btn{display:grid}
+  .main-nav{position:absolute;left:0;right:0;top:70px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(16,24,26,.25);display:none}
+  .main-nav.open{display:block}
+  .nav-links{flex-direction:column;gap:0;padding:8px 16px 16px}
+  .nav-links a{display:block;padding:14px 4px;font-size:17px;border-bottom:1px solid var(--line)}
+  .nav-links a::after{display:none}
+}
+@media (max-width:420px){.nav-cta .long{display:none}}
+@media (min-width:421px){.nav-cta .short{display:none}}
 
 /* hero */
-.announce{display:inline-flex;align-items:center;gap:10px;justify-self:start;max-width:100%;line-height:1.35;text-decoration:none;font-size:14.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 5px;transition:border-color .2s}
-.announce:hover{border-color:var(--gold)}
-.announce .pill{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-wash);color:#7A5A12;border-radius:999px;padding:3px 9px}
-.announce .arr{color:var(--gold)}
-.hero{padding-block:clamp(56px,8vw,96px) clamp(64px,8vw,100px)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-@media (max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-.hero-copy{display:grid;gap:24px;min-width:0}
-.hero h1 em{font-style:italic;color:var(--gold)}
+.hero{padding-block:clamp(48px,7vw,88px) clamp(56px,7vw,92px)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+.hero-copy{display:grid;gap:26px;min-width:0}
+.hero h1 em{font-style:italic;color:var(--gold-ink);font-weight:400}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.hero-note{font-size:14.5px;color:var(--muted)}
-.proof-strip{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:6px;font-size:14.5px;color:var(--ink-2)}
-.proof-strip span{display:inline-flex;align-items:center;gap:8px}
-.proof-strip i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
+@media (max-width:520px){.cta-row .btn{width:100%}}
+.founder-line{display:flex;align-items:center;gap:14px;font-size:15px;color:var(--ink-2);line-height:1.45}
+.avatars{display:flex;flex:none}
+.av{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--gold-bright);display:grid;place-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.02em;border:2px solid var(--paper);overflow:hidden}
+.av+.av{margin-left:-10px;background:var(--night-2)}
+.av img{width:100%;height:100%;object-fit:cover}
+.founder-line b{color:var(--ink);font-weight:600}
 
-/* product mock */
-.mock{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -30px rgba(16,24,26,.28),0 2px 6px rgba(16,24,26,.05);overflow:hidden;min-width:0}
-.mock-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12.5px;color:var(--muted)}
-.mock-bar .dots{display:flex;gap:6px}.mock-bar .dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
-.mock-body{padding:18px;display:grid;gap:12px}
-.doc-line{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+/* product mock (rotating use cases) */
+.mock-wrap{min-width:0}
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-width:0}
+.mock-tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--line);background:var(--paper);overflow-x:auto;scrollbar-width:none}
+.mock-tabs::-webkit-scrollbar{display:none}
+.mock-tab{position:relative;flex:1 0 auto;border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:500;color:var(--muted);padding:8px 12px;border-radius:9px;cursor:pointer;overflow:hidden;white-space:nowrap;transition:color .2s,background .2s}
+.mock-tab:hover{color:var(--ink)}
+.mock-tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(16,24,26,.08)}
+.mock-tab .prog{position:absolute;left:10px;right:10px;bottom:3px;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transform-origin:left}
+.mock.auto .mock-tab[aria-selected="true"] .prog{animation:prog var(--dur,7s) linear forwards}
+.mock.paused .mock-tab .prog{animation-play-state:paused!important}
+@keyframes prog{to{transform:scaleX(1)}}
+.mock-stage{display:grid}
+.panel{grid-area:1/1;display:flex;flex-direction:column;min-width:0;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.panel[hidden]{display:flex;visibility:hidden;opacity:0;transform:translateY(6px)}
+.mock-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mock-bar .live{display:inline-flex;align-items:center;gap:7px}
+.mock-bar .live i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--ok-wash)}
+.mock-body{padding:18px;display:grid;gap:11px;flex:1;align-content:start}
+.doc-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;flex-wrap:wrap}
 .doc-line .name{font-weight:500}
-.doc-line .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
-.req{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;background:var(--paper)}
+.doc-line .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.req{border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:grid;gap:5px;background:var(--paper)}
+.req.quote{background:var(--surface)}
 .req-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.req-id{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.req p{font-size:14.5px;line-height:1.45}
-.src{font-family:var(--mono);font-size:12px;color:var(--gold)}
-.tag{font-family:var(--mono);font-size:11.5px;padding:2px 8px;border-radius:999px;white-space:nowrap}
-.tag.ok{background:#E2F1E8;color:var(--ok)}
-.tag.check{background:#FBEEDC;color:var(--warn)}
-.mock-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.req-id{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.req p{font-size:14px;line-height:1.45}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--gold-ink)}
+.tag{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.tag.ok{background:var(--ok-wash);color:var(--ok)}
+.tag.check{background:var(--warn-wash);color:var(--warn)}
+.olines{display:grid;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.oline{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:10px 14px;font-size:13.5px;border-bottom:1px solid var(--line);background:var(--surface)}
+.oline:last-child{border-bottom:0}
+.oline.flag{background:#FFFBF3}
+.oline .sku{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.oline .q{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+@media (max-width:520px){.oline{grid-template-columns:1fr auto;row-gap:4px}.oline .tag{grid-column:2;justify-self:end}.oline .q{grid-row:1;grid-column:2;text-align:right}.oline>span:first-child{grid-row:1/3}}
+.mock-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .mock-foot b{color:var(--ink);font-weight:600}
-.approve{background:var(--ink);color:#fff;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500}
-.illus{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:10px;text-align:right}
+.approve{background:var(--ink);color:#fff;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:500}
+.illus{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px;text-align:right}
+
+/* trust bar */
+.trust{border-block:1px solid var(--line);background:var(--surface)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+@media (max-width:980px){.trust-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.trust-grid{grid-template-columns:1fr}}
+.t-item{display:grid;grid-template-columns:28px 1fr;gap:4px 14px;padding:26px 24px;border-left:1px solid var(--line);align-content:start}
+.t-item:first-child{border-left:0;padding-left:0}
+@media (max-width:980px){.t-item:nth-child(odd){padding-left:0}.t-item:nth-child(3){border-left:0}.t-item:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.t-item{border-left:0;padding:20px 4px}.t-item+.t-item{border-top:1px solid var(--line)}}
+.t-item svg{width:24px;height:24px;grid-row:span 2;margin-top:1px;color:var(--gold-ink)}
+.t-item h3{font-family:var(--sans);font-size:15.5px;font-weight:600;line-height:1.35;letter-spacing:0}
+.t-item p{font-size:14px;color:var(--muted);line-height:1.5}
+.t-item a{color:var(--ink-2)}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:980px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;display:grid;gap:16px;align-content:start;min-width:0;transition:border-color .25s,transform .25s var(--ease),box-shadow .25s}
+.svc:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 22px 40px -28px rgba(16,24,26,.35)}
+.svc-k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.svc-k i{width:34px;height:34px;border-radius:10px;background:var(--gold-wash);display:grid;place-items:center;color:var(--gold-ink)}
+.svc-k i svg{width:18px;height:18px}
+.svc h3{font-size:24px}
+.svc ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.svc li{display:grid;grid-template-columns:18px 1fr;gap:8px;color:var(--ink-2);font-size:15.5px;line-height:1.5}
+.svc li::before{content:"";width:7px;height:7px;margin-top:9px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+.svc .for{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:auto}
+.svc .for b{color:var(--ink-2);font-weight:500}
+.svc-more{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media (max-width:980px){.svc-more{grid-template-columns:1fr}}
+.wide{border-radius:18px;padding:28px 30px;display:grid;gap:12px;align-content:start;min-width:0}
+.wide.xray{background:var(--night);color:var(--night-text)}
+.wide.xray h3{color:#fff}
+.wide.xray p{color:var(--night-muted)}
+.wide.xray .eyebrow{color:var(--gold-bright)}
+.wide.xray .link{color:#fff}
+.wide.proc{background:var(--surface);border:1px solid var(--line);grid-template-columns:1fr 180px;gap:12px 24px;align-items:center}
+@media (max-width:560px){.wide.proc{grid-template-columns:1fr}}
+.wide.proc .txt{display:grid;gap:10px}
+.wide.proc p{color:var(--ink-2);font-size:15.5px}
+.mini-chart{max-width:240px}
+.mini-chart svg{display:block;width:100%;height:auto}
+.mini-chart .cap{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:4px}
+
+/* industries */
+.ind{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;border-top:1px solid var(--line)}
+@media (max-width:860px){.ind{grid-template-columns:1fr}}
+.ind-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media (max-width:520px){.ind-row{grid-template-columns:1fr;gap:4px}}
+.ind-row h3{font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:0;line-height:1.4}
+.ind-row p{font-size:15px;color:var(--ink-2)}
+.ind-more{margin-top:24px;color:var(--ink-2)}
 
 /* story */
 .story{background:var(--night);color:var(--night-text)}
 .story .lede{color:var(--night-muted)}
 .story .eyebrow{color:var(--gold-bright)}
-.timeline{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.story h2{color:#fff}
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media (max-width:860px){.timeline{grid-template-columns:1fr}}
 .day{border:1px solid var(--night-line);border-radius:var(--r);padding:28px;display:grid;gap:18px;align-content:start;background:var(--night-2);min-width:0}
-.day.after{border-color:rgba(212,174,82,.45)}
+.day.after{border-color:rgba(212,174,82,.5);background:linear-gradient(180deg,rgba(212,174,82,.06),transparent 40%),var(--night-2)}
 .day-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .day-head h3{color:#fff}
-.day-label{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--night-muted)}
+.day-label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--night-muted)}
 .day.after .day-label{color:var(--gold-bright)}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.steps li{display:grid;grid-template-columns:62px 1fr;gap:14px;font-size:15.5px;color:var(--night-text)}
+.steps li{display:grid;grid-template-columns:58px 1fr;gap:14px;font-size:15.5px;color:var(--night-text)}
 .steps time{font-family:var(--mono);font-size:13px;color:var(--night-muted);padding-top:2px}
 .day-total{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--night-line);padding-top:16px;font-size:15px;color:var(--night-muted)}
-.day-total strong{font-family:var(--mono);font-size:20px;font-weight:500;color:#fff}
+.day-total strong{font-family:var(--mono);font-size:22px;font-weight:500;color:#fff}
 .day.after .day-total strong{color:var(--gold-bright)}
-.story-note{margin-top:22px;font-size:14px;color:var(--night-muted);max-width:70ch}
+.story-note{margin-top:22px;font-size:14px;color:var(--night-muted);max-width:72ch}
 
-/* capabilities */
-.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media (max-width:860px){.cap-grid{grid-template-columns:1fr}}
-.cap{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px;display:grid;gap:18px;align-content:start;min-width:0}
-.cap-kicker{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.cap ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.cap li{display:grid;grid-template-columns:20px 1fr;gap:10px;color:var(--ink-2);font-size:16px}
-.cap li::before{content:"";width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
-.cap li b{color:var(--ink);font-weight:600}
-.who-for{font-size:14.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
-.chart{border:1px solid var(--line);border-radius:10px;padding:12px 12px 6px;background:var(--paper)}
-.chart svg{display:block;width:100%;height:auto}
-.legend{display:flex;gap:16px;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:4px 4px 6px;flex-wrap:wrap}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.legend i{width:14px;height:2px;display:inline-block}
-
-/* process */
-.process{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
-@media (max-width:860px){.process{grid-template-columns:1fr}}
-.stage{padding:32px;display:grid;gap:14px;align-content:start;border-right:1px solid var(--line);position:relative}
-.stage:last-child{border-right:0}
-@media (max-width:860px){.stage{border-right:0;border-bottom:1px solid var(--line)}.stage:last-child{border-bottom:0}}
-.stage-n{font-family:var(--mono);font-size:13px;color:var(--gold)}
-.stage .when{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.stage p{color:var(--ink-2);font-size:16px}
-.stage .out{font-size:14.5px;color:var(--ink);background:var(--gold-wash);border-radius:8px;padding:10px 12px}
-
-/* principles */
-.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-@media (max-width:960px){.principles{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.principles{grid-template-columns:1fr}}
-.pr{display:grid;gap:10px;align-content:start;border-top:2px solid var(--ink);padding-top:18px}
-.pr h3{font-size:20px}
-.pr p{color:var(--ink-2);font-size:15.5px}
-
-/* founders */
-.founders-band{background:var(--surface);border-block:1px solid var(--line)}
-.founders{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media (max-width:860px){.founders{grid-template-columns:1fr}}
-.person{display:grid;grid-template-columns:72px 1fr;gap:20px;align-items:start;padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--paper);min-width:0}
-.mono{width:72px;height:72px;border-radius:50%;background:var(--ink);color:var(--gold-bright);display:grid;place-items:center;font-family:var(--display);font-size:24px}
-.person h3{font-size:24px}
-.role{font-family:var(--mono);font-size:13px;color:var(--gold);margin:4px 0 12px}
-.person p{color:var(--ink-2);font-size:15.5px}
-.chess{margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:22px 26px;border-radius:16px;border:1px dashed var(--line)}
-.chess svg{width:40px;height:40px}
-.chess p{color:var(--ink-2);font-size:15.5px}
-@media (max-width:560px){.chess{grid-template-columns:1fr}}
-
-/* faq */
-.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:860px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-size:18px;font-weight:500;position:relative}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:6px;top:16px;font-size:24px;color:var(--gold);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 0 22px;color:var(--ink-2);max-width:70ch}
-
-/* contact */
-.contact{background:var(--night);color:var(--night-text)}
-.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
-@media (max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px}}
-.contact h2{color:#fff}
-.contact .lede{color:var(--night-muted)}
-.contact .eyebrow{color:var(--gold-bright)}
-.offer{border:1px solid rgba(212,174,82,.45);border-radius:16px;padding:28px;display:grid;gap:16px;background:var(--night-2)}
-.offer h3{color:#fff}
-.offer ul{margin:0;padding-left:20px;color:var(--night-text);display:grid;gap:8px}
-.email-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.email{font-family:var(--mono);font-size:17px;color:#fff;text-decoration:none;border-bottom:1px solid var(--gold-bright)}
-.copy{background:transparent;color:var(--night-muted);border:1px solid var(--night-line);border-radius:999px;padding:6px 12px;font:inherit;font-size:13.5px;cursor:pointer}
-.copy:hover{color:#fff;border-color:var(--night-muted)}
-.contact .btn-primary{background:var(--gold-bright);color:var(--ink)}
-.contact .btn-primary:hover{background:#fff}
-.small{font-size:14px;color:var(--night-muted)}
-
-footer{background:var(--night);color:var(--night-muted);border-top:1px solid var(--night-line);font-size:14px}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px}
-.foot a{color:var(--night-muted)}
-.foot a:hover{color:#fff}
-
-
-/* chatgpt comparison */
-.vs{display:grid;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
-.vs-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
-.vs-row:last-child{border-bottom:0}
-.vs-row>*{padding:16px 20px;font-size:15.5px;line-height:1.5}
-.vs-row>b{font-weight:600;color:var(--ink)}
-.vs-row>span:nth-child(2){color:var(--muted)}
-.vs-row>span:nth-child(3){color:var(--ink);background:var(--gold-wash)}
-.vs-head>span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:12px}
-.vs-head>span:nth-child(3){color:#7A5A12}
-@media (max-width:760px){
-  .vs-row{grid-template-columns:1fr}
-  .vs-head{display:none}
-  .vs-row>b{padding-bottom:4px}
-  .vs-row>span{padding-top:6px}
-  .vs-row>span:nth-child(2)::before{content:"Chat assistant: ";font-weight:600;color:var(--muted)}
-  .vs-row>span:nth-child(3)::before{content:"GoldenDane: ";font-weight:600;color:#7A5A12}
-}
-
-/* who we help */
-.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media (max-width:1060px){.who-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.who-grid{grid-template-columns:1fr}}
-.who{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
-.who-k{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);line-height:1.4}
-.who-pain{font-size:15.5px;color:var(--ink-2)}
-.who-fix{font-size:15.5px;font-weight:500;color:var(--ink);border-top:1px solid var(--line);padding-top:10px}
-.who-fix a{color:var(--ink)}
-.who-more{margin-top:22px;color:var(--ink-2)}
-.who-more a{color:var(--ink);font-weight:500}
-
-/* process x-ray */
-.xray-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start}
+/* x-ray */
+.xfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 0 44px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+@media (max-width:860px){.xfacts{grid-template-columns:1fr}}
+.xfacts>div{background:var(--surface);padding:22px 24px;display:grid;gap:6px;align-content:start}
+.xfacts dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+.xfacts dd{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.xfacts code{white-space:nowrap;font-family:var(--mono);font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--ink)}
+.xlead{font-size:15px;color:var(--muted);margin-bottom:16px}
+.xray-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
 @media (max-width:900px){.xray-grid{grid-template-columns:1fr}}
-.xcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;display:grid;gap:18px;min-width:0}
+.xcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;gap:18px;min-width:0}
 .xcap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
 .xcap b{color:var(--ink);font-weight:600}
 .bars{display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .bar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 44px;gap:12px;align-items:center;font-size:15px}
 .bar .track{height:14px;border-radius:7px;background:var(--paper);overflow:hidden}
-.bar .track i{display:block;height:100%;border-radius:7px;background:#0A7FA8}
+.bar .track i{display:block;height:100%;border-radius:7px;background:var(--blue);transform-origin:left;transition:transform 1s var(--ease)}
+.js .bars.pending .track i{transform:scaleX(0)}
 .bar.hot .track i{background:var(--gold)}
 .bar .pct{font-family:var(--mono);font-size:14px;text-align:right}
 .bar.hot{font-weight:600}
 @media (max-width:520px){.bar{grid-template-columns:1fr 44px}.bar .track{grid-column:1/-1;grid-row:2}}
 .xnote{font-size:13.5px;color:var(--muted)}
 .findings{display:grid;gap:14px}
-.finding{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
-.finding .big{font-family:var(--mono);font-size:26px;color:var(--gold);grid-row:span 2;min-width:74px}
-.finding h3{font-family:var(--sans);font-size:16px;font-weight:600}
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.finding .big{font-family:var(--mono);font-size:26px;color:var(--gold-ink);grid-row:span 2;min-width:74px}
+.finding h3{font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:0;line-height:1.4}
 .finding p{font-size:14.5px;color:var(--ink-2)}
-.xray-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
-.xfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 0 40px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-@media (max-width:860px){.xfacts{grid-template-columns:1fr}}
-.xfacts>div{background:var(--surface);padding:20px 22px;display:grid;gap:6px;align-content:start}
-.xfacts dt{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.xfacts dd{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
-.xlead{font-size:15px;color:var(--muted);margin-bottom:16px}
-.xfacts code{white-space:nowrap;font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--ink)}
+.xray-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+
+/* process */
+.process{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+@media (max-width:860px){.process{grid-template-columns:1fr}}
+.stage{padding:32px;display:grid;gap:14px;align-content:start;border-right:1px solid var(--line);position:relative}
+.stage:last-child{border-right:0}
+@media (max-width:860px){.stage{border-right:0;border-bottom:1px solid var(--line)}.stage:last-child{border-bottom:0}}
+.stage-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.stage-n{font-family:var(--mono);font-size:13px;color:var(--gold-ink);width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center}
+.stage .when{font-family:var(--mono);font-size:12.5px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.stage p{color:var(--ink-2);font-size:16px}
+.stage .out{font-size:14.5px;color:var(--ink);background:var(--gold-wash);border-radius:10px;padding:11px 13px;margin-top:auto}
+.process-note{margin-top:18px;font-size:15px;color:var(--muted)}
+
+/* vs + standards */
+.vs{display:grid;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.vs-row{display:grid;grid-template-columns:210px 1fr 1fr;border-bottom:1px solid var(--line)}
+.vs-row:last-child{border-bottom:0}
+.vs-row>*{padding:16px 20px;font-size:15.5px;line-height:1.5}
+.vs-row>b{font-weight:600;color:var(--ink)}
+.vs-row>span:nth-child(2){color:var(--muted)}
+.vs-row>span:nth-child(3){color:var(--ink);background:var(--gold-wash)}
+.vs-head>span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:12px}
+.vs-head>span:nth-child(3){color:var(--gold-ink)}
+@media (max-width:760px){
+  .vs-row{grid-template-columns:1fr}
+  .vs-head{display:none}
+  .vs-row>b{padding-bottom:4px}
+  .vs-row>span{padding-top:6px}
+  .vs-row>span:nth-child(2)::before{content:"Chat assistant: ";font-weight:600;color:var(--muted)}
+  .vs-row>span:nth-child(3)::before{content:"GoldenDane: ";font-weight:600;color:var(--gold-ink)}
+}
+.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:64px}
+@media (max-width:960px){.principles{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.principles{grid-template-columns:1fr}}
+.pr{display:grid;gap:10px;align-content:start;border-top:2px solid var(--ink);padding-top:18px}
+.pr h3{font-size:20px}
+.pr p{color:var(--ink-2);font-size:15.5px}
+
+/* team */
+.team-band{background:var(--surface);border-block:1px solid var(--line)}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.founders{grid-template-columns:1fr}}
+.person{display:grid;grid-template-columns:88px 1fr;gap:22px;align-items:start;padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--paper);min-width:0}
+@media (max-width:480px){.person{grid-template-columns:1fr}}
+.portrait{width:88px;height:88px;border-radius:50%;background:var(--ink);color:var(--gold-bright);display:grid;place-items:center;font-family:var(--display);font-size:28px;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.person h3{font-size:25px}
+.role{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);margin:5px 0 12px;letter-spacing:.04em}
+.person p{color:var(--ink-2);font-size:15.5px}
+.person .does{margin-top:12px;font-size:14.5px;color:var(--muted)}
+.team-note{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:15px;color:var(--ink-2)}
+.team-note span{display:inline-flex;align-items:center;gap:8px}
+.team-note i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:12px}}
+.faq-grid .section-head{position:sticky;top:100px;margin-bottom:0}
+@media (max-width:900px){.faq-grid .section-head{position:static;margin-bottom:28px}}
+.faq{display:grid;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 44px 20px 0;font-size:17.5px;font-weight:500;position:relative;transition:color .2s}
+.faq summary:hover{color:var(--gold-ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:15px;font-size:24px;font-weight:400;color:var(--gold-ink);transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--ink-2);max-width:68ch}
+
+/* contact */
+.contact{background:var(--night);color:var(--night-text)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+.contact h2{color:#fff}
+.contact .lede{color:var(--night-muted)}
+.contact .eyebrow{color:var(--gold-bright)}
+.next{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:n}
+.next li{display:grid;grid-template-columns:30px 1fr;gap:12px;color:var(--night-text);font-size:15.5px;counter-increment:n}
+.next li::before{content:counter(n);width:26px;height:26px;border-radius:50%;border:1px solid var(--gold-bright);color:var(--gold-bright);font-family:var(--mono);font-size:12.5px;display:grid;place-items:center}
+.email-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font-family:var(--mono);font-size:17px;color:#fff;text-decoration:none;border-bottom:1px solid var(--gold-bright)}
+.copy{background:transparent;color:var(--night-muted);border:1px solid var(--night-line);border-radius:999px;padding:6px 12px;font:inherit;font-size:13.5px;cursor:pointer}
+.copy:hover{color:#fff;border-color:var(--night-muted)}
+.small{font-size:14px;color:var(--night-muted)}
+.form{background:var(--night-2);border:1px solid var(--night-line);border-radius:18px;padding:28px;display:grid;gap:16px}
+.form h3{color:#fff;font-size:24px}
+.field{display:grid;gap:7px}
+.field label{font-size:14px;color:var(--night-muted)}
+.field input,.field textarea{width:100%;font:inherit;font-size:16px;color:#fff;background:var(--night);border:1px solid var(--night-line);border-radius:10px;padding:12px 14px;transition:border-color .2s}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-bright)}
+.field input::placeholder,.field textarea::placeholder{color:#62706f}
+.two-f{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.two-f{grid-template-columns:1fr}}
+.form .btn-primary{background:var(--gold-bright);color:var(--ink);box-shadow:none}
+.form .btn-primary:hover{background:#fff}
+.form .fine{font-size:13px;color:var(--night-muted)}
+.form .fine a{color:var(--night-text)}
+.founding{margin-top:8px;border-top:1px solid var(--night-line);padding-top:18px;display:grid;gap:8px}
+.founding b{color:var(--gold-bright);font-weight:500;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.founding p{font-size:14.5px;color:var(--night-text)}
+
+/* footer */
+footer{background:var(--night);color:var(--night-muted);border-top:1px solid var(--night-line);font-size:14px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding-block:44px 28px}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+.foot .logo{color:#fff}
+.foot .logo-mark{border:1px solid var(--night-line)}
+.foot .logo b{color:var(--gold-bright)}
+.foot h4{margin:0 0 10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--night-text);font-weight:500}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.foot a{color:var(--night-muted);text-decoration:none}
+.foot a:hover{color:#fff}
+.foot-blurb{margin-top:12px;max-width:36ch}
+.foot-bottom{border-top:1px solid var(--night-line);padding-block:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
 
 /* reveal */
-.reveal{transition:opacity .6s ease,transform .6s ease}
-.js .reveal.pending{opacity:0;transform:translateY(14px)}
+.reveal{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.pending{opacity:0;transform:translateY(16px)}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="GoldenDane home"><span class="logo-mark">GD</span><span>Golden<b>Dane</b></span></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#who">Who we help</a></li>
+    <a class="logo" href="#top" aria-label="GoldenDane, back to top"><span class="logo-mark" aria-hidden="true">GD</span><span>Golden<b>Dane</b></span></a>
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
         <li><a href="#xray">Process X-ray</a></li>
-        <li><a href="#what">What we build</a></li>
         <li><a href="#how">How we work</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary nav-cta" href="#contact"><span class="long">Book a workflow review</span><span class="short">Contact</span></a>
+    <div class="nav-right">
+      <a class="btn btn-primary nav-cta" href="#contact" data-book><span class="long">Book a call</span><span class="short">Contact</span></a>
+      <button class="menu-btn" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    </div>
   </div>
 </header>
 
-<main>
-<!-- 1. Promise -->
-<section class="hero">
+<main id="main">
+<!-- 1. What is this? -->
+<section class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <a class="announce" href="#xray"><span class="pill">New</span><span>Process X-ray: see where your process loses time</span><span class="arr" aria-hidden="true">→</span></a>
-      <div class="eyebrow">Applied AI · Copenhagen</div>
-      <h1>Give your team their <em>Mondays</em> back.</h1>
-      <p class="lede">GoldenDane builds AI that takes repetitive admin and document work off your team: orders, customer emails, contracts, reports. We test it on your own data before anyone relies on it.</p>
+      <div class="eyebrow">Applied AI for operations teams · Copenhagen</div>
+      <h1 id="hero-h">We automate the admin your team does <em>by hand.</em></h1>
+      <p class="lede">Orders typed into the ERP. The same customer emails, every day. Contracts read line by line. GoldenDane builds AI that does the first pass inside the systems you already use, and proves its accuracy on your own data before anyone relies on it.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#contact">Book a free 30-minute workflow review <span class="arr" aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="#story">See an example</a>
+        <a class="btn btn-primary" href="#contact" data-book>Book a free 30-min call <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="process-xray.html">See a sample report</a>
       </div>
-      <div class="proof-strip" aria-label="Key facts">
-        <span><i aria-hidden="true"></i>Founded by two DTU engineers</span>
-        <span><i aria-hidden="true"></i>Danish ApS · CVR 46351789</span>
-        <span><i aria-hidden="true"></i>Fixed-price pilots</span>
-        <span><i aria-hidden="true"></i>Every answer linked to its source</span>
+      <div class="founder-line">
+        <span class="avatars" aria-hidden="true"><span class="av">SG</span><span class="av">VI</span></span>
+        <span>You talk directly to <b>Soheil and Vadim</b>, the two DTU engineers who scope, build and support your system.</span>
       </div>
     </div>
 
-    <div>
-      <div class="mock" role="img" aria-label="Illustration of a GoldenDane tender review: requirements extracted from a 412-page tender, each linked to its page, two flagged for a human to check.">
-        <div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Tender review · Harbour bridge</span></div>
-        <div class="mock-body">
-          <div class="doc-line"><span class="name">Tender package (7 files)</span><span class="meta">412 pages · read in 6 min</span></div>
-          <div class="req">
-            <div class="req-top"><span class="req-id">REQ-014 · Structural</span><span class="tag ok">Matched</span></div>
-            <p>Fatigue design for steel components per EN 1993-1-9, detail category ≥ 71.</p>
-            <span class="src">↳ Specification B, p. 87 §4.3.2</span>
+    <div class="mock-wrap">
+      <div class="mock auto" id="mock" aria-roledescription="carousel" aria-label="Examples of what GoldenDane systems do">
+        <div class="mock-tabs" role="tablist" aria-label="Example workflows">
+          <button class="mock-tab" role="tab" id="tab-0" aria-controls="pan-0" aria-selected="true">Order intake<span class="prog"></span></button>
+          <button class="mock-tab" role="tab" id="tab-1" aria-controls="pan-1" aria-selected="false" tabindex="-1">Customer email<span class="prog"></span></button>
+          <button class="mock-tab" role="tab" id="tab-2" aria-controls="pan-2" aria-selected="false" tabindex="-1">Tender review<span class="prog"></span></button>
+        </div>
+        <div class="mock-stage">
+          <!-- Order intake -->
+          <div class="panel" role="tabpanel" id="pan-0" aria-labelledby="tab-0">
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Order inbox → ERP</span><span>09:41</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">Email from Purchasing, customer #2041</span><span class="meta">PDF order · read in 9 s</span></div>
+              <div class="olines">
+                <div class="oline"><span>Oak board 22×145, 3.0 m<span class="sku">SKU 10-2215 · price list B</span></span><span class="q">240 pcs</span><span class="tag ok">Matched</span></div>
+                <div class="oline"><span>Deck screws A4 5×60<span class="sku">SKU 33-0560 · box of 200</span></span><span class="q">12 box</span><span class="tag ok">Matched</span></div>
+                <div class="oline"><span>Galvanised post anchor<span class="sku">SKU 41-0090 · stock 64</span></span><span class="q">80 pcs</span><span class="tag check">Check</span></div>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Flagged for a person</span></div>
+                <p>80 anchors ordered, 64 in stock. Split the delivery or offer the 41-0095 alternative?</p>
+                <span class="src">↳ Stock: warehouse 1 · Customer terms: partial delivery allowed</span>
+              </div>
+            </div>
+            <div class="mock-foot"><span><b>3</b> lines · <b>1</b> needs a human · delivery Thu 15 Oct</span><span class="approve">Post to ERP</span></div>
           </div>
-          <div class="req">
-            <div class="req-top"><span class="req-id">REQ-022 · Documentation</span><span class="tag check">Check</span></div>
-            <p>As-built BIM model to be delivered within 30 days, IFC 4. Conflicts with Appendix 2 (60 days).</p>
-            <span class="src">↳ Contract, p. 12 · Appendix 2, p. 3</span>
+          <!-- Customer email -->
+          <div class="panel" role="tabpanel" id="pan-1" aria-labelledby="tab-1" hidden>
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Customer service · shared inbox</span><span>10:12</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">New email · order #10482</span><span class="meta">Topic: delivery + returns</span></div>
+              <div class="req quote">
+                <p>“Hi, my order hasn't arrived yet. If it comes after the weekend, can I still return it?”</p>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Draft reply</span><span class="tag ok">Sources found</span></div>
+                <p>Hi Anna, your order left our warehouse on 6 October and is out for delivery today. And yes: you can return it within 30 days of delivery, free of charge.</p>
+                <span class="src">↳ Order system #10482 · Returns policy §2</span>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Same queue</span><span class="tag ok">11 drafted</span></div>
+                <p>11 more delivery-status emails drafted and waiting for a quick review.</p>
+              </div>
+            </div>
+            <div class="mock-foot"><span>Drafted in <b>4 s</b> · in your house style</span><span class="approve">Approve &amp; send</span></div>
           </div>
-          <div class="req">
-            <div class="req-top"><span class="req-id">REQ-031 · Environment</span><span class="tag ok">Matched</span></div>
-            <p>Noise limit 55 dB(A) at nearest dwelling, weekdays 07–18.</p>
-            <span class="src">↳ Environmental terms, p. 5</span>
+          <!-- Tender review -->
+          <div class="panel" role="tabpanel" id="pan-2" aria-labelledby="tab-2" hidden>
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Tender review · harbour bridge</span><span>08:10</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">Tender package (7 files)</span><span class="meta">412 pages · read in 6 min</span></div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">REQ-014 · Structural</span><span class="tag ok">Matched</span></div>
+                <p>Fatigue design for steel components per EN 1993-1-9, detail category ≥ 71.</p>
+                <span class="src">↳ Specification B, p. 87 §4.3.2</span>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">REQ-022 · Documentation</span><span class="tag check">Check</span></div>
+                <p>As-built BIM model due within 30 days. Conflicts with Appendix 2 (60 days).</p>
+                <span class="src">↳ Contract, p. 12 · Appendix 2, p. 3</span>
+              </div>
+            </div>
+            <div class="mock-foot"><span><b>143</b> requirements · <b>2</b> need a human</span><span class="approve">Review &amp; approve</span></div>
           </div>
         </div>
-        <div class="mock-foot"><span><b>143</b> requirements · <b>2</b> need a human</span><span class="approve">Review &amp; approve</span></div>
       </div>
-      <div class="illus">Illustration · not client data</div>
+      <div class="illus">Illustrations of our systems · not client data</div>
     </div>
   </div>
 </section>
 
-<!-- 2. User story -->
-<section class="story" id="story">
+<!-- 2. Can I trust them? -->
+<section class="trust" aria-label="Why you can trust us" style="padding-block:0">
+  <div class="wrap trust-grid">
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10m14 11V10M9 21v-7h6v7M2 10l10-6 10 6z"/></svg>
+      <h3>Registered Danish company</h3>
+      <p>GoldenDane ApS · CVR 46351789. <a href="https://datacvr.virk.dk/enhed/virksomhed/46351789" target="_blank" rel="noopener">Verify on virk.dk&nbsp;↗</a></p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round"/></svg>
+      <h3>GDPR before anything else</h3>
+      <p>Data processing agreement signed before we see any data. EU processing where possible.</p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 15h5" stroke-linecap="round"/></svg>
+      <h3>Fixed price, no lock-in</h3>
+      <p>Pilots are priced up front. You decide what happens after you've seen the results.</p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke-linecap="round"/></svg>
+      <h3>Measured, not promised</h3>
+      <p>We report accuracy on your own data before go-live, and keep measuring after.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. What exactly do they do? -->
+<section id="services">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">One example: a typical Monday</div>
-      <h2>Meet Mette. She's a bid manager, not a copy-paste machine.</h2>
-      <p class="lede">Mette works at a 60-person engineering consultancy. A new tender lands every week, and each one is hundreds of pages long. Here's her day before and after.</p>
+      <div class="eyebrow">What we do</div>
+      <h2>We take the repetitive work. Your team keeps the final say.</h2>
+      <p class="lede">These are the three kinds of work we automate most. Each runs inside the systems you already use, flags anything it isn't sure about, and links every answer to where it came from.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></i>01 · Orders and invoices</div>
+        <h3>From inbox to ERP, without retyping.</h3>
+        <ul>
+          <li><span>Reads orders, quotes and invoices from email and PDF.</span></li>
+          <li><span>Matches customers, items and prices against your own master data.</span></li>
+          <li><span>Posts clean orders to your ERP and sends the exceptions to a person.</span></li>
+        </ul>
+        <p class="for"><b>For</b> order desks, wholesalers, brands and finance teams.</p>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></i>02 · Customer emails</div>
+        <h3>Replies drafted from your own policies.</h3>
+        <ul>
+          <li><span>Sorts incoming email by topic and urgency.</span></li>
+          <li><span>Drafts answers using your order data, policies and tone of voice.</span></li>
+          <li><span>Nothing is sent until someone on your team approves it.</span></li>
+        </ul>
+        <p class="for"><b>For</b> customer service, webshops, travel, utilities and property managers.</p>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></i>03 · Documents and contracts</div>
+        <h3>Hundreds of pages, checked in minutes.</h3>
+        <ul>
+          <li><span>Contracts, tenders, policies, specifications and compliance files.</span></li>
+          <li><span>Key terms, requirements and deviations, each linked to the exact clause or page.</span></li>
+          <li><span>Conflicts and gaps flagged for your expert to decide.</span></li>
+        </ul>
+        <p class="for"><b>For</b> law firms, brokers, accountants, engineering and construction.</p>
+      </article>
+    </div>
+    <div class="svc-more">
+      <article class="wide xray reveal">
+        <div class="eyebrow">Not sure where to start?</div>
+        <h3>Begin with a two-week Process X-ray.</h3>
+        <p>We analyse one export from your ERP, ticketing or case system and show you where work really waits, loops and piles up. No system access, fixed price.</p>
+        <p><a class="link" href="#xray">How the X-ray works →</a></p>
+      </article>
+      <article class="wide proc reveal">
+        <div class="txt">
+          <div class="eyebrow">Also: industrial processes</div>
+          <h3>AI on top of your control system, not instead of it.</h3>
+          <p>Setpoint optimisation, soft sensors and early warnings for district heating, water, and process manufacturing. Tested in simulation on your history first.</p>
+        </div>
+        <div class="mini-chart" role="img" aria-label="Illustration: a fixed setpoint stays high all day, while an AI-optimised setpoint follows demand and runs lower most of the time.">
+          <svg viewBox="0 0 180 90" aria-hidden="true">
+            <line x1="0" y1="20" x2="180" y2="20" stroke="var(--ink-2)" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <path d="M0 58 C20 56 30 50 48 32 C60 22 72 34 88 50 C104 64 118 62 132 46 C144 34 154 30 166 42 C172 48 176 54 180 56 L180 88 L0 88Z" fill="var(--gold-wash)"/>
+            <path d="M0 58 C20 56 30 50 48 32 C60 22 72 34 88 50 C104 64 118 62 132 46 C144 34 154 30 166 42 C172 48 176 54 180 56" fill="none" stroke="var(--gold)" stroke-width="2.2"/>
+          </svg>
+          <div class="cap">— fixed setpoint · <span style="color:var(--gold-ink)">— AI-optimised</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Is it for me? -->
+<section id="who" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Who we help</div>
+      <h2>If your team retypes, copies or answers the same thing every week, we can probably help.</h2>
+      <p class="lede">You don't need to be technical, and you don't need new software. These are the teams we build for.</p>
+    </div>
+    <div class="ind">
+      <div class="ind-row"><h3>Order desks · wholesale and brands</h3><p>Orders and invoices entered automatically. Your team checks the exceptions.</p></div>
+      <div class="ind-row"><h3>Customer service</h3><p>"Where's my order" and returns answered in draft from your own data.</p></div>
+      <div class="ind-row"><h3>Law firms and legal teams</h3><p>Key terms and deviations, each linked to the exact clause.</p></div>
+      <div class="ind-row"><h3>Insurance and pension brokers</h3><p>Quotes and policy wordings compared side by side, with sources.</p></div>
+      <div class="ind-row"><h3>Property managers and estate agents</h3><p>Tenant emails, leases and move-out paperwork sorted and drafted.</p></div>
+      <div class="ind-row"><h3>Accounting and finance teams</h3><p>Receipts and invoices extracted and checked, reminders drafted.</p></div>
+      <div class="ind-row"><h3>Engineering and construction</h3><p>Requirements lists and conflict checks from tenders in minutes.</p></div>
+      <div class="ind-row"><h3>Case handling · insurers, municipalities, unemployment funds</h3><p>A Process X-ray shows where cases wait. Then we fix it.</p></div>
+    </div>
+    <p class="ind-more">Don't see your team? <a class="link" href="#contact">Tell us which task eats your week</a> and we'll say honestly whether we can help.</p>
+  </div>
+</section>
+
+<!-- 4. Show me: a worked example -->
+<section class="story" id="example">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">A worked example</div>
+      <h2>Mette is a bid manager, not a copy-paste machine.</h2>
+      <p class="lede">Mette works at a 60-person engineering consultancy. A new tender lands every week, and each one runs to hundreds of pages. Here's her Monday before and after.</p>
     </div>
     <div class="timeline">
       <article class="day reveal">
@@ -362,7 +627,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <ol class="steps">
           <li><time>08:00</time><span>Downloads seven files, 412 pages in total. Opens a blank spreadsheet.</span></li>
           <li><time>09:30</time><span>A senior engineer joins to read the technical specification line by line.</span></li>
-          <li><time>13:00</time><span>Finds a deadline in an appendix that contradicts the contract. Starts over on that section.</span></li>
+          <li><time>13:00</time><span>Finds a deadline in an appendix that contradicts the contract. Starts that section again.</span></li>
           <li><time>16:30</time><span>The requirements list is "mostly done". Nobody is sure what was missed.</span></li>
         </ol>
         <div class="day-total"><span>Time spent by two people</span><strong>~14 hours</strong></div>
@@ -373,50 +638,27 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
           <li><time>08:00</time><span>Drops the tender package into the review tool.</span></li>
           <li><time>08:10</time><span>Gets 143 requirements, each linked to the exact page and paragraph.</span></li>
           <li><time>08:15</time><span>Two conflicts are flagged for a human, including the appendix deadline.</span></li>
-          <li><time>09:30</time><span>The engineer reviews the flagged items only. The list is approved and exported.</span></li>
+          <li><time>09:30</time><span>The engineer reviews only the flagged items. The list is approved and exported.</span></li>
         </ol>
         <div class="day-total"><span>Time spent by two people</span><strong>~2 hours</strong></div>
       </article>
     </div>
-    <p class="story-note">Mette is an illustrative example of the workflows we build for, not a client. Time savings depend on the documents and the team, which is why we measure them in a short pilot before you commit to anything.</p>
+    <p class="story-note">Mette is an illustrative example of the workflows we build for, not a client. Savings depend on your documents and team, which is exactly why we measure them in a short pilot before you commit to anything.</p>
   </div>
 </section>
 
-
-<!-- Who we help -->
-<section id="who" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Who we help</div>
-      <h2>If your team retypes, copies or answers the same thing every week, we can probably help.</h2>
-      <p class="lede">You don't need to be technical. These are the teams we build for, and the work we take off their plate.</p>
-    </div>
-    <div class="who-grid">
-      <article class="who reveal"><div class="who-k">Order desks · wholesale and brands</div><p class="who-pain">Orders, quotes and invoices arrive by email and PDF and get typed into the ERP by hand.</p><p class="who-fix">AI enters them. Your team checks the exceptions.</p></article>
-      <article class="who reveal"><div class="who-k">Customer service · webshops, travel, utilities</div><p class="who-pain">The same questions every day: where's my order, returns, booking changes.</p><p class="who-fix">AI drafts the answer from your own policies and order data.</p></article>
-      <article class="who reveal"><div class="who-k">Law firms and legal teams</div><p class="who-pain">Hours of contract and due-diligence review.</p><p class="who-fix">Key terms and deviations, each linked to the exact clause.</p></article>
-      <article class="who reveal"><div class="who-k">Insurance and pension brokers</div><p class="who-pain">Comparing quotes and policy wordings line by line.</p><p class="who-fix">Side-by-side comparisons, every line linked to its source.</p></article>
-      <article class="who reveal"><div class="who-k">Property managers and estate agents</div><p class="who-pain">Tenant emails, leases, move-in and move-out paperwork.</p><p class="who-fix">Sorted, drafted and summarised for a person to approve.</p></article>
-      <article class="who reveal"><div class="who-k">Accounting and finance teams</div><p class="who-pain">Receipts, invoices and chasing clients for missing documents.</p><p class="who-fix">Data extracted and checked, reminders drafted.</p></article>
-      <article class="who reveal"><div class="who-k">Engineering, construction, manufacturing</div><p class="who-pain">Tenders, specifications and quality paperwork.</p><p class="who-fix">Requirements lists and conflict checks in minutes.</p></article>
-      <article class="who reveal"><div class="who-k">Case handling · insurers, municipalities, unemployment funds</div><p class="who-pain">Cases that sit and wait between steps.</p><p class="who-fix"><a href="#xray">A Process X-ray</a> shows where, then we fix it.</p></article>
-    </div>
-    <p class="who-more">Don't see your team? <a href="#contact">Tell us which task eats your week</a> and we'll say honestly whether we can help.</p>
-  </div>
-</section>
-
-<!-- 3. Process X-ray: diagnose before you fix -->
-<section id="xray" style="padding-bottom:0">
+<!-- 5. Proof on real data -->
+<section id="xray">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Process X-ray · tested on real data</div>
       <h2>Your systems already know where the time goes. We show you.</h2>
-      <p class="lede"><b>A Process X-ray is a two-week analysis of the activity log your business systems already keep.</b> Like an X-ray, it lets you see inside without opening anything up: no new software and no access to your systems, just one data export. You get a map of how work really flows, and exactly where cases wait, loop or bounce between people.</p>
+      <p class="lede">A Process X-ray is a two-week analysis of the activity log your business systems already keep. Like an X-ray, it shows what's inside without opening anything up: no new software and no access to your systems, just one data export.</p>
     </div>
     <dl class="xfacts">
       <div><dt>You send</dt><dd>One export from your ERP, ticketing, order or claims system, with four columns: <code>case ID</code> <code>step</code> <code>timestamp</code> <code>person or team</code></dd></div>
       <div><dt>We take</dt><dd>Two weeks, at a fixed price agreed up front. We sign a data processing agreement before you send anything.</dd></div>
-      <div><dt>You get</dt><dd>A report with your process map, where the time goes, the bottlenecks, and the top fixes with estimated impact, plus a walkthrough with your team.</dd></div>
+      <div><dt>You get</dt><dd>Your real process map, where the time goes, the bottlenecks and the fixes worth making first, with estimated impact, plus a walkthrough with your team.</dd></div>
     </dl>
     <p class="xlead">Here's what an X-ray found in 4,580 real support tickets from a public dataset:</p>
     <div class="xray-grid">
@@ -433,69 +675,18 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
       </div>
       <div class="findings">
         <article class="finding reveal"><span class="big">18.0</span><h3>days to fix if nobody picks it up within 3 days</h3><p>Tickets picked up within a day were fixed in 1.2 days. The queue, not the work, made the difference.</p></article>
-        <article class="finding reveal"><span class="big">18.4</span><h3>days to fix after two or more handovers</h3><p>Tickets solved by the first person took 1 day. Every hand-off between people multiplied the time.</p></article>
-        <article class="finding reveal"><span class="big">49%</span><h3>of all handovers went through one person</h3><p>The handover network showed a single agent at the centre: a bottleneck in busy weeks and a risk when they're away.</p></article>
+        <article class="finding reveal"><span class="big">18.4</span><h3>days to fix after two or more handovers</h3><p>Tickets solved by the first person took 1 day. Every hand-off multiplied the time.</p></article>
+        <article class="finding reveal"><span class="big">49%</span><h3>of all handovers went through one person</h3><p>A bottleneck in busy weeks, and a risk whenever they're away.</p></article>
       </div>
     </div>
     <div class="xray-cta">
-      <a class="btn btn-primary" href="process-xray.html">See the full X-ray report <span class="arr" aria-hidden="true">→</span></a>
-      <a class="btn btn-ghost" href="mailto:hello@goldenda.com?subject=Process%20X-ray">Ask about an X-ray of your process</a>
+      <a class="btn btn-primary" href="process-xray.html">Read the full sample report <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="#contact" data-topic="Process X-ray">Ask about an X-ray of your process</a>
     </div>
   </div>
 </section>
 
-<!-- 4. What we build -->
-<section id="what">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">What we build</div>
-      <h2>Then we build the fix.</h2>
-      <p class="lede">Whether the problem comes from an X-ray or you already know it, we build two kinds of fixes, one way: we focus on work that is repetitive, expensive and measurable, where a well-tested AI system takes the first pass and your people keep the final say.</p>
-    </div>
-    <div class="cap-grid">
-      <article class="cap reveal">
-        <div class="cap-kicker">01 · Document workflows</div>
-        <h3>Read, extract, check. In minutes, with sources.</h3>
-        <ul>
-          <li><span><b>Orders and customer emails.</b> Entered into your ERP or answered in draft, with exceptions flagged for a person.</span></li>
-          <li><span><b>Tenders and specifications.</b> Requirements lists and conflict checks from hundreds of pages.</span></li>
-          <li><span><b>Quality and compliance files.</b> SOPs, test reports, certificates and deviation reports, drafted and checked.</span></li>
-          <li><span><b>Invoices, receipts and shipping documents.</b> Data extracted straight into your systems.</span></li>
-          <li><span><b>Internal knowledge.</b> Answers from your own manuals and project archive, with the page they came from.</span></li>
-        </ul>
-        <p class="who-for">For order desks, customer service, law firms, brokers, property managers, accounting firms, and engineering and manufacturing teams.</p>
-      </article>
-      <article class="cap reveal">
-        <div class="cap-kicker">02 · Process optimisation</div>
-        <h3>AI on top of your control system, not instead of it.</h3>
-        <div class="chart" role="img" aria-label="Illustration: supply temperature over 24 hours. A fixed PID setpoint stays high; an AI-optimised setpoint follows demand and runs lower most of the day.">
-          <svg viewBox="0 0 400 140" aria-hidden="true">
-            <g stroke="var(--line)" stroke-width="1">
-              <line x1="30" y1="20" x2="390" y2="20"/><line x1="30" y1="60" x2="390" y2="60"/><line x1="30" y1="100" x2="390" y2="100"/>
-            </g>
-            <g font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--muted)">
-              <text x="0" y="23">80°</text><text x="0" y="63">70°</text><text x="0" y="103">60°</text>
-              <text x="30" y="134">00</text><text x="120" y="134">06</text><text x="210" y="134">12</text><text x="300" y="134">18</text><text x="372" y="134">24</text>
-            </g>
-            <path d="M30 28 L390 28" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
-            <path d="M30 78 C60 76 80 70 110 44 C130 30 150 46 180 70 C210 90 240 88 270 66 C290 50 310 36 330 52 C350 66 370 80 390 82 L390 110 L30 110 Z" fill="var(--gold-wash)" stroke="none"/>
-            <path d="M30 78 C60 76 80 70 110 44 C130 30 150 46 180 70 C210 90 240 88 270 66 C290 50 310 36 330 52 C350 66 370 80 390 82" stroke="var(--gold)" stroke-width="2.5" fill="none"/>
-            <circle cx="390" cy="82" r="3.5" fill="var(--gold)"/>
-          </svg>
-          <div class="legend"><span><i style="background:var(--ink-2)"></i>Fixed setpoint (PID)</span><span><i style="background:var(--gold)"></i>AI-optimised setpoint</span><span>Illustration</span></div>
-        </div>
-        <ul>
-          <li><span><b>Setpoint optimisation.</b> Run closer to optimal on energy, yield or stability, within your safety limits.</span></li>
-          <li><span><b>Soft sensors.</b> Estimate values you can't measure continuously from the signals you already have.</span></li>
-          <li><span><b>Early warnings.</b> Spot drift and faults before they become downtime.</span></li>
-        </ul>
-        <p class="who-for">For district heating, water and wastewater, food and process manufacturing, and building energy.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 5. How we work -->
+<!-- 6. How does it work? -->
 <section id="how" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
@@ -505,32 +696,30 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     </div>
     <div class="process">
       <div class="stage reveal">
-        <div class="stage-n">Step 1</div>
+        <div class="stage-top"><span class="stage-n">1</span><span class="when">30 min · free</span></div>
         <h3>Discover</h3>
-        <div class="when">30 minutes · free</div>
         <p>You show us the workflow that eats your team's week. We ask how often it happens, who does it and which systems hold the data.</p>
-        <div class="out">You get: an honest view of whether AI can help, and roughly how much. Not sure where to start? Begin with a two-week Process X-ray.</div>
+        <div class="out">You get an honest view of whether AI can help, and roughly how much.</div>
       </div>
       <div class="stage reveal">
-        <div class="stage-n">Step 2</div>
+        <div class="stage-top"><span class="stage-n">2</span><span class="when">2–3 weeks · fixed price</span></div>
         <h3>Prove</h3>
-        <div class="when">2–3 weeks · fixed price</div>
-        <p>We build a working prototype on your real documents or historical process data, and measure its accuracy against your team's own results.</p>
-        <div class="out">You get: a working prototype, an accuracy report and the time or energy saved.</div>
+        <p>We build a working prototype on your real documents or process data and measure its accuracy against your team's own results.</p>
+        <div class="out">You get a working prototype, an accuracy report and the time saved.</div>
       </div>
       <div class="stage reveal">
-        <div class="stage-n">Step 3</div>
+        <div class="stage-top"><span class="stage-n">3</span><span class="when">When the numbers hold up</span></div>
         <h3>Deploy</h3>
-        <div class="when">When the numbers hold up</div>
-        <p>We integrate it with your systems, add access control, monitoring and human approval steps, and train your team.</p>
-        <div class="out">You get: a system in daily use, with support and continuous improvement.</div>
+        <p>We connect it to your systems, add access control, monitoring and approval steps, and train your team.</p>
+        <div class="out">You get a system in daily use, with support and ongoing improvement.</div>
       </div>
     </div>
+    <p class="process-note">From the first call to measured results: typically about a month.</p>
   </div>
 </section>
 
-<!-- Principles -->
-<section style="padding-top:0">
+<!-- 7. Why not just ChatGPT? -->
+<section id="why" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Why not just use ChatGPT?</div>
@@ -540,130 +729,227 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     <div class="vs" role="table" aria-label="A chat assistant compared with a GoldenDane system">
       <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">A chat assistant</span><span role="columnheader">A GoldenDane system</span></div>
       <div class="vs-row" role="row"><b role="rowheader">Where it works</b><span role="cell">In a chat window. Someone pastes the email or PDF in and copies the answer out.</span><span role="cell">Inside your inbox, ERP or case system. Work flows in and out without copy-paste.</span></div>
-      <div class="vs-row" role="row"><b role="rowheader">Who runs it</b><span role="cell">A person, every time, when they remember to.</span><span role="cell">It runs by itself all day. Your team only handles the cases it flags.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Who runs it</b><span role="cell">A person, every time, when they remember to.</span><span role="cell">It runs by itself all day. Your team only handles what it flags.</span></div>
       <div class="vs-row" role="row"><b role="rowheader">How you know it's right</b><span role="cell">Only if someone checks every answer.</span><span role="cell">We measure accuracy on your own data before go-live, and keep measuring after.</span></div>
       <div class="vs-row" role="row"><b role="rowheader">Your data</b><span role="cell">Depends on which account and settings each employee happens to use.</span><span role="cell">A signed data processing agreement, EU processing where possible, no training on your data, access control and an audit trail.</span></div>
-      <div class="vs-row" role="row"><b role="rowheader">When something changes</b><span role="cell">The prompt quietly stops working.</span><span role="cell">We monitor it and fix it. You have one party responsible for it: us.</span></div>
-    </div>
-    <div class="section-head" style="margin:72px 0 32px">
-      <div class="eyebrow">How we work with you</div>
-      <h2>We measure. We don't just promise.</h2>
+      <div class="vs-row" role="row"><b role="rowheader">When something changes</b><span role="cell">The prompt quietly stops working.</span><span role="cell">We monitor it and fix it. One party is responsible: us.</span></div>
     </div>
     <div class="principles">
       <div class="pr reveal"><h3>Tested before trusted</h3><p>Every system is evaluated on a labelled sample of your own data, and you see the accuracy before it goes live.</p></div>
-      <div class="pr reveal"><h3>Sources, always</h3><p>Every extracted value and answer links back to the page, paragraph or signal it came from. No black boxes.</p></div>
+      <div class="pr reveal"><h3>Sources, always</h3><p>Every extracted value and answer links back to the page, paragraph or record it came from.</p></div>
       <div class="pr reveal"><h3>People decide</h3><p>AI takes the first pass. Your team approves, corrects and stays accountable, with a full audit trail.</p></div>
-      <div class="pr reveal"><h3>Your data stays yours</h3><p>We agree data handling in writing before we start, and we never use your data to train models for anyone else.</p></div>
+      <div class="pr reveal"><h3>Your data stays yours</h3><p>Data handling agreed in writing before we start. Never used to train models for anyone else.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 5. Team -->
-<section class="founders-band" id="team">
+<!-- 8. Who are they? -->
+<section class="team-band" id="team">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Who we are</div>
-      <h2>Two DTU engineers who like hard problems.</h2>
-      <p class="lede">GoldenDane is a small, focused team. You talk directly to the people who build your system.</p>
+      <div class="eyebrow">Who you'll work with</div>
+      <h2>Two engineers. No account managers in between.</h2>
+      <p class="lede">GoldenDane is a small, focused team from DTU, the Technical University of Denmark. The people you meet on the first call are the people who build and support your system.</p>
     </div>
     <div class="founders">
       <article class="person reveal">
-        <div class="mono" aria-hidden="true">SG</div>
+        <div class="portrait" aria-hidden="true">SG</div>
         <div>
           <h3>Soheil Ghoreishi</h3>
           <div class="role">Co-founder · CEO</div>
-          <p>Studying for an MSc in Human-Centered Artificial Intelligence at DTU. Soheil leads client work: he maps your workflow, scopes the pilot and makes sure the result is measured in hours and kroner, not buzzwords.</p>
+          <p>MSc student in Human-Centered Artificial Intelligence at DTU. Soheil leads client work: he maps your workflow, scopes the pilot and makes sure results are measured in hours and kroner, not buzzwords.</p>
+          <p class="does">Your first call and your main contact.</p>
         </div>
       </article>
       <article class="person reveal">
-        <div class="mono" aria-hidden="true">VI</div>
+        <div class="portrait" aria-hidden="true">VI</div>
         <div>
           <h3>Vadim Ionas</h3>
           <div class="role">Co-founder · CTO</div>
-          <p>Olympiad medalist with a background in algorithms, applied mathematics and machine learning. Vadim designs and builds the systems, from document pipelines to control and optimisation models.</p>
+          <p>Olympiad medalist with a background in algorithms, applied mathematics and machine learning. Vadim designs and builds the systems, from document pipelines to optimisation models.</p>
+          <p class="does">Builds and tests your system.</p>
         </div>
       </article>
     </div>
-    <div class="chess reveal">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 34h12M15 30h10l-1.5-8 3-3-2-2c1.5-3 0-7-4.5-7s-6 4-4.5 7l-2 2 3 3z" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <p><b>Research on the side:</b> we also work on fair-play analysis for online chess, adapting state-of-the-art engine evaluation to spot play that doesn't add up.</p>
+    <div class="team-note">
+      <span><i aria-hidden="true"></i>Based in Copenhagen</span>
+      <span><i aria-hidden="true"></i>GoldenDane ApS · CVR 46351789</span>
+      <span><i aria-hidden="true"></i>Reply within one working day</span>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- 9. Objections -->
 <section id="faq">
-  <div class="wrap">
+  <div class="wrap faq-grid">
     <div class="section-head">
       <div class="eyebrow">Questions</div>
       <h2>What people usually ask us.</h2>
+      <p class="lede" style="font-size:17px">Something else? Write to <a class="link" href="mailto:hello@goldenda.com">hello@goldenda.com</a>.</p>
     </div>
     <div class="faq">
-      <details><summary>We're not an AI company. Is this for us?</summary><p>Yes, that's who it's for. You don't need data scientists or new software. If your team repeats the same orders, emails, documents or process work every week, we can usually tell in one 30-minute call whether it's worth automating.</p></details>
-      <details><summary>What exactly is a Process X-ray?</summary><p>A two-week, fixed-price analysis of the activity log one of your business systems already keeps. It has nothing to do with medical imaging: we call it an X-ray because it shows what happens inside a process without changing anything. You get a map of how cases really flow, where time is lost, who is overloaded, and the fixes worth making first. <a href="process-xray.html">See an example report</a>.</p></details>
-      <details><summary>Can't we just use ChatGPT or Copilot?</summary><p>For one person's one-off tasks, often yes. But a chat window doesn't read your inbox, enter orders in your ERP or run on its own, and nobody measures whether its answers are right. We build the system around the model: connected to your tools, tested on your data, covered by a data processing agreement, and maintained by us. If a chat assistant is all you need, we'll tell you so on the first call.</p></details>
-      <details><summary>What do you need from us for a Process X-ray?</summary><p>One export from the system where the work happens (ERP, ticketing, order or claims system) with four columns: case ID, step, timestamp and person or team. Usually a few months of history. We never need access to your systems, and we sign a data processing agreement before you send anything.</p></details>
-      <details><summary>What does a pilot cost?</summary><p>A Prove pilot is a fixed price agreed up front, scoped to one workflow and two to three weeks of work. We'll give you the number after the free discovery call, once we know the size of the problem.</p></details>
-      <details><summary>What happens to our data?</summary><p>We agree a data processing agreement before we touch anything, keep processing inside the EU where possible, delete working copies when the project ends, and never use your data to train models for other clients.</p></details>
-      <details><summary>Will it replace our control system?</summary><p>No. For process work, the AI sits on top of your existing PID and SCADA control and suggests or sets better setpoints within limits you define. It's tested in simulation on your historical data first, and your operators can always override it.</p></details>
-      <details><summary>You're a young company. Why should we trust you?</summary><p>Fair question. That's why we start with a small, fixed-price pilot and show measured results before you commit to more. You also work directly with the two engineers who build your system.</p></details>
+      <details><summary>We're not an AI company. Is this for us?</summary><p>Yes, that's exactly who it's for. You don't need data scientists or new software. If your team repeats the same orders, emails, documents or process work every week, we can usually tell in one 30-minute call whether it's worth automating.</p></details>
+      <details><summary>What happens on the free 30-minute call?</summary><p>You walk us through one workflow that takes up your team's time. We ask a few questions about volume, systems and data, and tell you honestly whether AI can help, what a pilot would look like and what it would involve. No slides and no obligation.</p></details>
+      <details><summary>What does a pilot cost?</summary><p>A pilot is a fixed price agreed up front, scoped to one workflow and two to three weeks of work. We give you the number after the free call, once we know the size of the problem, and you decide whether to go ahead.</p></details>
+      <details><summary>What happens to our data?</summary><p>We sign a data processing agreement before we touch anything, keep processing inside the EU where possible, delete working copies when the project ends, and never use your data to train models for other clients.</p></details>
+      <details><summary>Can't we just use ChatGPT or Copilot?</summary><p>For one person's one-off tasks, often yes. But a chat window doesn't read your inbox, enter orders in your ERP or run on its own, and nobody measures whether its answers are right. We build the system around the model: connected to your tools, tested on your data, covered by a data processing agreement, and maintained by us. If a chat assistant is all you need, we'll tell you on the first call.</p></details>
+      <details><summary>What exactly is a Process X-ray?</summary><p>A two-week, fixed-price analysis of the activity log one of your business systems already keeps. We call it an X-ray because it shows what happens inside a process without changing anything. You get a map of how cases really flow, where time is lost, who is overloaded, and the fixes worth making first. All we need is one export with four columns: case ID, step, timestamp and person or team. We never need access to your systems.</p></details>
+      <details><summary>Will it replace our control system?</summary><p>No. For industrial processes, the AI sits on top of your existing PID and SCADA control and suggests or sets better setpoints within limits you define. It's tested in simulation on your historical data first, and your operators can always override it.</p></details>
+      <details><summary>You're a young company. Why should we trust you?</summary><p>Fair question. That's why we start with a small, fixed-price pilot and show measured results before you commit to more. You work directly with the two engineers who build your system, everything is covered by a written agreement, and you can verify our company registration on virk.dk.</p></details>
     </div>
   </div>
 </section>
 
-<!-- 6. Contact -->
+<!-- 10. How do I talk to them? -->
 <section class="contact" id="contact">
   <div class="wrap contact-grid">
-    <div style="display:grid;gap:22px">
+    <div style="display:grid;gap:24px">
       <div class="eyebrow">Let's talk</div>
       <h2>Which workflow eats your team's week?</h2>
-      <p class="lede">Tell us in two or three sentences. We'll reply within one working day and suggest a time for a free 30-minute workflow review.</p>
+      <p class="lede">Tell us in two or three sentences. Here's what happens next:</p>
+      <ol class="next">
+        <li><span>We reply within one working day and suggest a time.</span></li>
+        <li><span>A free 30-minute call with both founders, on video or by phone.</span></li>
+        <li><span>If it's a fit, a written fixed-price pilot proposal. If not, we tell you.</span></li>
+      </ol>
       <div class="email-row">
         <a class="email" href="mailto:hello@goldenda.com?subject=Workflow%20review">hello@goldenda.com</a>
         <button class="copy" type="button" id="copyEmail">Copy address</button>
       </div>
       <p class="small">GoldenDane ApS · CVR 46351789 · Copenhagen, Denmark</p>
     </div>
-    <aside class="offer">
-      <div class="eyebrow">Founding clients</div>
-      <h3>We're taking on three founding clients.</h3>
-      <ul>
-        <li>A reduced price on a Process X-ray or pilot, in exchange for honest feedback</li>
-        <li>Direct access to both founders throughout</li>
-        <li>You decide what happens after the pilot, with no lock-in</li>
-      </ul>
-      <a class="btn btn-primary" href="mailto:hello@goldenda.com?subject=Founding%20client%20pilot">Ask about a founding pilot <span class="arr" aria-hidden="true">→</span></a>
-    </aside>
+    <form class="form" id="contactForm" novalidate>
+      <h3>Request a workflow review</h3>
+      <div class="two-f">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" required></div>
+      </div>
+      <div class="field"><label for="f-msg">Which task takes up your team's time?</label><textarea id="f-msg" name="msg" placeholder="e.g. We get 150 orders a week by email and type them into our ERP by hand." required></textarea></div>
+      <button class="btn btn-primary" type="submit">Send request <span class="arr" aria-hidden="true">→</span></button>
+      <p class="fine">This opens a pre-filled email to hello@goldenda.com from your own mail app. See our <a href="privacy.html">privacy notice</a>.</p>
+      <div class="founding">
+        <b>Founding clients</b>
+        <p>We're taking on three founding clients: a reduced price on an X-ray or pilot in exchange for honest feedback, and direct access to both founders throughout.</p>
+      </div>
+    </form>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="yr">2026</span> GoldenDane ApS · CVR 46351789 · Copenhagen</span>
-    <span><a href="process-xray.html">Process X-ray demo</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:hello@goldenda.com">hello@goldenda.com</a></span>
+    <div>
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">GD</span><span>Golden<b>Dane</b></span></a>
+      <p class="foot-blurb">Applied AI for operations teams. We automate orders, customer emails and document work, and show you where your processes lose time.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li>GoldenDane ApS</li>
+        <li>CVR 46351789</li>
+        <li>Copenhagen, Denmark</li>
+        <li><a href="mailto:hello@goldenda.com">hello@goldenda.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="process-xray.html">Sample Process X-ray</a></li>
+        <li><a href="#how">How we work</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="yr">2026</span> GoldenDane ApS</span>
+    <span>No cookies, no tracking on this site.</span>
   </div>
 </footer>
 
 <script>
+/* Optional: paste a Cal.com / Calendly link here and every "Book" button goes straight to the calendar. */
+const BOOKING_URL = '';
+const EMAIL = 'hello@goldenda.com';
+
 document.documentElement.classList.add('js');
 document.getElementById('yr').textContent = new Date().getFullYear();
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (BOOKING_URL) document.querySelectorAll('[data-book]').forEach(a => { a.href = BOOKING_URL; a.target = '_blank'; a.rel = 'noopener'; });
+
+// Sticky nav border + active section
 const nav = document.querySelector('header.nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+const links = [...document.querySelectorAll('.nav-links a')];
+if ('IntersectionObserver' in window) {
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  links.forEach(l => { const s = document.querySelector(l.getAttribute('href')); if (s) spy.observe(s); });
+}
+
+// Mobile menu
+const menuBtn = document.querySelector('.menu-btn'), mainNav = document.getElementById('main-nav');
+const setMenu = open => { mainNav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+mainNav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+// Hero mock: tabs that rotate on their own until the visitor interacts
+(() => {
+  const mock = document.getElementById('mock');
+  const tabs = [...mock.querySelectorAll('[role=tab]')];
+  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+  const DUR = 7000; let i = 0, timer = null, stopped = reduce;
+  mock.style.setProperty('--dur', DUR + 'ms');
+  if (stopped) mock.classList.remove('auto');
+  const show = n => {
+    i = (n + tabs.length) % tabs.length;
+    tabs.forEach((t, k) => { const on = k === i; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; panels[k].hidden = !on;
+      const p = t.querySelector('.prog'); p.style.animation = 'none'; void p.offsetWidth; p.style.animation = ''; });
+  };
+  const schedule = () => { clearTimeout(timer); if (!stopped && !mock.classList.contains('paused')) timer = setTimeout(() => { show(i + 1); schedule(); }, DUR); };
+  const stop = () => { stopped = true; clearTimeout(timer); mock.classList.remove('auto'); };
+  tabs.forEach((t, k) => t.addEventListener('click', () => { stop(); show(k); }));
+  mock.querySelector('[role=tablist]').addEventListener('keydown', e => {
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (d) { e.preventDefault(); stop(); show(i + d); tabs[i].focus(); }
+  });
+  // Pausing restarts the current step's timer on resume; the progress bar resumes from where it was.
+  mock.addEventListener('mouseenter', () => { mock.classList.add('paused'); clearTimeout(timer); });
+  mock.addEventListener('mouseleave', () => { mock.classList.remove('paused'); schedule(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
+  show(0); schedule();
+})();
+
+// Contact: copy address, and a form that composes an email
 document.getElementById('copyEmail').addEventListener('click', e => {
   const b = e.currentTarget;
   const done = () => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy address', 1600); };
-  try { navigator.clipboard.writeText('hello@goldenda.com').then(done, () => { b.textContent = 'hello@goldenda.com'; }); }
-  catch (_) { b.textContent = 'hello@goldenda.com'; }
+  try { navigator.clipboard.writeText(EMAIL).then(done, () => { b.textContent = EMAIL; }); } catch (_) { b.textContent = EMAIL; }
 });
+document.querySelectorAll('[data-topic]').forEach(a => a.addEventListener('click', () => {
+  const m = document.getElementById('f-msg'); if (!m.value) m.value = 'We would like to hear about a ' + a.dataset.topic + ' of our process: ';
+}));
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.currentTarget, v = k => f.elements[k].value.trim();
+  const missing = ['name','company','msg'].find(k => !v(k));
+  if (missing) { f.elements[missing].focus(); f.elements[missing].style.borderColor = 'var(--gold-bright)'; return; }
+  const subject = 'Workflow review: ' + v('company');
+  const body = v('msg') + '\n\n' + v('name') + '\n' + v('company');
+  location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+
 // Gentle reveal: content is visible by default; only elements below the fold fade in.
-if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const els = [...document.querySelectorAll('.reveal')].filter(el => el.getBoundingClientRect().top > innerHeight);
+if ('IntersectionObserver' in window && !reduce) {
+  const els = [...document.querySelectorAll('.reveal, .bars')].filter(el => el.getBoundingClientRect().top > innerHeight);
   els.forEach(el => el.classList.add('pending'));
   const io = new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) { en.target.classList.remove('pending'); io.unobserve(en.target); }
-  }), {rootMargin: '0px 0px -8% 0px'});
+  }), {rootMargin:'0px 0px -8% 0px'});
   els.forEach(el => io.observe(el));
 }
 </script>
