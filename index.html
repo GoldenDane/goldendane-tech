@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GoldenDane · Applied AI for technical operations</title>
-<meta name="description" content="GoldenDane ApS is a Copenhagen applied-AI company founded by two DTU engineers. A Process X-ray shows where work waits in your existing systems; then we build AI that takes repetitive document work and process tuning off your team, tested on your own data first.">
+<title>GoldenDane · Applied AI for operations teams</title>
+<meta name="description" content="GoldenDane ApS is a Copenhagen applied-AI company founded by two DTU engineers. A Process X-ray shows where work waits in your existing systems; then we build AI that takes repetitive admin and document work off your team: orders, customer emails, contracts and reports, tested on your own data first.">
 <link rel="canonical" href="https://goldenda.com/">
-<meta property="og:title" content="GoldenDane · Applied AI for technical operations">
-<meta property="og:description" content="Process X-rays that show where work waits, and AI systems for document-heavy workflows and process optimisation, built by two DTU engineers in Copenhagen.">
+<meta property="og:title" content="GoldenDane · Applied AI for operations teams">
+<meta property="og:description" content="AI that takes repetitive admin off your team: orders, customer emails, contracts and reports. Plus Process X-rays that show where work waits. Built by two DTU engineers in Copenhagen.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldenda.com/">
 <meta property="og:site_name" content="GoldenDane">
@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"GoldenDane","legalName":"GoldenDane ApS","url":"https://goldenda.com/","email":"hello@goldenda.com","vatID":"DK46351789","taxID":"46351789","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"founder":[{"@type":"Person","name":"Soheil Ghoreishi"},{"@type":"Person","name":"Vadim Ionas"}],"description":"Applied AI for technical operations: Process X-rays and AI systems for document workflows and process optimisation."}
+{"@context":"https://schema.org","@type":"Organization","name":"GoldenDane","legalName":"GoldenDane ApS","url":"https://goldenda.com/","email":"hello@goldenda.com","vatID":"DK46351789","taxID":"46351789","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"founder":[{"@type":"Person","name":"Soheil Ghoreishi"},{"@type":"Person","name":"Vadim Ionas"}],"description":"Applied AI for operations teams: automation of orders, customer emails and document work, Process X-rays, and process optimisation."}
 </script>
 <meta name="theme-color" content="#10181A">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310181A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='14' fill='%23D4AE52'%3EGD%3C/text%3E%3C/svg%3E">
@@ -215,6 +215,37 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 .foot a:hover{color:#fff}
 
 
+/* chatgpt comparison */
+.vs{display:grid;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.vs-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+.vs-row:last-child{border-bottom:0}
+.vs-row>*{padding:16px 20px;font-size:15.5px;line-height:1.5}
+.vs-row>b{font-weight:600;color:var(--ink)}
+.vs-row>span:nth-child(2){color:var(--muted)}
+.vs-row>span:nth-child(3){color:var(--ink);background:var(--gold-wash)}
+.vs-head>span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:12px}
+.vs-head>span:nth-child(3){color:#7A5A12}
+@media (max-width:760px){
+  .vs-row{grid-template-columns:1fr}
+  .vs-head{display:none}
+  .vs-row>b{padding-bottom:4px}
+  .vs-row>span{padding-top:6px}
+  .vs-row>span:nth-child(2)::before{content:"Chat assistant: ";font-weight:600;color:var(--muted)}
+  .vs-row>span:nth-child(3)::before{content:"GoldenDane: ";font-weight:600;color:#7A5A12}
+}
+
+/* who we help */
+.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1060px){.who-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.who-grid{grid-template-columns:1fr}}
+.who{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.who-k{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);line-height:1.4}
+.who-pain{font-size:15.5px;color:var(--ink-2)}
+.who-fix{font-size:15.5px;font-weight:500;color:var(--ink);border-top:1px solid var(--line);padding-top:10px}
+.who-fix a{color:var(--ink)}
+.who-more{margin-top:22px;color:var(--ink-2)}
+.who-more a{color:var(--ink);font-weight:500}
+
 /* process x-ray */
 .xray-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start}
 @media (max-width:900px){.xray-grid{grid-template-columns:1fr}}
@@ -256,7 +287,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     <a class="logo" href="#top" aria-label="GoldenDane home"><span class="logo-mark">GD</span><span>Golden<b>Dane</b></span></a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#story">The problem</a></li>
+        <li><a href="#who">Who we help</a></li>
         <li><a href="#xray">Process X-ray</a></li>
         <li><a href="#what">What we build</a></li>
         <li><a href="#how">How we work</a></li>
@@ -275,8 +306,8 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
     <div class="hero-copy">
       <a class="announce" href="#xray"><span class="pill">New</span><span>Process X-ray: see where your process loses time</span><span class="arr" aria-hidden="true">→</span></a>
       <div class="eyebrow">Applied AI · Copenhagen</div>
-      <h1>Give your engineers their <em>Mondays</em> back.</h1>
-      <p class="lede">GoldenDane builds AI systems that take repetitive document work and process tuning off technical teams. We test them on your own data before anyone relies on them.</p>
+      <h1>Give your team their <em>Mondays</em> back.</h1>
+      <p class="lede">GoldenDane builds AI that takes repetitive admin and document work off your team: orders, customer emails, contracts, reports. We test it on your own data before anyone relies on it.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Book a free 30-minute workflow review <span class="arr" aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#story">See an example</a>
@@ -321,7 +352,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 <section class="story" id="story">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">A typical Monday</div>
+      <div class="eyebrow">One example: a typical Monday</div>
       <h2>Meet Mette. She's a bid manager, not a copy-paste machine.</h2>
       <p class="lede">Mette works at a 60-person engineering consultancy. A new tender lands every week, and each one is hundreds of pages long. Here's her day before and after.</p>
     </div>
@@ -351,6 +382,28 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
   </div>
 </section>
 
+
+<!-- Who we help -->
+<section id="who" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Who we help</div>
+      <h2>If your team retypes, copies or answers the same thing every week, we can probably help.</h2>
+      <p class="lede">You don't need to be technical. These are the teams we build for, and the work we take off their plate.</p>
+    </div>
+    <div class="who-grid">
+      <article class="who reveal"><div class="who-k">Order desks · wholesale and brands</div><p class="who-pain">Orders, quotes and invoices arrive by email and PDF and get typed into the ERP by hand.</p><p class="who-fix">AI enters them. Your team checks the exceptions.</p></article>
+      <article class="who reveal"><div class="who-k">Customer service · webshops, travel, utilities</div><p class="who-pain">The same questions every day: where's my order, returns, booking changes.</p><p class="who-fix">AI drafts the answer from your own policies and order data.</p></article>
+      <article class="who reveal"><div class="who-k">Law firms and legal teams</div><p class="who-pain">Hours of contract and due-diligence review.</p><p class="who-fix">Key terms and deviations, each linked to the exact clause.</p></article>
+      <article class="who reveal"><div class="who-k">Insurance and pension brokers</div><p class="who-pain">Comparing quotes and policy wordings line by line.</p><p class="who-fix">Side-by-side comparisons, every line linked to its source.</p></article>
+      <article class="who reveal"><div class="who-k">Property managers and estate agents</div><p class="who-pain">Tenant emails, leases, move-in and move-out paperwork.</p><p class="who-fix">Sorted, drafted and summarised for a person to approve.</p></article>
+      <article class="who reveal"><div class="who-k">Accounting and finance teams</div><p class="who-pain">Receipts, invoices and chasing clients for missing documents.</p><p class="who-fix">Data extracted and checked, reminders drafted.</p></article>
+      <article class="who reveal"><div class="who-k">Engineering, construction, manufacturing</div><p class="who-pain">Tenders, specifications and quality paperwork.</p><p class="who-fix">Requirements lists and conflict checks in minutes.</p></article>
+      <article class="who reveal"><div class="who-k">Case handling · insurers, municipalities, unemployment funds</div><p class="who-pain">Cases that sit and wait between steps.</p><p class="who-fix"><a href="#xray">A Process X-ray</a> shows where, then we fix it.</p></article>
+    </div>
+    <p class="who-more">Don't see your team? <a href="#contact">Tell us which task eats your week</a> and we'll say honestly whether we can help.</p>
+  </div>
+</section>
 
 <!-- 3. Process X-ray: diagnose before you fix -->
 <section id="xray" style="padding-bottom:0">
@@ -404,12 +457,13 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <div class="cap-kicker">01 · Document workflows</div>
         <h3>Read, extract, check. In minutes, with sources.</h3>
         <ul>
+          <li><span><b>Orders and customer emails.</b> Entered into your ERP or answered in draft, with exceptions flagged for a person.</span></li>
           <li><span><b>Tenders and specifications.</b> Requirements lists and conflict checks from hundreds of pages.</span></li>
           <li><span><b>Quality and compliance files.</b> SOPs, test reports, certificates and deviation reports, drafted and checked.</span></li>
           <li><span><b>Invoices, receipts and shipping documents.</b> Data extracted straight into your systems.</span></li>
           <li><span><b>Internal knowledge.</b> Answers from your own manuals and project archive, with the page they came from.</span></li>
         </ul>
-        <p class="who-for">For engineering consultancies, manufacturers, labs, logistics and accounting firms.</p>
+        <p class="who-for">For order desks, customer service, law firms, brokers, property managers, accounting firms, and engineering and manufacturing teams.</p>
       </article>
       <article class="cap reveal">
         <div class="cap-kicker">02 · Process optimisation</div>
@@ -479,7 +533,20 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 <section style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">How we're different</div>
+      <div class="eyebrow">Why not just use ChatGPT?</div>
+      <h2>A chat window helps one person. We build a system your whole team can rely on.</h2>
+      <p class="lede">ChatGPT and Copilot are great for one-off tasks, and we use the same kind of models. The difference is everything around the model: where it runs, how it's tested, and who is responsible for it.</p>
+    </div>
+    <div class="vs" role="table" aria-label="A chat assistant compared with a GoldenDane system">
+      <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">A chat assistant</span><span role="columnheader">A GoldenDane system</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Where it works</b><span role="cell">In a chat window. Someone pastes the email or PDF in and copies the answer out.</span><span role="cell">Inside your inbox, ERP or case system. Work flows in and out without copy-paste.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Who runs it</b><span role="cell">A person, every time, when they remember to.</span><span role="cell">It runs by itself all day. Your team only handles the cases it flags.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">How you know it's right</b><span role="cell">Only if someone checks every answer.</span><span role="cell">We measure accuracy on your own data before go-live, and keep measuring after.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Your data</b><span role="cell">Depends on which account and settings each employee happens to use.</span><span role="cell">A signed data processing agreement, EU processing where possible, no training on your data, access control and an audit trail.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">When something changes</b><span role="cell">The prompt quietly stops working.</span><span role="cell">We monitor it and fix it. You have one party responsible for it: us.</span></div>
+    </div>
+    <div class="section-head" style="margin:72px 0 32px">
+      <div class="eyebrow">How we work with you</div>
       <h2>We measure. We don't just promise.</h2>
     </div>
     <div class="principles">
@@ -532,8 +599,9 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
       <h2>What people usually ask us.</h2>
     </div>
     <div class="faq">
-      <details><summary>We're not an AI company. Is this for us?</summary><p>Yes, that's who it's for. You don't need data scientists or new software. If your team repeats the same document or process work every week, we can usually tell in one 30-minute call whether it's worth automating.</p></details>
+      <details><summary>We're not an AI company. Is this for us?</summary><p>Yes, that's who it's for. You don't need data scientists or new software. If your team repeats the same orders, emails, documents or process work every week, we can usually tell in one 30-minute call whether it's worth automating.</p></details>
       <details><summary>What exactly is a Process X-ray?</summary><p>A two-week, fixed-price analysis of the activity log one of your business systems already keeps. It has nothing to do with medical imaging: we call it an X-ray because it shows what happens inside a process without changing anything. You get a map of how cases really flow, where time is lost, who is overloaded, and the fixes worth making first. <a href="process-xray.html">See an example report</a>.</p></details>
+      <details><summary>Can't we just use ChatGPT or Copilot?</summary><p>For one person's one-off tasks, often yes. But a chat window doesn't read your inbox, enter orders in your ERP or run on its own, and nobody measures whether its answers are right. We build the system around the model: connected to your tools, tested on your data, covered by a data processing agreement, and maintained by us. If a chat assistant is all you need, we'll tell you so on the first call.</p></details>
       <details><summary>What do you need from us for a Process X-ray?</summary><p>One export from the system where the work happens (ERP, ticketing, order or claims system) with four columns: case ID, step, timestamp and person or team. Usually a few months of history. We never need access to your systems, and we sign a data processing agreement before you send anything.</p></details>
       <details><summary>What does a pilot cost?</summary><p>A Prove pilot is a fixed price agreed up front, scoped to one workflow and two to three weeks of work. We'll give you the number after the free discovery call, once we know the size of the problem.</p></details>
       <details><summary>What happens to our data?</summary><p>We agree a data processing agreement before we touch anything, keep processing inside the EU where possible, delete working copies when the project ends, and never use your data to train models for other clients.</p></details>
