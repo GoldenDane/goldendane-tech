@@ -365,6 +365,8 @@ header.nav.scrolled{border-bottom-color:var(--line)}
 .form .btn-primary:hover{background:#fff}
 .form .fine{font-size:13px;color:var(--night-muted)}
 .form .fine a{color:var(--night-text)}
+.form .sent{color:var(--night-text);border-left:2px solid var(--gold-bright);padding-left:12px}
+.form .sent b{color:#fff;font-weight:500;user-select:all}
 .founding{margin-top:8px;border-top:1px solid var(--night-line);padding-top:18px;display:grid;gap:8px}
 .founding b{color:var(--gold-bright);font-weight:500;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .founding p{font-size:14.5px;color:var(--night-text)}
@@ -416,7 +418,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow">Applied AI for operations teams · Copenhagen</div>
-      <h1 id="hero-h">We automate the admin your team does <em>by hand.</em></h1>
+      <h1 id="hero-h">We automate the admin your team still does <em>by hand.</em></h1>
       <p class="lede">Orders typed into the ERP. The same customer emails, every day. Contracts read line by line. GoldenDane builds AI that does the first pass inside the systems you already use, and proves its accuracy on your own data before anyone relies on it.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact" data-book>Book a free 30-min call <span class="arr" aria-hidden="true">→</span></a>
@@ -714,7 +716,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <div class="out">You get a system in daily use, with support and ongoing improvement.</div>
       </div>
     </div>
-    <p class="process-note">From the first call to measured results: typically about a month.</p>
+    <p class="process-note">From the first call to measured results: about a month.</p>
   </div>
 </section>
 
@@ -757,7 +759,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
         <div>
           <h3>Soheil Ghoreishi</h3>
           <div class="role">Co-founder · CEO</div>
-          <p>MSc student in Human-Centered Artificial Intelligence at DTU. Soheil leads client work: he maps your workflow, scopes the pilot and makes sure results are measured in hours and kroner, not buzzwords.</p>
+          <p>Soheil leads client work: he maps your workflow, scopes the pilot and makes sure results are measured in hours and kroner, not buzzwords. He is completing an MSc in Human-Centered Artificial Intelligence at DTU.</p>
           <p class="does">Your first call and your main contact.</p>
         </div>
       </article>
@@ -827,6 +829,7 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
       <div class="field"><label for="f-msg">Which task takes up your team's time?</label><textarea id="f-msg" name="msg" placeholder="e.g. We get 150 orders a week by email and type them into our ERP by hand." required></textarea></div>
       <button class="btn btn-primary" type="submit">Send request <span class="arr" aria-hidden="true">→</span></button>
       <p class="fine">This opens a pre-filled email to hello@goldenda.com from your own mail app. See our <a href="privacy.html">privacy notice</a>.</p>
+      <p class="fine sent" id="formSent" role="status" hidden>Your mail app should open with the message ready to send. If nothing opened, copy your note and email it to <b>hello@goldenda.com</b>. We reply within one working day.</p>
       <div class="founding">
         <b>Founding clients</b>
         <p>We're taking on three founding clients: a reduced price on an X-ray or pilot in exchange for honest feedback, and direct access to both founders throughout.</p>
@@ -941,6 +944,8 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   const subject = 'Workflow review: ' + v('company');
   const body = v('msg') + '\n\n' + v('name') + '\n' + v('company');
   location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  // Many people use webmail, where mailto links open nothing: always say what to do next.
+  document.getElementById('formSent').hidden = false;
 });
 
 // Gentle reveal: content is visible by default; only elements below the fold fade in.
