@@ -17,7 +17,7 @@ Static site for GoldenDane ApS, served by GitHub Pages (custom domain in `CNAME`
 
 ## The logo
 
-Four tiles whose gaps form the Nordic cross, with one tile in gold: the piece of work that's been taken care of. Ink and gold on light backgrounds, slate and gold on dark. Keep clear space around it of at least one tile's width, and don't recolour the gold tile.
+A hallmark: the stamp a goldsmith strikes into real gold to prove it is genuine, like our promise that every system is tested before anyone relies on it. An ink octagon with a gold frame and the initials GD in Fraunces. Use `goldendane-mark-small.svg` below 24 px (no inner frame), the `-on-dark` files on dark backgrounds, and keep clear space of at least a quarter of the mark's width around it.
 
 ## Quick upgrades
 

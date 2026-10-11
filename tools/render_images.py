@@ -33,9 +33,9 @@ async def main():
         # favicon PNG for old browsers (transparent, light-tab colours)
         await shot(page(f'<img src="{(A/"favicon.svg").as_uri()}" width="32" height="32" style="display:block">'), 32, 32, A / "favicon-32.png", True)
         # Apple touch icon: opaque ink square, iOS rounds the corners itself
-        await shot(page(f'<div style="width:180px;height:180px;display:grid;place-items:center"><img src="{logo("goldendane-mark-on-dark.svg")}" width="104" height="104"></div>', "#10181A"), 180, 180, A / "apple-touch-icon.png")
+        await shot(page(f'<div style="width:180px;height:180px;display:grid;place-items:center"><img src="{logo("goldendane-mark-on-dark.svg")}" width="128" height="128"></div>', "#10181A"), 180, 180, A / "apple-touch-icon.png")
         # Logo PNGs for email signatures, documents and slides
-        for name, bg in [("goldendane-logo", "transparent"), ("goldendane-logo-on-dark", "transparent"), ("goldendane-mark", "transparent")]:
+        for name, bg in [("goldendane-logo", "transparent"), ("goldendane-logo-on-dark", "transparent"), ("goldendane-mark", "transparent"), ("goldendane-mark-on-dark", "transparent")]:
             w = 64 if "mark" in name else None
             await shot(page(f'<img src="{logo(name + ".svg")}" style="display:block;height:512px">'), (512 if "mark" in name else 1640), 512, A / "brand" / (name + ".png"), True)
         # Social share images
