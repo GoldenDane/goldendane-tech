@@ -41,7 +41,7 @@ OG_DESC = ("Ordrer, kundemails og dokumenter håndteret af AI, der arbejder i je
            "Pilotprojekter til fast pris fra en registreret dansk virksomhed.")
 
 org = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "GoldenDane", "legalName": "GoldenDane ApS",
-       "url": "https://goldenda.com/da/", "logo": "https://goldenda.com/assets/apple-touch-icon.png",
+       "url": "https://goldenda.com/da/", "logo": "https://goldenda.com/assets/brand/goldendane-mark.png",
        "image": "https://goldenda.com/og-image.png", "email": "hello@goldenda.com", "telephone": "+45 50 39 84 24",
        "taxID": "46351789", "inLanguage": "da",
        "address": {"@type": "PostalAddress", "addressLocality": "København", "addressCountry": "DK"}, "areaServed": "DK",
@@ -68,7 +68,7 @@ HEAD = f"""<html lang="da">
 <meta property="og:site_name" content="GoldenDane">
 <meta property="og:locale" content="da_DK">
 <meta property="og:locale:alternate" content="en_GB">
-<meta property="og:image" content="https://goldenda.com/og-image.png">
+<meta property="og:image" content="https://goldenda.com/og-image-da.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -100,8 +100,8 @@ R = [
     ('aria-label="Main"', 'aria-label="Hovedmenu"', 1),
     ('<li><a href="#services">Services</a></li>\n        <li><a href="#xray">Process X-ray</a></li>\n        <li><a href="#how">How we work</a></li>\n        <li><a href="#team">Team</a></li>\n        <li><a href="#faq">FAQ</a></li>',
      '<li><a href="#services">Ydelser</a></li>\n        <li><a href="#xray">Process X-ray</a></li>\n        <li><a href="#how">Sådan arbejder vi</a></li>\n        <li><a href="#team">Team</a></li>\n        <li><a href="#faq">Spørgsmål</a></li>', 1),
-    ('<a class="lang" href="da/" hreflang="da" lang="da" aria-label="Dansk version">DA</a>',
-     '<a class="lang" href="../" hreflang="en" lang="en" aria-label="English version">EN</a>', 1),
+    ('<a class="lang" href="da/" hreflang="da" lang="da" aria-label="Dansk version"><svg class="flag" viewBox="0 0 37 28" aria-hidden="true"><rect width="37" height="28" fill="#C8102E"/><path d="M12 0h4v28h-4zM0 12h37v4H0z" fill="#fff"/></svg><span class="lang-l">Dansk</span><span class="lang-s">DA</span></a>',
+     '<a class="lang" href="../" hreflang="en" lang="en" aria-label="English version"><svg class="flag" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="uk-a"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="uk-b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#uk-a)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#uk-b)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg><span class="lang-l">English</span><span class="lang-s">EN</span></a>', 1),
     ('<span class="long">Book a call</span><span class="short">Contact</span>', '<span class="long">Book et opkald</span><span class="short">Kontakt</span>', 1),
     ('aria-label="Open menu"', 'aria-label="Åbn menu"', 1),
 

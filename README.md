@@ -11,7 +11,13 @@ Static site for GoldenDane ApS, served by GitHub Pages (custom domain in `CNAME`
 | `process-xray.html` | Sample Process X-ray report on public help-desk data. |
 | `privacy.html` | Privacy notice. Keep it in sync if you add analytics, forms or third-party scripts. |
 | `assets/fonts.css`, `assets/fonts/` | Self-hosted Fraunces and IBM Plex (SIL OFL). No requests to Google. |
-| `assets/favicon.svg`, `*.png` | Icons. |
+| `assets/brand/` | Logo files: the mark alone and the full logo, as SVG (for print and design tools) and PNG (for email signatures, documents, slides). Use the `-on-dark` versions on dark backgrounds. |
+| `assets/favicon.svg`, `*.png` | Icons and social-share images (`og-image.png`, `og-image-da.png`). |
+| `tools/brand.py`, `tools/render_images.py` | Rebuild the logo SVGs, then the PNGs and share images. |
+
+## The logo
+
+Four tiles whose gaps form the Nordic cross, with one tile in gold: the piece of work that's been taken care of. Ink and gold on light backgrounds, slate and gold on dark. Keep clear space around it of at least one tile's width, and don't recolour the gold tile.
 
 ## Quick upgrades
 
