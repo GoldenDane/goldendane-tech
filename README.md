@@ -17,7 +17,7 @@ Static site for GoldenDane ApS, served by GitHub Pages (custom domain in `CNAME`
 
 ## The logo
 
-A circle with one quarter replaced by a gold square; together they read as a G. The circle is the client's operation, the gold square is the one piece we take off their hands. Ink and gold on light backgrounds, white and gold on dark (`-on-dark` files); `goldendane-badge` (the mark on an ink square) for app icons, avatars and email signatures. Keep clear space of at least the gold square's width around it, and never recolour the square.
+Three quarters of a circle and a gold square; together they read as a G. The square is exactly the size of the quarter missing from the circle: the circle is a team's workload, the gold square is the piece of work we lift off it and handle, and the open space is the time they get back. Ink and gold on light backgrounds, white and gold on dark (`-on-dark` files); `goldendane-badge` (the mark on an ink square) for app icons, avatars and email signatures. Keep clear space of at least half the square's width around it, and never recolour the square.
 
 ## Quick upgrades
 

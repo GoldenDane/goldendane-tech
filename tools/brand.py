@@ -1,9 +1,11 @@
 """Generate GoldenDane logo files.
 
-The mark: a circle with one quarter replaced by a gold square, which together
-read as a G. The circle is your operation; the gold square is the one piece we
-take off your hands. Plain geometry in the Danish modernist tradition, so it
-stays recognisable in one colour and at 16 px.
+The mark: three quarters of a circle and a gold square, which together read
+as a G. The square is exactly the size of the quarter missing from the
+circle: the circle is a team's workload, the gold square is the piece of work
+we lift off it and handle, and the open space it leaves is the time they get
+back. Plain geometry in the Danish modernist tradition, so it stays
+recognisable in one colour and at 16 px.
 
 Files in assets/brand/:
   goldendane-mark          ink + gold, for light backgrounds
@@ -30,10 +32,11 @@ OUT.mkdir(parents=True, exist_ok=True)
 INK, WHITE = "#10181A", "#FFFFFF"
 GOLD, GOLD_DEEP, GOLD_INK = "#D4AE52", "#C49A35", "#86651A"
 
-# 100-unit grid: three quarters of a disc (centre 50,50, r 38) and a gold square in the open quarter.
+# 100-unit grid: three quarters of a disc (centre 50,50, r 38) open at the top right, and a gold square
+# the size of that missing quarter (38), set 3 units down and right of the centre.
 DISC = "M50 12A38 38 0 1 0 88 50H50Z"
-SQUARE = '<rect x="54" y="54" width="34" height="34" rx="3"'
-BOX = (12, 12, 76, 76)
+SQUARE = '<rect x="53" y="53" width="38" height="38" rx="3"'
+BOX = (12, 12, 79, 79)
 
 
 def num(v):
@@ -55,7 +58,7 @@ def mark(disc, gold):
 
 
 def badge():
-    body = f'<rect width="100" height="100" rx="22" fill="{INK}"/><g transform="translate(50 50) scale(.72) translate(-50 -50)">{shapes(WHITE, GOLD)}</g>'
+    body = f'<rect width="100" height="100" rx="22" fill="{INK}"/><g transform="translate(50 50) scale(.7) translate(-51.5 -51.5)">{shapes(WHITE, GOLD)}</g>'
     return svg("0 0 100 100", 100, 100, body)
 
 
