@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://goldenda.com/</loc><lastmod>2026-10-11</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://goldenda.com/</loc><lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://goldenda.com/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://goldenda.com/da/"/></url>
+  <url><loc>https://goldenda.com/da/</loc><lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://goldenda.com/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://goldenda.com/da/"/></url>
   <url><loc>https://goldenda.com/process-xray.html</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://goldenda.com/privacy.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://goldenda.com/privacy.html</loc><lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://goldenda.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://goldenda.com/da/privatliv.html"/></url>
+  <url><loc>https://goldenda.com/da/privatliv.html</loc><lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://goldenda.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://goldenda.com/da/privatliv.html"/></url>
 </urlset>

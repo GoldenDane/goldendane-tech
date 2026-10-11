@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldenDane · AI, der tager det gentagne papirarbejde fra jeres team</title>
+<meta name="description" content="GoldenDane ApS er en københavnsk virksomhed inden for anvendt AI. Vi automatiserer ordreindtastning, kundemails og dokumentgennemgang i de systemer, I allerede bruger, og dokumenterer nøjagtigheden på jeres egne data, før jeres team stoler på den. Pilotprojekter til fast pris og databehandleraftale før data.">
+<link rel="canonical" href="https://goldenda.com/da/">
+<link rel="alternate" hreflang="en" href="https://goldenda.com/">
+<link rel="alternate" hreflang="da" href="https://goldenda.com/da/">
+<link rel="alternate" hreflang="x-default" href="https://goldenda.com/">
+<meta property="og:title" content="GoldenDane · AI, der tager det gentagne papirarbejde fra jeres team">
+<meta property="og:description" content="Ordrer, kundemails og dokumenter håndteret af AI, der arbejder i jeres systemer og testes på jeres data først. Pilotprojekter til fast pris fra en registreret dansk virksomhed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://goldenda.com/da/">
+<meta property="og:site_name" content="GoldenDane">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:image" content="https://goldenda.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#10181A">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "GoldenDane", "legalName": "GoldenDane ApS", "url": "https://goldenda.com/da/", "logo": "https://goldenda.com/assets/apple-touch-icon.png", "image": "https://goldenda.com/og-image.png", "email": "hello@goldenda.com", "telephone": "+45 50 39 84 24", "taxID": "46351789", "inLanguage": "da", "address": {"@type": "PostalAddress", "addressLocality": "København", "addressCountry": "DK"}, "areaServed": "DK", "founder": [{"@type": "Person", "name": "Soheil Ghoreishi", "jobTitle": "Medstifter og CEO"}, {"@type": "Person", "name": "Vadim Ionas", "jobTitle": "Medstifter og CTO"}], "description": "Anvendt AI til driftsteams: automatisering af ordreindtastning, kundemails og dokumentgennemgang, Process X-rays og procesoptimering."}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Vi er ikke en AI-virksomhed. Er det her for os?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, det er netop dem, det er til. I behøver ikke data scientists eller nyt software. Hvis jeres team gentager de samme ordrer, mails, dokumenter eller procesopgaver hver uge, kan vi som regel sige i ét opkald på 30 minutter, om det kan betale sig at automatisere."}}, {"@type": "Question", "name": "Hvad sker der i det gratis opkald på 30 minutter?", "acceptedAnswer": {"@type": "Answer", "text": "I viser os én arbejdsgang, der tager tid fra jeres team. Vi stiller nogle spørgsmål om mængder, systemer og data og siger ærligt, om AI kan hjælpe, hvordan et pilotprojekt ville se ud, og hvad det ville kræve. Ingen slides og ingen forpligtelser."}}, {"@type": "Question", "name": "Hvad koster et pilotprojekt?", "acceptedAnswer": {"@type": "Answer", "text": "Et pilotprojekt har en fast pris, der aftales på forhånd, og er afgrænset til én arbejdsgang og to til tre ugers arbejde. Vi giver jer prisen efter det gratis opkald, når vi kender problemets størrelse, og I beslutter, om I vil gå videre."}}, {"@type": "Question", "name": "Hvad sker der med vores data?", "acceptedAnswer": {"@type": "Answer", "text": "Vi underskriver en databehandleraftale, før vi rører noget, holder behandlingen inden for EU, hvor det er muligt, sletter arbejdskopier, når projektet slutter, og bruger aldrig jeres data til at træne modeller for andre kunder."}}, {"@type": "Question", "name": "Kan vi ikke bare bruge ChatGPT eller Copilot?", "acceptedAnswer": {"@type": "Answer", "text": "Til én persons enkeltopgaver ofte jo. Men et chatvindue læser ikke jeres indbakke, indtaster ikke ordrer i jeres ERP og kører ikke af sig selv, og ingen måler, om svarene er rigtige. Vi bygger systemet omkring modellen: koblet på jeres værktøjer, testet på jeres data, dækket af en databehandleraftale og vedligeholdt af os. Hvis en chatassistent er alt, I har brug for, siger vi det i første opkald."}}, {"@type": "Question", "name": "Hvad er et Process X-ray helt præcist?", "acceptedAnswer": {"@type": "Answer", "text": "En analyse på to uger til fast pris af den aktivitetslog, et af jeres forretningssystemer allerede gemmer. Vi kalder det et X-ray, fordi det viser, hvad der sker inde i en proces, uden at ændre noget. I får et kort over, hvordan sagerne reelt flyder, hvor tiden går tabt, hvem der er overbelastet, og hvilke forbedringer der bedst kan betale sig først. Vi skal kun bruge ét udtræk med fire kolonner: sags-ID, trin, tidsstempel og person eller team. Vi har aldrig brug for adgang til jeres systemer."}}, {"@type": "Question", "name": "Erstatter det vores styresystem?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. I industrielle processer sidder AI'en oven på jeres eksisterende PID- og SCADA-styring og foreslår eller sætter bedre setpunkter inden for grænser, I selv fastsætter. Den testes først i simulering på jeres historiske data, og jeres operatører kan altid overstyre den."}}, {"@type": "Question", "name": "I er en ung virksomhed. Hvorfor skal vi stole på jer?", "acceptedAnswer": {"@type": "Answer", "text": "Godt spørgsmål. Derfor starter vi med et lille pilotprojekt til fast pris og viser målte resultater, før I forpligter jer til mere. I arbejder direkte med de to ingeniører, der bygger jeres system, alt er dækket af en skriftlig aftale, og I kan tjekke vores registrering på virk.dk."}}]}
+</script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Spring til indhold</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="GoldenDane, til toppen"><span class="logo-mark" aria-hidden="true">GD</span><span>Golden<b>Dane</b></span></a>
+    <nav class="main-nav" id="main-nav" aria-label="Hovedmenu">
+      <ul class="nav-links">
+        <li><a href="#services">Ydelser</a></li>
+        <li><a href="#xray">Process X-ray</a></li>
+        <li><a href="#how">Sådan arbejder vi</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#faq">Spørgsmål</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="lang" href="../" hreflang="en" lang="en" aria-label="English version">EN</a>
+      <a class="btn btn-primary nav-cta" href="#contact" data-book><span class="long">Book et opkald</span><span class="short">Kontakt</span></a>
+      <button class="menu-btn" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Åbn menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- 1. What is this? -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Anvendt AI til driftsteams · København</div>
+      <h1 id="hero-h">Vi automatiserer det papirarbejde, jeres team stadig laver <em>i hånden.</em></h1>
+      <p class="lede">Ordrer, der tastes ind i ERP-systemet. De samme kundemails hver dag. Kontrakter, der læses linje for linje. GoldenDane bygger AI, der tager første gennemgang inde i de systemer, I allerede bruger, og dokumenterer nøjagtigheden på jeres egne data, før nogen stoler på den.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact" data-book>Book et gratis opkald på 30 min. <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="../process-xray.html" hreflang="en">Se en eksempelrapport</a>
+      </div>
+      <div class="founder-line">
+        <span class="avatars" aria-hidden="true"><span class="av">SG</span><span class="av">VI</span></span>
+        <span>I taler direkte med <b>Soheil og Vadim</b>, de to DTU-ingeniører, der afgrænser, bygger og supporterer jeres system.</span>
+      </div>
+    </div>
+
+    <div class="mock-wrap">
+      <div class="mock auto" id="mock" aria-roledescription="carousel" aria-label="Eksempler på, hvad GoldenDanes systemer gør">
+        <div class="mock-tabs" role="tablist" aria-label="Eksempler på arbejdsgange">
+          <button class="mock-tab" role="tab" id="tab-0" aria-controls="pan-0" aria-selected="true">Ordremodtagelse<span class="prog"></span></button>
+          <button class="mock-tab" role="tab" id="tab-1" aria-controls="pan-1" aria-selected="false" tabindex="-1">Kundemail<span class="prog"></span></button>
+          <button class="mock-tab" role="tab" id="tab-2" aria-controls="pan-2" aria-selected="false" tabindex="-1">Udbudsgennemgang<span class="prog"></span></button>
+        </div>
+        <div class="mock-stage">
+          <!-- Order intake -->
+          <div class="panel" role="tabpanel" id="pan-0" aria-labelledby="tab-0">
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Ordreindbakke → ERP</span><span>09:41</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">Mail fra Indkøb, kunde #2041</span><span class="meta">PDF-ordre · læst på 9 s</span></div>
+              <div class="olines">
+                <div class="oline"><span>Egebræt 22×145, 3,0 m<span class="sku">SKU 10-2215 · prisliste B</span></span><span class="q">240 stk.</span><span class="tag ok">Matchet</span></div>
+                <div class="oline"><span>Terrasseskruer A4 5×60<span class="sku">SKU 33-0560 · æske à 200</span></span><span class="q">12 æsker</span><span class="tag ok">Matchet</span></div>
+                <div class="oline"><span>Galvaniseret stolpesko<span class="sku">SKU 41-0090 · lager 64</span></span><span class="q">80 stk.</span><span class="tag check">Tjek</span></div>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Markeret til en person</span></div>
+                <p>80 stolpesko bestilt, 64 på lager. Del leverancen op eller tilbyd alternativet 41-0095?</p>
+                <span class="src">↳ Lager: lager 1 · Kundevilkår: dellevering tilladt</span>
+              </div>
+            </div>
+            <div class="mock-foot"><span><b>3</b> linjer · <b>1</b> kræver en person · levering tor. 15. okt.</span><span class="approve">Send til ERP</span></div>
+          </div>
+          <!-- Customer email -->
+          <div class="panel" role="tabpanel" id="pan-1" aria-labelledby="tab-1" hidden>
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Kundeservice · fælles indbakke</span><span>10:12</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">Ny mail · ordre #10482</span><span class="meta">Emne: levering + returnering</span></div>
+              <div class="req quote">
+                <p>“Hej, min ordre er ikke kommet endnu. Hvis den kommer efter weekenden, kan jeg så stadig returnere den?”</p>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Svarudkast</span><span class="tag ok">Kilder fundet</span></div>
+                <p>Hej Anna. Din ordre forlod vores lager den 6. oktober og er ude til levering i dag. Og ja: du kan returnere den gratis inden for 30 dage efter levering.</p>
+                <span class="src">↳ Ordresystem #10482 · Returpolitik §2</span>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">Samme kø</span><span class="tag ok">11 udkast</span></div>
+                <p>11 mails mere om leveringsstatus har fået et svarudkast og venter på et hurtigt kig.</p>
+              </div>
+            </div>
+            <div class="mock-foot"><span>Udkast på <b>4 s</b> · i jeres egen tone</span><span class="approve">Godkend og send</span></div>
+          </div>
+          <!-- Tender review -->
+          <div class="panel" role="tabpanel" id="pan-2" aria-labelledby="tab-2" hidden>
+            <div class="mock-bar"><span class="live"><i aria-hidden="true"></i>Udbudsgennemgang · havnebro</span><span>08:10</span></div>
+            <div class="mock-body">
+              <div class="doc-line"><span class="name">Udbudsmateriale (7 filer)</span><span class="meta">412 sider · læst på 6 min</span></div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">REQ-014 · Konstruktion</span><span class="tag ok">Matchet</span></div>
+                <p>Udmattelsesdimensionering af stålkomponenter efter EN 1993-1-9, kærvklasse ≥ 71.</p>
+                <span class="src">↳ Specifikation B, s. 87 §4.3.2</span>
+              </div>
+              <div class="req">
+                <div class="req-top"><span class="req-id">REQ-022 · Dokumentation</span><span class="tag check">Tjek</span></div>
+                <p>Som udført-BIM-model skal afleveres inden for 30 dage. Modstrider Bilag 2 (60 dage).</p>
+                <span class="src">↳ Kontrakt, s. 12 · Bilag 2, s. 3</span>
+              </div>
+            </div>
+            <div class="mock-foot"><span><b>143</b> krav · <b>2</b> kræver en person</span><span class="approve">Gennemgå og godkend</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="illus">Illustrationer af vores systemer · ikke kundedata</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Can I trust them? -->
+<section class="trust" aria-label="Hvorfor I kan stole på os" style="padding-block:0">
+  <div class="wrap trust-grid">
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10m14 11V10M9 21v-7h6v7M2 10l10-6 10 6z"/></svg>
+      <h3>Registreret dansk virksomhed</h3>
+      <p>GoldenDane ApS · CVR 46351789. <a href="https://datacvr.virk.dk/enhed/virksomhed/46351789" target="_blank" rel="noopener">Tjek os på virk.dk&nbsp;↗</a></p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round"/></svg>
+      <h3>GDPR før alt andet</h3>
+      <p>Databehandleraftale underskrevet, før vi ser data. Behandling i EU, hvor det er muligt.</p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 15h5" stroke-linecap="round"/></svg>
+      <h3>Fast pris, ingen binding</h3>
+      <p>Pilotprojekter prissættes på forhånd. I beslutter, hvad der skal ske, når I har set resultaterne.</p>
+    </div>
+    <div class="t-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke-linecap="round"/></svg>
+      <h3>Målt, ikke lovet</h3>
+      <p>Vi rapporterer nøjagtigheden på jeres egne data, før løsningen går i drift, og bliver ved med at måle bagefter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. What exactly do they do? -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Det gør vi</div>
+      <h2>Vi tager det gentagne arbejde. Jeres team har stadig det sidste ord.</h2>
+      <p class="lede">Det er de tre typer arbejde, vi oftest automatiserer. Hver løsning kører i de systemer, I allerede bruger, markerer alt, den er i tvivl om, og viser, hvor hvert svar kommer fra.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></i>01 · Ordrer og fakturaer</div>
+        <h3>Fra indbakke til ERP, uden at taste igen.</h3>
+        <ul>
+          <li><span>Læser ordrer, tilbud og fakturaer fra mail og PDF.</span></li>
+          <li><span>Matcher kunder, varer og priser med jeres egne stamdata.</span></li>
+          <li><span>Lægger rene ordrer i jeres ERP og sender undtagelserne til en person.</span></li>
+        </ul>
+        <p class="for"><b>Til</b> ordrekontorer, grossister, brands og økonomiafdelinger.</p>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></i>02 · Kundemails</div>
+        <h3>Svarudkast ud fra jeres egne regler.</h3>
+        <ul>
+          <li><span>Sorterer indgående mails efter emne og hast.</span></li>
+          <li><span>Skriver svarudkast ud fra jeres ordredata, regler og tone.</span></li>
+          <li><span>Intet bliver sendt, før en fra jeres team har godkendt det.</span></li>
+        </ul>
+        <p class="for"><b>Til</b> kundeservice, webshops, rejsebranchen, forsyning og ejendomsadministration.</p>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-k"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></i>03 · Dokumenter og kontrakter</div>
+        <h3>Hundredvis af sider, tjekket på minutter.</h3>
+        <ul>
+          <li><span>Kontrakter, udbud, politikker, specifikationer og compliance-dokumenter.</span></li>
+          <li><span>Nøglevilkår, krav og afvigelser, hver med henvisning til den præcise klausul eller side.</span></li>
+          <li><span>Konflikter og huller markeres, så jeres fagfolk kan beslutte.</span></li>
+        </ul>
+        <p class="for"><b>Til</b> advokatfirmaer, forsikringsmæglere, revisorer, rådgivende ingeniører og byggeri.</p>
+      </article>
+    </div>
+    <div class="svc-more">
+      <article class="wide xray reveal">
+        <div class="eyebrow">I tvivl om, hvor I skal starte?</div>
+        <h3>Start med et Process X-ray på to uger.</h3>
+        <p>Vi analyserer ét udtræk fra jeres ERP-, ticket- eller sagssystem og viser, hvor arbejdet faktisk venter, går i ring og hober sig op. Ingen systemadgang, fast pris.</p>
+        <p><a class="link" href="#xray">Sådan virker et X-ray →</a></p>
+      </article>
+      <article class="wide proc reveal">
+        <div class="txt">
+          <div class="eyebrow">Også: industrielle processer</div>
+          <h3>AI oven på jeres styresystem, ikke i stedet for det.</h3>
+          <p>Setpunktsoptimering, softsensorer og tidlige advarsler til fjernvarme, vand og procesindustri. Testet i simulering på jeres historiske data først.</p>
+        </div>
+        <div class="mini-chart" role="img" aria-label="Illustration: et fast setpunkt ligger højt hele dagen, mens et AI-optimeret setpunkt følger behovet og ligger lavere det meste af tiden.">
+          <svg viewBox="0 0 180 90" aria-hidden="true">
+            <line x1="0" y1="20" x2="180" y2="20" stroke="var(--ink-2)" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <path d="M0 58 C20 56 30 50 48 32 C60 22 72 34 88 50 C104 64 118 62 132 46 C144 34 154 30 166 42 C172 48 176 54 180 56 L180 88 L0 88Z" fill="var(--gold-wash)"/>
+            <path d="M0 58 C20 56 30 50 48 32 C60 22 72 34 88 50 C104 64 118 62 132 46 C144 34 154 30 166 42 C172 48 176 54 180 56" fill="none" stroke="var(--gold)" stroke-width="2.2"/>
+          </svg>
+          <div class="cap">— fast setpunkt · <span style="color:var(--gold-ink)">— AI-optimeret</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Is it for me? -->
+<section id="who" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Hvem vi hjælper</div>
+      <h2>Hvis jeres team taster, kopierer eller besvarer det samme hver uge, kan vi sandsynligvis hjælpe.</h2>
+      <p class="lede">I behøver ikke være tekniske, og I behøver ikke nyt software. Det er de teams, vi bygger til.</p>
+    </div>
+    <div class="ind">
+      <div class="ind-row"><h3>Ordrekontorer · grossister og brands</h3><p>Ordrer og fakturaer indtastes automatisk. Jeres team tjekker undtagelserne.</p></div>
+      <div class="ind-row"><h3>Kundeservice</h3><p>“Hvor er min ordre?” og returneringer besvaret i udkast ud fra jeres egne data.</p></div>
+      <div class="ind-row"><h3>Advokatfirmaer og juridiske afdelinger</h3><p>Nøglevilkår og afvigelser, hver med henvisning til den præcise klausul.</p></div>
+      <div class="ind-row"><h3>Forsikrings- og pensionsmæglere</h3><p>Tilbud og forsikringsbetingelser sammenlignet side om side, med kilder.</p></div>
+      <div class="ind-row"><h3>Ejendomsadministratorer og ejendomsmæglere</h3><p>Lejermails, lejekontrakter og fraflytningspapirer sorteret og skrevet i udkast.</p></div>
+      <div class="ind-row"><h3>Regnskab og økonomi</h3><p>Bilag og fakturaer aflæst og tjekket, rykkere skrevet i udkast.</p></div>
+      <div class="ind-row"><h3>Rådgivende ingeniører og byggeri</h3><p>Kravlister og konflikttjek fra udbud på minutter.</p></div>
+      <div class="ind-row"><h3>Sagsbehandling · forsikring, kommuner, a-kasser</h3><p>Et Process X-ray viser, hvor sagerne venter. Så løser vi det.</p></div>
+    </div>
+    <p class="ind-more">Kan I ikke se jeres team? <a class="link" href="#contact">Fortæl os, hvilken opgave der æder jeres uge</a>, så siger vi ærligt, om vi kan hjælpe.</p>
+  </div>
+</section>
+
+<!-- 4. Show me: a worked example -->
+<section class="story" id="example">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Et konkret eksempel</div>
+      <h2>Mette er tilbudsansvarlig, ikke en copy-paste-maskine.</h2>
+      <p class="lede">Mette arbejder i et rådgivende ingeniørfirma med 60 ansatte. Der lander et nyt udbud hver uge, og hvert udbud fylder hundredvis af sider. Her er hendes mandag før og efter.</p>
+    </div>
+    <div class="timeline">
+      <article class="day reveal">
+        <div class="day-head"><h3>Før</h3><span class="day-label">I hånden</span></div>
+        <ol class="steps">
+          <li><time>08:00</time><span>Downloader syv filer, 412 sider i alt. Åbner et tomt regneark.</span></li>
+          <li><time>09:30</time><span>En senioringeniør hjælper med at læse den tekniske specifikation linje for linje.</span></li>
+          <li><time>13:00</time><span>Finder en frist i et bilag, der modsiger kontrakten. Starter forfra på det afsnit.</span></li>
+          <li><time>16:30</time><span>Kravlisten er “næsten færdig”. Ingen ved med sikkerhed, hvad der er overset.</span></li>
+        </ol>
+        <div class="day-total"><span>Tid brugt af to personer</span><strong>~14 timer</strong></div>
+      </article>
+      <article class="day after reveal">
+        <div class="day-head"><h3>Med GoldenDane</h3><span class="day-label">AI laver udkastet, mennesker beslutter</span></div>
+        <ol class="steps">
+          <li><time>08:00</time><span>Lægger udbudsmaterialet i gennemgangsværktøjet.</span></li>
+          <li><time>08:10</time><span>Får 143 krav, hver med henvisning til den præcise side og det præcise afsnit.</span></li>
+          <li><time>08:15</time><span>To konflikter markeres til en person, herunder fristen i bilaget.</span></li>
+          <li><time>09:30</time><span>Ingeniøren gennemgår kun de markerede punkter. Listen godkendes og eksporteres.</span></li>
+        </ol>
+        <div class="day-total"><span>Tid brugt af to personer</span><strong>~2 timer</strong></div>
+      </article>
+    </div>
+    <p class="story-note">Mette er et illustrativt eksempel på de arbejdsgange, vi bygger til, ikke en kunde. Besparelsen afhænger af jeres dokumenter og team, og netop derfor måler vi den i et kort pilotprojekt, før I forpligter jer til noget.</p>
+  </div>
+</section>
+
+<!-- 5. Proof on real data -->
+<section id="xray">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Process X-ray · testet på rigtige data</div>
+      <h2>Jeres systemer ved allerede, hvor tiden går. Vi viser jer det.</h2>
+      <p class="lede">Et Process X-ray er en analyse på to uger af den aktivitetslog, jeres forretningssystemer allerede gemmer. Ligesom et røntgenbillede viser det, hvad der foregår indeni, uden at åbne noget: intet nyt software og ingen adgang til jeres systemer, kun ét dataudtræk.</p>
+    </div>
+    <dl class="xfacts">
+      <div><dt>I sender</dt><dd>Ét udtræk fra jeres ERP-, ticket-, ordre- eller skadesystem med fire kolonner: <code>sags-ID</code> <code>trin</code> <code>tidsstempel</code> <code>person eller team</code></dd></div>
+      <div><dt>Vi bruger</dt><dd>To uger til en fast pris, aftalt på forhånd. Vi underskriver en databehandleraftale, før I sender noget.</dd></div>
+      <div><dt>I får</dt><dd>Jeres faktiske proceskort: hvor tiden går, flaskehalsene og de forbedringer, der bedst kan betale sig først, med estimeret effekt, plus en gennemgang med jeres team.</dd></div>
+    </dl>
+    <p class="xlead">Her er, hvad et X-ray fandt i 4.580 rigtige supportsager fra et offentligt datasæt:</p>
+    <div class="xray-grid">
+      <div class="xcard reveal">
+        <div class="xcap"><b>Hvor 40 dages sagstid reelt gik hen</b><span>4.580 sager · 2010–2014</span></div>
+        <ul class="bars" aria-label="Andel af den samlede sagstid">
+          <li class="bar hot"><span>Ventevindue efter løsningen</span><span class="track"><i style="width:100%"></i></span><span class="pct">72 %</span></li>
+          <li class="bar"><span>Aktiv behandling</span><span class="track"><i style="width:14.7%"></i></span><span class="pct">11 %</span></li>
+          <li class="bar"><span>Kø, før sagen tages</span><span class="track"><i style="width:12.7%"></i></span><span class="pct">9 %</span></li>
+          <li class="bar"><span>Parkeret i status “Wait”</span><span class="track"><i style="width:10.5%"></i></span><span class="pct">8 %</span></li>
+          <li class="bar"><span>Eskaleret til udvikling</span><span class="track"><i style="width:1.8%"></i></span><span class="pct">1 %</span></li>
+        </ul>
+        <p class="xnote">Sagerne tog 40 dage at lukke, men kun 6 at løse. Det meste af forskellen var et fast bekræftelsesvindue, ikke arbejde. Offentlige data fra et italiensk softwarefirmas IT-helpdesk; resultaterne viser sammenhænge, ikke årsager.</p>
+      </div>
+      <div class="findings">
+        <article class="finding reveal"><span class="big">18,0</span><h3>dage til løsning, hvis ingen tager sagen inden for 3 dage</h3><p>Sager, der blev taget inden for en dag, blev løst på 1,2 dage. Det var køen, ikke arbejdet, der gjorde forskellen.</p></article>
+        <article class="finding reveal"><span class="big">18,4</span><h3>dage til løsning efter to eller flere overdragelser</h3><p>Sager, der blev løst af den første person, tog 1 dag. Hver overdragelse gangede tiden op.</p></article>
+        <article class="finding reveal"><span class="big">49 %</span><h3>af alle overdragelser gik gennem én person</h3><p>En flaskehals i travle uger og en risiko, når personen er væk.</p></article>
+      </div>
+    </div>
+    <div class="xray-cta">
+      <a class="btn btn-primary" href="../process-xray.html" hreflang="en">Læs hele eksempelrapporten (på engelsk) <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="#contact" data-topic="Process X-ray">Spørg om et X-ray af jeres proces</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. How does it work? -->
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Sådan arbejder vi</div>
+      <h2>Bevis det i det små. Byg det så ordentligt.</h2>
+      <p class="lede">I betaler aldrig for et stort projekt i blinde. Hvert forløb starter med én arbejdsgang og et tal, vi kan måle.</p>
+    </div>
+    <div class="process">
+      <div class="stage reveal">
+        <div class="stage-top"><span class="stage-n">1</span><span class="when">30 min · gratis</span></div>
+        <h3>Afdæk</h3>
+        <p>I viser os den arbejdsgang, der æder jeres teams uge. Vi spørger, hvor ofte den forekommer, hvem der udfører den, og hvilke systemer der har dataene.</p>
+        <div class="out">I får en ærlig vurdering af, om AI kan hjælpe, og cirka hvor meget.</div>
+      </div>
+      <div class="stage reveal">
+        <div class="stage-top"><span class="stage-n">2</span><span class="when">2–3 uger · fast pris</span></div>
+        <h3>Bevis</h3>
+        <p>Vi bygger en fungerende prototype på jeres rigtige dokumenter eller procesdata og måler nøjagtigheden op mod jeres teams egne resultater.</p>
+        <div class="out">I får en fungerende prototype, en nøjagtighedsrapport og den sparede tid.</div>
+      </div>
+      <div class="stage reveal">
+        <div class="stage-top"><span class="stage-n">3</span><span class="when">Når tallene holder</span></div>
+        <h3>Implementér</h3>
+        <p>Vi kobler løsningen på jeres systemer, tilføjer adgangsstyring, overvågning og godkendelsestrin og træner jeres team.</p>
+        <div class="out">I får et system i daglig brug, med support og løbende forbedringer.</div>
+      </div>
+    </div>
+    <p class="process-note">Fra første opkald til målte resultater: cirka en måned.</p>
+  </div>
+</section>
+
+<!-- 7. Why not just ChatGPT? -->
+<section id="why" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Hvorfor ikke bare bruge ChatGPT?</div>
+      <h2>Et chatvindue hjælper én person. Vi bygger et system, hele jeres team kan stole på.</h2>
+      <p class="lede">ChatGPT og Copilot er gode til enkeltopgaver, og vi bruger den samme slags modeller. Forskellen er alt det omkring modellen: hvor den kører, hvordan den testes, og hvem der har ansvaret.</p>
+    </div>
+    <div class="vs" role="table" aria-label="En chatassistent sammenlignet med et GoldenDane-system">
+      <div class="vs-row vs-head" role="row"><span role="columnheader"></span><span role="columnheader">En chatassistent</span><span role="columnheader">Et GoldenDane-system</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Hvor den arbejder</b><span role="cell">I et chatvindue. Nogen indsætter mailen eller PDF'en og kopierer svaret ud.</span><span role="cell">Inde i jeres indbakke, ERP- eller sagssystem. Arbejdet flyder ind og ud uden copy-paste.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Hvem der kører den</b><span role="cell">En person, hver gang, når vedkommende husker det.</span><span role="cell">Den kører af sig selv hele dagen. Jeres team håndterer kun det, den markerer.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Hvordan I ved, den har ret</b><span role="cell">Kun hvis nogen tjekker hvert svar.</span><span role="cell">Vi måler nøjagtigheden på jeres egne data, før løsningen går i drift, og bliver ved med at måle bagefter.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Jeres data</b><span role="cell">Afhænger af, hvilken konto og hvilke indstillinger den enkelte medarbejder tilfældigvis bruger.</span><span role="cell">En underskrevet databehandleraftale, behandling i EU, hvor det er muligt, ingen træning på jeres data, adgangsstyring og fuld logning af, hvem der gjorde hvad.</span></div>
+      <div class="vs-row" role="row"><b role="rowheader">Når noget ændrer sig</b><span role="cell">Prompten holder stille og roligt op med at virke.</span><span role="cell">Vi overvåger og retter det. Én part har ansvaret: os.</span></div>
+    </div>
+    <div class="principles">
+      <div class="pr reveal"><h3>Testet, før I stoler på det</h3><p>Hvert system evalueres på en stikprøve af jeres egne data med kendte svar, og I ser nøjagtigheden, før det går i drift.</p></div>
+      <div class="pr reveal"><h3>Altid med kilder</h3><p>Hver udtrukket værdi og hvert svar henviser til den side, det afsnit eller den post, det kommer fra.</p></div>
+      <div class="pr reveal"><h3>Mennesker beslutter</h3><p>AI tager første gennemgang. Jeres team godkender, retter og har stadig ansvaret, og alt bliver logget.</p></div>
+      <div class="pr reveal"><h3>Jeres data forbliver jeres</h3><p>Datahåndteringen aftales skriftligt, før vi starter. Data bruges aldrig til at træne modeller for andre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Who are they? -->
+<section class="team-band" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Dem, I arbejder med</div>
+      <h2>To ingeniører. Ingen mellemled.</h2>
+      <p class="lede">GoldenDane er et lille, fokuseret team fra DTU, Danmarks Tekniske Universitet. Dem, I møder i første opkald, er dem, der bygger og supporterer jeres system.</p>
+    </div>
+    <div class="founders">
+      <article class="person reveal">
+        <div class="portrait" aria-hidden="true">SG</div>
+        <div>
+          <h3>Soheil Ghoreishi</h3>
+          <div class="role">Medstifter · CEO</div>
+          <p>Soheil leder kundearbejdet: han kortlægger jeres arbejdsgang, afgrænser pilotprojektet og sørger for, at resultaterne måles i timer og kroner, ikke i buzzwords. Baggrund i Human-Centered Artificial Intelligence på DTU.</p>
+          <p class="does">Jeres første opkald og jeres faste kontakt.</p>
+        </div>
+      </article>
+      <article class="person reveal">
+        <div class="portrait" aria-hidden="true">VI</div>
+        <div>
+          <h3>Vadim Ionas</h3>
+          <div class="role">Medstifter · CTO</div>
+          <p>Medaljevinder ved den Internationale Fysikolympiade med baggrund i algoritmer, anvendt matematik og machine learning. Vadim designer og bygger systemerne, fra dokumentbehandling til optimeringsmodeller.</p>
+          <p class="does">Bygger og tester jeres system.</p>
+        </div>
+      </article>
+    </div>
+    <div class="team-note">
+      <span><i aria-hidden="true"></i>Baseret i København</span>
+      <span><i aria-hidden="true"></i>GoldenDane ApS · CVR 46351789</span>
+      <span><i aria-hidden="true"></i>Svar inden for én arbejdsdag</span>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Objections -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div class="section-head">
+      <div class="eyebrow">Spørgsmål</div>
+      <h2>Det spørger folk os typisk om.</h2>
+      <p class="lede" style="font-size:17px">Noget andet? Skriv til <a class="link" href="mailto:hello@goldenda.com">hello@goldenda.com</a> eller ring på <a class="link" href="tel:+4550398424">+45 50 39 84 24</a>.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Vi er ikke en AI-virksomhed. Er det her for os?</summary><p>Ja, det er netop dem, det er til. I behøver ikke data scientists eller nyt software. Hvis jeres team gentager de samme ordrer, mails, dokumenter eller procesopgaver hver uge, kan vi som regel sige i ét opkald på 30 minutter, om det kan betale sig at automatisere.</p></details>
+      <details><summary>Hvad sker der i det gratis opkald på 30 minutter?</summary><p>I viser os én arbejdsgang, der tager tid fra jeres team. Vi stiller nogle spørgsmål om mængder, systemer og data og siger ærligt, om AI kan hjælpe, hvordan et pilotprojekt ville se ud, og hvad det ville kræve. Ingen slides og ingen forpligtelser.</p></details>
+      <details><summary>Hvad koster et pilotprojekt?</summary><p>Et pilotprojekt har en fast pris, der aftales på forhånd, og er afgrænset til én arbejdsgang og to til tre ugers arbejde. Vi giver jer prisen efter det gratis opkald, når vi kender problemets størrelse, og I beslutter, om I vil gå videre.</p></details>
+      <details><summary>Hvad sker der med vores data?</summary><p>Vi underskriver en databehandleraftale, før vi rører noget, holder behandlingen inden for EU, hvor det er muligt, sletter arbejdskopier, når projektet slutter, og bruger aldrig jeres data til at træne modeller for andre kunder.</p></details>
+      <details><summary>Kan vi ikke bare bruge ChatGPT eller Copilot?</summary><p>Til én persons enkeltopgaver ofte jo. Men et chatvindue læser ikke jeres indbakke, indtaster ikke ordrer i jeres ERP og kører ikke af sig selv, og ingen måler, om svarene er rigtige. Vi bygger systemet omkring modellen: koblet på jeres værktøjer, testet på jeres data, dækket af en databehandleraftale og vedligeholdt af os. Hvis en chatassistent er alt, I har brug for, siger vi det i første opkald.</p></details>
+      <details><summary>Hvad er et Process X-ray helt præcist?</summary><p>En analyse på to uger til fast pris af den aktivitetslog, et af jeres forretningssystemer allerede gemmer. Vi kalder det et X-ray, fordi det viser, hvad der sker inde i en proces, uden at ændre noget. I får et kort over, hvordan sagerne reelt flyder, hvor tiden går tabt, hvem der er overbelastet, og hvilke forbedringer der bedst kan betale sig først. Vi skal kun bruge ét udtræk med fire kolonner: sags-ID, trin, tidsstempel og person eller team. Vi har aldrig brug for adgang til jeres systemer.</p></details>
+      <details><summary>Erstatter det vores styresystem?</summary><p>Nej. I industrielle processer sidder AI'en oven på jeres eksisterende PID- og SCADA-styring og foreslår eller sætter bedre setpunkter inden for grænser, I selv fastsætter. Den testes først i simulering på jeres historiske data, og jeres operatører kan altid overstyre den.</p></details>
+      <details><summary>I er en ung virksomhed. Hvorfor skal vi stole på jer?</summary><p>Godt spørgsmål. Derfor starter vi med et lille pilotprojekt til fast pris og viser målte resultater, før I forpligter jer til mere. I arbejder direkte med de to ingeniører, der bygger jeres system, alt er dækket af en skriftlig aftale, og I kan tjekke vores registrering på virk.dk.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. How do I talk to them? -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div style="display:grid;gap:24px">
+      <div class="eyebrow">Lad os tale sammen</div>
+      <h2>Hvilken arbejdsgang æder jeres teams uge?</h2>
+      <p class="lede">Fortæl os det med to-tre sætninger. Det sker der bagefter:</p>
+      <ol class="next">
+        <li><span>Vi svarer inden for én arbejdsdag og foreslår et tidspunkt.</span></li>
+        <li><span>Et gratis opkald på 30 minutter med begge stiftere, på video eller telefon.</span></li>
+        <li><span>Hvis det passer, får I et skriftligt tilbud på et pilotprojekt til fast pris. Hvis ikke, siger vi det.</span></li>
+      </ol>
+      <div class="email-row">
+        <a class="email" href="mailto:hello@goldenda.com?subject=Gennemgang%20af%20arbejdsgang">hello@goldenda.com</a>
+        <button class="copy" type="button" id="copyEmail">Kopiér adresse</button>
+      </div>
+      <p class="phone-row">Foretrækker I telefonen? Ring til Soheil på <a href="tel:+4550398424">+45&nbsp;50&nbsp;39&nbsp;84&nbsp;24</a></p>
+      <p class="small">GoldenDane ApS · CVR 46351789 · København</p>
+    </div>
+    <form class="form" id="contactForm" novalidate>
+      <h3>Bed om en gennemgang af en arbejdsgang</h3>
+      <div class="two-f">
+        <div class="field"><label for="f-name">Dit navn</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company">Virksomhed</label><input id="f-company" name="company" autocomplete="organization" required></div>
+      </div>
+      <div class="field"><label for="f-msg">Hvilken opgave tager tid fra jeres team?</label><textarea id="f-msg" name="msg" placeholder="F.eks.: Vi får 150 ordrer om ugen på mail og taster dem ind i vores ERP i hånden." required></textarea></div>
+      <button class="btn btn-primary" type="submit">Send forespørgsel <span class="arr" aria-hidden="true">→</span></button>
+      <p class="fine">Knappen åbner en udfyldt mail til hello@goldenda.com i dit eget mailprogram. Se vores <a href="privatliv.html">privatlivspolitik</a>.</p>
+      <p class="fine sent" id="formSent" role="status" hidden>Dit mailprogram skulle nu åbne med beskeden klar til at sende. Hvis intet åbnede, så kopiér din besked og send den til <b>hello@goldenda.com</b>. Vi svarer inden for én arbejdsdag.</p>
+      <div class="founding">
+        <b>Stiftende kunder</b>
+        <p>Vi tager tre stiftende kunder ind: en reduceret pris på et X-ray eller pilotprojekt mod ærlig feedback og direkte adgang til begge stiftere hele vejen.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">GD</span><span>Golden<b>Dane</b></span></a>
+      <p class="foot-blurb">Anvendt AI til driftsteams. Vi automatiserer ordrer, kundemails og dokumentarbejde og viser jer, hvor jeres processer taber tid.</p>
+    </div>
+    <div>
+      <h4>Virksomhed</h4>
+      <ul>
+        <li>GoldenDane ApS</li>
+        <li>CVR 46351789</li>
+        <li>København</li>
+        <li><a href="mailto:hello@goldenda.com">hello@goldenda.com</a></li>
+        <li><a href="tel:+4550398424">+45 50 39 84 24</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Mere</h4>
+      <ul>
+        <li><a href="#services">Ydelser</a></li>
+        <li><a href="../process-xray.html" hreflang="en">Eksempel på Process X-ray (engelsk)</a></li>
+        <li><a href="#how">Sådan arbejder vi</a></li>
+        <li><a href="privatliv.html">Privatliv</a></li>
+        <li><a href="../" hreflang="en" lang="en">English</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="yr">2026</span> GoldenDane ApS</span>
+    <span>Ingen cookies og ingen sporing på dette website.</span>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
