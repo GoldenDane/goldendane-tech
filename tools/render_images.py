@@ -1,6 +1,6 @@
 """Render the PNG icons, logo PNGs and social-share images from the SVGs.
 Run after tools/brand.py:  python3 tools/render_images.py   (needs playwright + chromium)"""
-import asyncio, pathlib
+import asyncio, pathlib, re
 from playwright.async_api import async_playwright
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 A = ROOT / "assets"
@@ -35,9 +35,11 @@ async def main():
         # Apple touch icon: opaque ink square, iOS rounds the corners itself
         await shot(page(f'<div style="width:180px;height:180px;display:grid;place-items:center"><img src="{logo("goldendane-mark-on-dark.svg")}" width="128" height="128"></div>', "#10181A"), 180, 180, A / "apple-touch-icon.png")
         # Logo PNGs for email signatures, documents and slides
-        for name, bg in [("goldendane-logo", "transparent"), ("goldendane-logo-on-dark", "transparent"), ("goldendane-mark", "transparent"), ("goldendane-mark-on-dark", "transparent")]:
+        for name, bg in [("goldendane-logo", "transparent"), ("goldendane-logo-on-dark", "transparent"), ("goldendane-mark", "transparent"), ("goldendane-mark-on-dark", "transparent"), ("goldendane-badge", "transparent")]:
             w = 64 if "mark" in name else None
-            await shot(page(f'<img src="{logo(name + ".svg")}" style="display:block;height:512px">'), (512 if "mark" in name else 1640), 512, A / "brand" / (name + ".png"), True)
+            vb = re.search(r'viewBox="[\d.-]+ [\d.-]+ ([\d.]+) ([\d.]+)"', (A / "brand" / (name + ".svg")).read_text()).groups()
+            width = round(512 * float(vb[0]) / float(vb[1]))
+            await shot(page(f'<img src="{logo(name + ".svg")}" style="display:block;height:512px">'), width, 512, A / "brand" / (name + ".png"), True)
         # Social share images
         await shot(OG.format(fonts=FONTS, logo=logo("goldendane-logo-on-dark.svg"), size=74,
                              h1='We automate the admin your team still does <em>by hand.</em>',

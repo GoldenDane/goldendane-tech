@@ -17,7 +17,7 @@ Static site for GoldenDane ApS, served by GitHub Pages (custom domain in `CNAME`
 
 ## The logo
 
-A hallmark: the stamp a goldsmith strikes into real gold to prove it is genuine, like our promise that every system is tested before anyone relies on it. An ink octagon with a gold frame and the initials GD in Fraunces. Use `goldendane-mark-small.svg` below 24 px (no inner frame), the `-on-dark` files on dark backgrounds, and keep clear space of at least a quarter of the mark's width around it.
+A circle with one quarter replaced by a gold square; together they read as a G. The circle is the client's operation, the gold square is the one piece we take off their hands. Ink and gold on light backgrounds, white and gold on dark (`-on-dark` files); `goldendane-badge` (the mark on an ink square) for app icons, avatars and email signatures. Keep clear space of at least the gold square's width around it, and never recolour the square.
 
 ## Quick upgrades
 
