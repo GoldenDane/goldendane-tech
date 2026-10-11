@@ -1,10 +1,10 @@
 """Generate GoldenDane logo files.
 
-The mark: three quarters of a circle and a gold square, which together read
-as a G. The square is exactly the size of the quarter missing from the
-circle: the circle is a team's workload, the gold square is the piece of work
-we lift off it and handle, and the open space it leaves is the time they get
-back. Plain geometry in the Danish modernist tradition, so it stays
+The mark: a dark circle with an opening, and a gold square; together they read
+as a G. The dark shape is the work a team still does by hand, the gold square
+is the part we take over (structured, measured: "squared away"), and the
+opening is the time they get back. Every proportion comes from the golden
+ratio. Plain geometry in the Danish modernist tradition, so it stays
 recognisable in one colour and at 16 px.
 
 Files in assets/brand/:
@@ -34,9 +34,19 @@ GOLD, GOLD_DEEP, GOLD_INK = "#D4AE52", "#C49A35", "#86651A"
 
 # 100-unit grid: three quarters of a disc (centre 50,50, r 38) open at the top right, and a gold square
 # the size of that missing quarter (38), set 3 units down and right of the centre.
-DISC = "M50 12A38 38 0 1 0 88 50H50Z"
-SQUARE = '<rect x="53" y="53" width="38" height="38" rx="3"'
-BOX = (12, 12, 79, 79)
+# Every proportion comes from the golden ratio φ ≈ 1.618:
+#   square side = circle radius (the missing quarter)
+#   offset of the square from the centre = r / φ⁵
+#   corner radius of the square = offset / φ
+#   in the lockup, the wordmark's cap height = mark height / φ, the space between them = mark height / φ³
+#   the badge's corner radius = side / φ³, and the mark fills 1 / φ of the badge's width
+PHI = (1 + 5 ** 0.5) / 2
+R = 38.0
+OFFSET = R / PHI ** 5
+CORNER = OFFSET / PHI
+DISC = f"M50 {50 - R:g}A{R:g} {R:g} 0 1 0 {50 + R:g} 50H50Z"
+SQUARE = f'<rect x="{50 + OFFSET:.2f}" y="{50 + OFFSET:.2f}" width="{R:g}" height="{R:g}" rx="{CORNER:.2f}"'
+BOX = (50 - R, 50 - R, 2 * R + OFFSET, 2 * R + OFFSET)
 
 
 def num(v):
@@ -54,11 +64,15 @@ def svg(viewbox, w, h, body, title="GoldenDane"):
 
 def mark(disc, gold):
     x, y, w, h = BOX
-    return svg(f"{x} {y} {w} {h}", w, h, shapes(disc, gold))
+    return svg(f"{num(x)} {num(y)} {num(w)} {num(h)}", w, h, shapes(disc, gold))
 
 
 def badge():
-    body = f'<rect width="100" height="100" rx="22" fill="{INK}"/><g transform="translate(50 50) scale(.7) translate(-51.5 -51.5)">{shapes(WHITE, GOLD)}</g>'
+    bx, by, bw, bh = BOX
+    k = (100 / PHI) / bw
+    cx, cy = bx + bw / 2, by + bh / 2
+    body = (f'<rect width="100" height="100" rx="{100 / PHI ** 3:.2f}" fill="{INK}"/>'
+            f'<g transform="translate(50 50) scale({k:.4f}) translate({-cx:.2f} {-cy:.2f})">{shapes(WHITE, GOLD)}</g>')
     return svg("0 0 100 100", 100, 100, body)
 
 
@@ -91,10 +105,10 @@ def lockup(disc, gold, word_a, word_b):
     bx, by, bw, bh = BOX
     H = 64.0
     k = H / bh
-    cap = H * 0.48
+    cap = H / PHI
     size = cap / (CAP / UPEM)
     baseline = H / 2 + cap / 2
-    x = H + H * 0.28
+    x = bw * k + H / PHI ** 3
     a, xa = word("Golden", size, x, baseline)
     b, xb = word("Dane", size, xa, baseline)
     body = (f'<g transform="scale({num(k)}) translate({num(-bx)} {num(-by)})">{shapes(disc, gold)}</g>'
@@ -116,7 +130,7 @@ for name, data in files.items():
 
 # Favicon: the plain mark; the disc turns white on dark browser chrome.
 x, y, w, h = BOX
-fav = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x - 2} {y - 2} {w + 4} {h + 4}">'
+fav = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x - 2:.2f} {y - 2:.2f} {w + 4:.2f} {h + 4:.2f}">'
        '<style>.d{fill:#10181A}@media (prefers-color-scheme:dark){.d{fill:#FFFFFF}}</style>'
        f'<path class="d" d="{DISC}"/>{SQUARE} fill="{GOLD_DEEP}"/></svg>\n')
 (ROOT / "assets" / "favicon.svg").write_text(fav, encoding="utf-8")

@@ -17,7 +17,11 @@ Static site for GoldenDane ApS, served by GitHub Pages (custom domain in `CNAME`
 
 ## The logo
 
-Three quarters of a circle and a gold square; together they read as a G. The square is exactly the size of the quarter missing from the circle: the circle is a team's workload, the gold square is the piece of work we lift off it and handle, and the open space is the time they get back. Ink and gold on light backgrounds, white and gold on dark (`-on-dark` files); `goldendane-badge` (the mark on an ink square) for app icons, avatars and email signatures. Keep clear space of at least half the square's width around it, and never recolour the square.
+A dark circle with an opening, and a gold square; together they read as a G. The dark shape is the work a team still does by hand, the gold square is the part we take over (structured and measured, "squared away"), and the opening is the time they get back.
+
+Every proportion comes from the golden ratio φ ≈ 1.618 (see `tools/brand.py`): the square's side equals the circle's radius, it sits r/φ⁵ from the centre with corners rounded by r/φ⁶, the wordmark's cap height is the mark's height divided by φ, and the gap between them is the height divided by φ³.
+
+Use ink and gold on light backgrounds, white and gold on dark (`-on-dark` files), and `goldendane-badge` (the mark on an ink square) for app icons, avatars and email signatures. Keep clear space of at least half the square's width around it, and never recolour the square.
 
 ## Quick upgrades
 
