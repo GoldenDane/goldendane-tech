@@ -374,3 +374,11 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 }
 @media (max-width:375px){.lang-s{display:none}.lang{padding:8px}}
 @media (max-width:340px){.logo>span:last-child{display:none}}
+
+/* Danish-language hint for Danish browsers on the English page (added by site.js) */
+.lang-hint{background:var(--gold-wash);color:var(--ink);font-size:14.5px;border-bottom:1px solid var(--line)}
+.lang-hint-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-height:42px;padding-block:6px}
+.lang-hint a{font-weight:600;color:var(--ink);text-decoration-color:var(--gold)}
+.lang-hint button{margin-left:auto;background:none;border:0;font:inherit;font-size:20px;line-height:1;color:var(--ink-2);cursor:pointer;padding:4px 8px;border-radius:6px}
+/* Contact form: copy-the-message fallback for webmail users */
+.form .copy-msg{justify-self:start;color:var(--night-text);border-color:var(--gold-bright)}

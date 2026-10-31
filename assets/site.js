@@ -4,8 +4,8 @@ const EMAIL = 'hello@goldenda.com';
 // Interface text in the page's language (<html lang="da"> or "en").
 const DA = document.documentElement.lang === 'da';
 const T = DA
-  ? { open: 'Åbn menu', close: 'Luk menu', copy: 'Kopiér adresse', copied: 'Kopieret', subject: 'Gennemgang af arbejdsgang: ', topic: t => 'Vi vil gerne høre om et ' + t + ' af vores proces: ' }
-  : { open: 'Open menu', close: 'Close menu', copy: 'Copy address', copied: 'Copied', subject: 'Workflow review: ', topic: t => 'We would like to hear about a ' + t + ' of our process: ' };
+  ? { open: 'Åbn menu', close: 'Luk menu', copy: 'Kopiér adresse', copied: 'Kopieret', copyMsg: 'Kopiér hele beskeden', copiedMsg: 'Kopieret. Indsæt den i en mail til os.', subject: 'Gennemgang af arbejdsgang: ', topic: t => 'Vi vil gerne høre om et ' + t + ' af vores proces: ' }
+  : { open: 'Open menu', close: 'Close menu', copy: 'Copy address', copied: 'Copied', copyMsg: 'Copy the whole message', copiedMsg: 'Copied. Paste it into an email to us.', subject: 'Workflow review: ', topic: t => 'We would like to hear about a ' + t + ' of our process: ' };
 
 document.documentElement.classList.add('js');
 document.getElementById('yr').textContent = new Date().getFullYear();
@@ -76,9 +76,37 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   const subject = T.subject + v('company');
   const body = v('msg') + '\n\n' + v('name') + '\n' + v('company');
   location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  // Many people use webmail, where mailto links open nothing: always say what to do next.
-  document.getElementById('formSent').hidden = false;
+  // Many people use webmail, where mailto links open nothing: always say what to do next,
+  // and give them the whole message on the clipboard so they can paste it into Outlook/Gmail.
+  const sent = document.getElementById('formSent');
+  sent.hidden = false;
+  let cb = document.getElementById('copyMsg');
+  if (!cb) {
+    cb = document.createElement('button');
+    cb.type = 'button'; cb.id = 'copyMsg'; cb.className = 'copy copy-msg';
+    sent.after(cb);
+  }
+  cb.textContent = T.copyMsg;
+  cb.onclick = () => {
+    const text = 'To: ' + EMAIL + '\n' + (DA ? 'Emne: ' : 'Subject: ') + subject + '\n\n' + body;
+    const ok = () => { cb.textContent = T.copiedMsg; setTimeout(() => cb.textContent = T.copyMsg, 2200); };
+    try { navigator.clipboard.writeText(text).then(ok, () => { f.elements.msg.select(); }); } catch (_) { f.elements.msg.select(); }
+  };
 });
+
+// Danish-speaking visitors who land on the English page get a one-line offer to switch.
+// Nothing is stored: no cookies, no localStorage.
+if (!DA) {
+  const langs = (navigator.languages || [navigator.language || '']).map(l => String(l).toLowerCase());
+  const daLink = document.querySelector('a.lang[hreflang="da"]');
+  if (daLink && langs.some(l => l === 'da' || l.startsWith('da-'))) {
+    const bar = document.createElement('div');
+    bar.className = 'lang-hint'; bar.setAttribute('lang', 'da'); bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Dansk version');
+    bar.innerHTML = '<div class="wrap lang-hint-in"><span>Siden findes også på dansk.</span><a href="' + daLink.getAttribute('href') + '">Skift til dansk →</a><button type="button" aria-label="Luk">×</button></div>';
+    bar.querySelector('button').addEventListener('click', () => bar.remove());
+    document.querySelector('header.nav').before(bar);
+  }
+}
 
 // Gentle reveal: content is visible by default; only elements below the fold fade in.
 if ('IntersectionObserver' in window && !reduce) {
