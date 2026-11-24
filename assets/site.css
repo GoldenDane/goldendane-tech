@@ -410,3 +410,5 @@ footer{background:var(--night);color:var(--night-muted);border-top:1px solid var
 .redesign-steps li::before{content:counter(rs);display:block;font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);margin-bottom:6px}
 .redesign-steps b{color:var(--ink);font-weight:600}
 @media (max-width:860px){.redesign-steps{grid-template-columns:1fr;gap:20px}}
+/* Demo tabs: fit all three on narrow phones (Danish labels are long) */
+@media (max-width:440px){.mock-tabs{gap:2px;padding:6px}.mock-tab{flex:1 1 auto;font-size:12.5px;padding:8px 7px}}
